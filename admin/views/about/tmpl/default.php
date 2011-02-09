@@ -99,10 +99,7 @@ else
         </tr>
 <?php 
 }
-?>
-<tr>
-        <td colspan="4">RWCards Version - &copy 2011</td>
-</tr>				
+?>		
 				</tbody>
                 <tfoot>
 					<tr>
