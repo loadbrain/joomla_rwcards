@@ -8,7 +8,7 @@ jimport('joomla.application.component.view');
 /**
  * HTML View class for the HelloWorld Component
  */
-class RwcardsViewRwcards extends JView{
+class RwcardsViewRwcard extends JView{
         // Overwriting JView display method
         function display($tpl = null) 
         {
