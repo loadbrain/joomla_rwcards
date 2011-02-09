@@ -23,7 +23,7 @@ class com_rwcardsInstallerScript
 				JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha", 0777 );
 				echo '<p>' . JText::_('COM_RWCARDS_INSTALL_CAPTCHA_DIRECTORY_TEXT') . '</p>';
 			}
-			if(!is_dir(JPath::clean(JPATH_ROOT . "//components/com_rwcards/captcha/__temp__"))){
+			if(!is_dir(JPath::clean(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__"))){
 				JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__", 0777 );
 				echo '<p>' . JText::_('COM_RWCARDS_INSTALL_CAPTCHA_TEMP_DIRECTORY_TEXT') . '</p>';
 			}	
@@ -43,7 +43,7 @@ class com_rwcardsInstallerScript
 				echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_IMAGE_DIRECTORY_TEXT') . '</p>';
 			}
 
-			if(is_dir(JPath::clean(JPATH_ROOT . "//components/com_rwcards/captcha/__temp__"))){
+			if(is_dir(JPath::clean(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__"))){
 				JFolder::delete(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__", 0777 );
 				echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_CAPTCHA_TEMP_DIRECTORY_TEXT') . '</p>';
 			}
