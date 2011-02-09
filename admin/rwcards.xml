@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" method="upgrade">
+
+        <name>COM_RWCARDS</name>
+        <!-- The following elements are optional and free of formatting conttraints -->
+        <creationDate>February 2011</creationDate>
+        <author>Ralf Weber</author>
+        <authorEmail>ralf@weberr.de</authorEmail>
+        <authorUrl>http://www.weberr.de</authorUrl>
+        <copyright>Copyright Info</copyright>
+        <license>License Info</license>
+        <!--  The version string is recorded in the components table -->
+        <version>4.0.0</version>
+        <!-- The description is optional and defaults to the name -->
+        <description>COM_RWCARDS_DESCRIPTION</description>
+
+         <install> <!-- Runs on install -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+                </sql>
+        </install>
+        <uninstall> <!-- Runs on uninstall -->
+                <sql>
+                        <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+                </sql>
+        </uninstall>
+        <update> <!-- Runs on update; New in 1.6 -->
+                <schemas>
+                        <schemapath type="mysql">sql/updates/mysql</schemapath>
+                </schemas>
+        </update>
+
+        <!-- Site Main File Copy Section -->
+        <!-- Note the folder attribute: This attribute describes the folder
+                to copy FROM in the package to install therefore files copied
+                in this section are copied from /site/ in the package -->
+        <files folder="site">
+                <filename>index.html</filename>
+                <filename>rwcards.php</filename>
+                <filename>controller.php</filename>
+                <folder>views</folder>
+				<folder>models</folder>
+				<folder>language</folder>
+        </files>
+        <media destination="com_rwcards" folder="media">
+                <filename>index.html</filename>
+                <folder>images</folder>
+        </media>
+		
+        <administration>
+                <!-- Administration Menu Section -->
+		<menu img="../media/com_rwcards/images/rwcards_icon.png">COM_RWCARDS_MENU</menu>
+                <!-- Administration Main File Copy Section -->
+                <!-- Note the folder attribute: This attribute describes the folder
+                        to copy FROM in the package to install therefore files copied
+                        in this section are copied from /admin/ in the package -->
+                <files folder="admin">
+                        <!-- Admin Main File Copy Section -->
+                        <filename>index.html</filename>
+                        <filename>config.xml</filename>
+                        <filename>access.xml</filename>
+						<filename>rwcards.php</filename>
+                        <filename>controller.php</filename>
+                        <folder>sql</folder>
+                        <!-- tables files section -->
+                        <folder>tables</folder>
+                        <!-- models files section -->
+                        <folder>models</folder>
+                        <!-- views files section -->
+                        <folder>views</folder>
+                        <!-- controllers files section -->
+                        <folder>controllers</folder>
+                        <!-- helpers files section -->
+                        <folder>helpers</folder>
+                </files>
+                <languages folder="admin">
+                        <language tag="en-GB">language/en-GB/en-GB.com_rwcards.ini</language>
+                        <language tag="en-GB">language/en-GB/en-GB.com_rwcards.sys.ini</language>
+                </languages>
+        </administration>
+
+</extension>
+
