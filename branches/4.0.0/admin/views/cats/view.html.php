@@ -44,7 +44,7 @@ class RwcardsViewCats extends JView{
 	 */
 	protected function addToolBar()
 	{
-		JToolBarHelper::title(JText::_('COM_RWCARDS_CATEGORY_ADMINISTRATION'));
+		JToolBarHelper::title(JText::_('COM_RWCARDS_SUBMENU_CATEGORIES'));
 		JToolBarHelper::deleteListX('', 'cats.delete');
 		JToolBarHelper::editListX('cat.edit');
 		JToolBarHelper::addNewX('cat.add');
