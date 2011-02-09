@@ -2,8 +2,10 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
  
+ jimport( 'joomla.filesystem.folder' );
+
 /**
- * Script file of HelloWorld component
+ * Script file of RWCards component
  */
 class com_rwcardsInstallerScript
 {
@@ -13,7 +15,20 @@ class com_rwcardsInstallerScript
          * @return void
          */
         function install($parent){
+			if(!is_dir(JPath::clean(JPATH_ROOT . "/images/rwcards"))){
+				JFolder::create(JPATH_ROOT . "/images/rwcards", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_INSTALL_IMAGE_DIRECTORY_TEXT') . '</p>';
+			}
+			if(!is_dir(JPath::clean(JPATH_ROOT . "/components/com_rwcards/captcha"))){
+				JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_INSTALL_CAPTCHA_DIRECTORY_TEXT') . '</p>';
+			}
+			if(!is_dir(JPath::clean(JPATH_ROOT . "//components/com_rwcards/captcha/__temp__"))){
+				JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_INSTALL_CAPTCHA_TEMP_DIRECTORY_TEXT') . '</p>';
+			}	
 			// $parent is the class calling this method
+			echo '<p>' . JText::_('COM_RWCARDS_INSTALL_TEXT') . '</p>';
 			$parent->getParent()->setRedirectURL('index.php?option=com_rwcards');
         }
  
@@ -22,10 +37,24 @@ class com_rwcardsInstallerScript
          *
          * @return void
          */
-        function uninstall($parent) 
-        {
-                // $parent is the class calling this method
-                echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_TEXT') . '</p>';
+        function uninstall($parent) {
+			if(is_dir(JPath::clean(JPATH_ROOT . "/images/rwcards"))){
+				JFolder::delete(JPATH_ROOT . "/images/rwcards", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_IMAGE_DIRECTORY_TEXT') . '</p>';
+			}
+
+			if(is_dir(JPath::clean(JPATH_ROOT . "//components/com_rwcards/captcha/__temp__"))){
+				JFolder::delete(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_CAPTCHA_TEMP_DIRECTORY_TEXT') . '</p>';
+			}
+			
+			if(is_dir(JPath::clean(JPATH_ROOT . "/components/com_rwcards/captcha"))){
+				JFolder::delete(JPATH_ROOT . "/components/com_rwcards/captcha", 0777 );
+				echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_CAPTCHA_DIRECTORY_TEXT') . '</p>';
+			}
+	
+			// $parent is the class calling this method
+            echo '<p>' . JText::_('COM_RWCARDS_UNINSTALL_TEXT') . '</p>';
         }
  
         /**
