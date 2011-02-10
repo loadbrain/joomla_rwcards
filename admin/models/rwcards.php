@@ -3,6 +3,8 @@
 defined('_JEXEC') or die('Restricted access');
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
+jimport( 'joomla.filesystem.file' );
+
 /**
  * RwcardsList Model
  */
@@ -93,15 +95,136 @@ class RwcardsModelRwcards extends JModelList{
 		return JTable::getInstance($type, $prefix, $config);
 	}
 
-		public function getCaptchaFolder(){
+	public function getCaptchaFolder(){
 		if(!is_dir(JPath::clean(JPATH_ROOT . "/components/com_rwcards/captcha"))){
 			JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha", 0777 );
 		}
 		if(!is_dir(JPath::clean(JPATH_ROOT . "//components/com_rwcards/captcha/__temp__"))){
 			JFolder::create(JPATH_ROOT . "/components/com_rwcards/captcha/__temp__", 0777 );
-		}		
-		
+		}
+
 	}
-	
+
+	public function getImages(){
+		return JFolder::files(JFolder::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
+
+	}
+
+	public function getImageFolder(){
+		if(!is_dir(JPath::clean(JPATH_ROOT . "/images/rwcards"))){
+			JFolder::create(JPATH_ROOT . "/images/rwcards", 0777 );
+		}
+	}
+
+	/**
+	 * Create the thumbnails
+	 */
+	function getCreateThumbnails(){
+
+		$params =& JComponentHelper::getParams( 'com_rwcards' );
+		$suffix = '@' . $params->get("thumbnail_suffix", 'rwcards' );
+		$breite = 160;
+		$hoehe = 120;
+		$sizemin = array($breite, $hoehe);
+
+		$images = $this->getImages();
+		foreach ($images as $file){
+			$image = $file;
+			$fileExtension = strtolower( substr($image, strrpos($image, ".")) );
+			$name = strtolower( substr($image, 0, -4) ) . $suffix . $fileExtension;
+			if (JFile::exists(JPATH_ROOT . "/images/rwcards/" . $name)){
+				JFile::delete(JPATH_ROOT . "/images/rwcards/" . $name);
+			}
+		}
+
+		$images = $this->getImages();
+		foreach ($images as $file){
+			$image = $file;
+			$fileExtension = strtolower( substr($image, strrpos($image, ".")) );
+			$name = strtolower( substr($image, 0, -4) ) . $suffix . $fileExtension;
+
+			$size = GetImageSize (JPATH_ROOT . "/images/rwcards/" . $file);
+
+			if (!JFile::exists($name)){
+
+
+				// zugross & quer
+				if ($size[0] > $breite && $size[1] > $hoehe  && $size[0] >= $size[1])
+				{
+					if ($size[0] == $size[1])
+					{
+						$sizemin[0] = $breite;
+						$sizemin[1] = $breite;
+					}
+					else
+					{
+						$sizemin[0] = $breite;
+						$sizemin[1] = $hoehe;
+					}
+				}
+
+				// zugross & hochkant
+				else if ($size[0] > $breite && $size[1] > $hoehe && $size[1] > $size[0])
+				{
+					$sizemin[0] = $hoehe;
+					$sizemin[1] = $breite;
+				}
+				// breite zu gross:
+				else if ($size[0] > $breite )
+				{
+					$sizemin[0] = $breite;
+					$sizemin[1] = $size[1];
+				}
+				// hoehe zu gross:
+				else if ($size[1] > $hoehe )
+				{
+					$sizemin[0] = $size[0];
+					$sizemin[1] = $hoehe;
+				}
+				// bild ok:
+				else
+				{
+					$sizemin[0] = $sizemin[0];
+					$sizemin[1] = $sizemin[1];
+				}
+
+				if (eregi( "\.gif", $file ))
+				{
+					$im = ImageCreateFromGif(JPATH_ROOT . "/images/rwcards/" . $file);
+				}
+				if (eregi( "\.png", $file )){
+					$im = ImageCreateFromPNG(JPATH_ROOT . "/images/rwcards/" . $file);
+				}
+				if (eregi( "\.jpg", $file ))
+				{
+					$im = @imagecreatefromjpeg(JPATH_ROOT . "/images/rwcards/" . $file);
+				}
+				$small = imagecreatetruecolor($sizemin[0], $sizemin[1] );
+
+				ImageCopyResampled($small, $im, 0, 0, 0, 0, $sizemin[0], $sizemin[1], $size[0], $size[1]);
+				ImageDestroy($im);
+
+				if (eregi( "\.gif", $file ))
+				{
+					imagegif($small, JPATH_ROOT . "/images/rwcards/" . $name, "100");
+				}
+				if (eregi( "\.png", $file ))
+				{
+					imagepng($small, JPATH_ROOT . "/images/rwcards/" . $name);
+				}
+				else
+				{
+					if (!ImageJPEG($small, JPATH_ROOT . "/images/rwcards/" . $name, "100"))
+					{
+						echo "<font color=red><b>";
+						echo _RWCARD_THUMBNAIL_ERROR;
+						echo "</b></font><br>\n";
+					}
+				}
+			}
+
+		}
+	}
+
 }
 ?>
