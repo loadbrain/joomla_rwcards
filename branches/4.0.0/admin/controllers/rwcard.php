@@ -9,6 +9,5 @@ jimport('joomla.application.component.controllerform');
  * Rwcards Controller
  */
 class RwcardsControllerRwcard extends JControllerForm{
-
 }
 ?>

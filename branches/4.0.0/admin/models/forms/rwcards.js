@@ -1,6 +1,6 @@
 window.addEvent('domready', function(){
     document.formvalidator.setHandler('autor', function(value){
-        regex = /^[.a-z0-9\s]+$/;
+        regex = /^[\w\d\W]+$/;
         return regex.test(value);
     });
 
