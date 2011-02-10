@@ -52,6 +52,7 @@
 						directory="../images/rwcards"
                         validate="picture"
 						required="true"
+						exclude="\@rwcards"
                 />
 
 <field name="published" type="list" label="COM_RWCARDS_FIELD_PUBLISHED_LABEL" description="COM_RWCARDS_FIELD_PUBLISHED_DESC" class="inputbox" size="1" Default="1">

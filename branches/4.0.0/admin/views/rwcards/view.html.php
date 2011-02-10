@@ -19,6 +19,7 @@ class RwcardsViewRwcards extends JView{
 		$items = $this->get('Items');
 		$pagination = $this->get('Pagination');
 		$this->state		= $this->get('State');
+		$this->get('CreateThumbnails');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
