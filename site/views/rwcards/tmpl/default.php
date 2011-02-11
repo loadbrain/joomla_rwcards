@@ -82,7 +82,7 @@
 		<div class="imageElement">
 			<h3><?php echo $val->thumb_title; ?></h3>
 			<p><?php echo $val->thumb_desc; ?></p>
-			<a href="<?php echo JRoute::_('index.php?option=com_rwcards&amp;controller=rwcardslistonecategory&amp;Itemid=' . JRequest::getCmd( "Itemid" )
+			<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
 				. '&amp;category_id=' . $val->category_id
 				. '&amp;reWritetoSender=' . @$this->reWritetoSender
 				. '&amp;sessionId=' . @$this->sessionId);
@@ -101,7 +101,7 @@
 
 <td valign="top" style="width:200px; padding: 0px 5px;">
 	<span style="font-weight: bold; text-decoration:underline;"><?php //  print_r( $this->rwcards[$i]); // sb ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_rwcards&amp;controller=rwcardslistonecategory&amp;Itemid=' . JRequest::getCmd( "Itemid" )
+		<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
 			. '&amp;category_id=' . $this->categoryData[$i]->id
 			. '&amp;reWritetoSender=' . @$this->reWritetoSender
 			. '&amp;sessionId=' . @$this->sessionId );
@@ -114,7 +114,7 @@
 
 	<br /><br /><br /><br />
 
-	<a href="<?php echo JRoute::_('index.php?option=com_rwcards&amp;controller=rwcardslistonecategory&amp;Itemid=' . JRequest::getCmd( "Itemid" )
+	<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
 		. '&amp;category_id=' . $this->categoryData[$i]->id
 		. '&amp;reWritetoSender=' . @$this->reWritetoSender
 		. '&amp;sessionId=' . @$this->sessionId );

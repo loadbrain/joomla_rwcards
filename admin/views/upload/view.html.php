@@ -14,13 +14,15 @@ class RwcardsViewUpload extends JView{
 	 * @return void
 	 */
 	function display($tpl = null){
-		
+
 		// Get data from the model
 		$this->get('ImageFolder');
 		$this->form		= $this->get('Form');
 		$items = $this->get('Items');
 		$pagination = $this->get('Pagination');
 		$this->images = $this->get('Images');
+		$params =& JComponentHelper::getParams( 'com_rwcards' );
+   		$this->params = $params;
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -33,7 +35,7 @@ class RwcardsViewUpload extends JView{
 		$this->pagination = $pagination;
 		// Set the toolbar
 		$this->addToolBar();
-		
+
 
 		// Display the template
 		parent::display($tpl);
@@ -51,17 +53,17 @@ class RwcardsViewUpload extends JView{
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
 		JToolBarHelper::cancel('rwcard.cancel', 'JTOOLBAR_CANCEL');
 	}
-	
+
         /**
          * Method to set up the document properties
          *
          * @return void
          */
-        protected function setDocument() 
+        protected function setDocument()
         {
                 $document = JFactory::getDocument();
                 $document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
-        }	
+        }
 
 }
 ?>
