@@ -13,29 +13,28 @@ defined('_JEXEC') or die('Restricted Access');
 					<?php endforeach; ?>
 				</div>
 		</td>
-	</tr>				
+	</tr>
 	<tr><td>&nbsp;</td></tr>
 	<tr>
 		<td><h3><?php echo JText::_('COM_RWCARDS_UPLOAD_EXISTING_IMAGES'); ?></h3></td>
 	</tr>
-	
+
 	<tr class="row<?php echo $i % 2; ?>">
-	<td>
-<?php 
-foreach($this->images as $i => $item){ 
+
+<?php
+$adminimagesperrow = $this->params->get("adminimagesperrow",3);
+echo "<table border='0' cellspacing='5' cellpadding='5' width='100%'><tr>";
+foreach($this->images as $i => $item){
+	if (!preg_match("/\@rwcards/", $item)){
 ?>
-        
-                <img src="../images/rwcards/<?php echo $item; ?>" style="border:1px solid black; margin:10px;" />
+                	<td><img src="../images/rwcards/<?php echo $item; ?>" style="border:1px solid black; margin:10px;" /></td>
        <?php
-       	if($i % 3 == 2){
-       		echo "</td></tr>";
-       		?>
-       		<tr class="row<?php echo $i % 2; ?>"><td>
-       <?php 
-       	}
+       $i++;
+       	echo ($i % $adminimagesperrow == 0) ? "</tr><tr class='row" . $i % 2 . "'>" : "";
        ?>
-<?php 
-$i++;
+<?php
+	}
 }
-?>                                                     
+echo "</table>";
+?>
 
