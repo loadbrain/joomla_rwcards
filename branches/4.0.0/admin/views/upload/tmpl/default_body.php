@@ -23,6 +23,8 @@ defined('_JEXEC') or die('Restricted Access');
 
 <?php
 $adminimagesperrow = $this->params->get("adminimagesperrow",3);
+$suffix = $this->params->get('suffix', '@rwcards');
+
 echo "<table border='0' cellspacing='5' cellpadding='5' width='100%'><tr>";
 foreach($this->images as $i => $item){
 	if (!preg_match("/\@rwcards/", $item)){

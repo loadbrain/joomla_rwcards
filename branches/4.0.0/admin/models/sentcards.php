@@ -48,9 +48,10 @@ class RwcardsModelSentcards extends JModelList{
 	{
 		$db =& JFactory::getDBO();
 		$params = JComponentHelper::getParams('com_rwcards');
-		$this->params = $params->toObject();
+		$params->toObject();
+		$lifetime = $params->get('lifetime', 1 );
 
-		$lifetimeDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")-$this->params->lifetime, date("Y")));
+		$lifetimeDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")-$lifetime, date("Y")));
 
 		$db->setQuery( "select writtenOn FROM #__rwcardsdata" );
 		$rows = $db->loadObjectList();
