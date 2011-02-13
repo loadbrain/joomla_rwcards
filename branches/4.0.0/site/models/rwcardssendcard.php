@@ -71,7 +71,7 @@ class RwcardsModelRwcardssendcard extends JModel{
 				|| !$sess['rwCardsFormNameTo'][$i]
 				|| (JMailHelper::isEmailAddress($sess['rwCardsFormEmailTo'][$i]) == false))
 				{
-					$this->setError(JText::_('RWCARDS_MAIL_PROBLEM'));
+					$this->setError(JText::_('COM_RWCARDS_MAIL_PROBLEM'));
 					$this->display();
 					return false;
 				}
@@ -82,37 +82,37 @@ class RwcardsModelRwcardssendcard extends JModel{
 				// Prepare email body
 
 				$linkToRWCards = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&controller=rwcardsprelookcard&Itemid=' . $Itemid
+				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&Itemid=' . $Itemid
 				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
 				$linkToViewOnly = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&controller=rwcardsprelookcard&Itemid=' . $Itemid
+				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&Itemid=' . $Itemid
 				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
 
-				$subject = JText::_('RWCARDS_SUBJECT') . " " . $FromName;
+				$subject = JText::_('COM_RWCARDS_SUBJECT') . " " . $FromName;
 
 				// send link to card
 				if ($attachment)
 				{
-					$message = JText::_('RWCARDS_GREETING') . " "
+					$message = JText::_('COM_RWCARDS_GREETING') . " "
 					. $sess['rwCardsFormNameTo'][$i] . "\n\n"
-					. $FromName . " " . JText::_('RWCARDS_MSG_ATTACHEMENT_1') . "\n"
-					. JText::_('RWCARDS_MSG_ATTACHEMENT_2') . "\n"
-					. JText::_('RWCARDS_MSG_ATTACHEMENT_3') . "\n\n"
+					. $FromName . " " . JText::_('COM_RWCARDS_MSG_ATTACHEMENT_1') . "\n"
+					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_2') . "\n"
+					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_3') . "\n\n"
 					. nl2br( $sess['rwCardsFormMessage'] )
-					. "\n\n" . JText::_('RWCARDS_MSG_SEPARATOR') . "\n\n"
-					.  $params->get('msg_copyright', JText::_('RWCARDS_MSG_COPYRIGHT'));
-					$mail->addAttachment("./images/stories/cards/" . $sess['picture']);
+					. "\n\n" . JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n\n"
+					.  $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT'));
+					$mail->addAttachment("./images/rwcards/" . $sess['picture']);
 				}
 				else
 				{
-					$message = JText::_('RWCARDS_GREETING') . " "
+					$message = JText::_('COM_RWCARDS_GREETING') . " "
 					. $sess['rwCardsFormNameTo'][$i] . "\n\n"
 					. $FromName . " "
-					. JText::_('RWCARDS_MSG_PART_1') . "\n\n"
-					. JText::_('RWCARDS_MSG_PART_2') . "\n\n"
+					. JText::_('COM_RWCARDS_MSG_PART_1') . "\n\n"
+					. JText::_('COM_RWCARDS_MSG_PART_2') . "\n\n"
 					. $linkToRWCards . "\n\n"
-					. JText::_('RWCARDS_MSG_SEPARATOR') . "\n"
-					. $params->get('msg_copyright', JText::_('RWCARDS_MSG_COPYRIGHT')) . "\n\n";
+					. JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n"
+					. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
 				}
 
 				$mail->addRecipient( $sess['rwCardsFormEmailTo'][$i] );
@@ -165,17 +165,17 @@ class RwcardsModelRwcardssendcard extends JModel{
 				* $mail =& JMail::getInstance();
 				*/
 				$mail =& JFactory::getMailer();
-				$subject =  JText::_('RWCARDS_CARD_READ_SUBJECT');
-				$message = JText::_('RWCARDS_GREETING') . " "
+				$subject =  JText::_('COM_RWCARDS_CARD_READ_SUBJECT');
+				$message = JText::_('COM_RWCARDS_GREETING') . " "
 				. $this->_data[0]->nameFrom . "\n"
 				. $this->_data[0]->nameTo . " "
-				. JText::_('RWCARDS_CARD_READ_MSG_1') . " "
+				. JText::_('COM_RWCARDS_CARD_READ_MSG_1') . " "
 				. date("d.m.Y") . " "
-				. JText::_('RWCARDS_CARD_READ_MSG_2') . "\n\n"
-				. JText::_('RWCARDS_CARD_READ_MSG_3') . "\n\n"
-				. JText::_('RWCARDS_MSG_SEPARATOR') . "\n"
+				. JText::_('COM_RWCARDS_CARD_READ_MSG_2') . "\n\n"
+				. JText::_('COM_RWCARDS_CARD_READ_MSG_3') . "\n\n"
+				. JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n"
 
-				. $params->get('msg_copyright', JText::_('RWCARDS_MSG_COPYRIGHT')) . "\n\n";
+				. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
 
 				$mail->addRecipient( $this->_data[0]->emailFrom );
 				$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );

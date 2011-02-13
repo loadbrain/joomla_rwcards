@@ -92,7 +92,7 @@ class RwcardsViewRwcardsfilloutcard extends JView
 			}
 			else
 			{
-				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&task=sendrwcard&Itemid=' . $Itemid . '&id=' . $id )));
+				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&task=sendrwcard&Itemid=' . $Itemid . '&id=' . $id )));
 			}
 		}
 		else

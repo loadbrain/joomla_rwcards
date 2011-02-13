@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <metadata>
     <layout title="COM_RWCARDS_VIEW_ONE_CATEGORY_TITLE">
-        <message>CCOM_RWCARDS_VIEW_ONE_CATEGORY_DESC</message>
+        <message>COM_RWCARDS_VIEW_ONE_CATEGORY_DESC</message>
     </layout>
 </metadata>
