@@ -24,6 +24,7 @@ class RwcardsModelSentcards extends JModelList{
 		return $query;
 	}
 
+
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
@@ -36,6 +37,32 @@ class RwcardsModelSentcards extends JModelList{
 	public function getTable($type = 'Rwcards', $prefix = 'RwcardsTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
+	}
+
+	/**
+	* Method to delete all records that are older then defined in the configuration tabel
+	*
+	* @access private
+	*/
+	function getDeleteOldCards()
+	{
+		$db =& JFactory::getDBO();
+		$params = JComponentHelper::getParams('com_rwcards');
+		$this->params = $params->toObject();
+
+		$lifetimeDate = date("Y-m-d", mktime(0, 0, 0, date("m")  , date("d")-$this->params->lifetime, date("Y")));
+
+		$db->setQuery( "select writtenOn FROM #__rwcardsdata" );
+		$rows = $db->loadObjectList();
+
+		for ($i=0; $i<count($rows); $i++)
+		{
+			if ($rows[$i]->writtenOn <= $lifetimeDate)
+			{
+				//echo "DELETE FROM #__rwcardsdata WHERE writtenOn <= '" . $lifetimeDate . "'<br>";
+				$db->query( $db->setQuery("DELETE FROM #__rwcardsdata WHERE writtenOn <= '" . $lifetimeDate . "'" ) );
+			}
+		}
 	}
 
 }

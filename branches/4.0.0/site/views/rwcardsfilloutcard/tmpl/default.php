@@ -143,7 +143,7 @@ window.addEvent('domready', function()
 // and gets consulted when/if the session is blank.
 ?>
 <div class="rwcardsImage">
-	<p style="text-align:center;"><img src="<?php echo JURI::base(); ?>images/stories/cards/<?php echo(isset($sess['picture'])) ? @$sess['picture'] : $this->rwcards[0]->picture; ?>" hspace="2" vspace="2" alt="" /></p>
+	<p style="text-align:center;"><img src="<?php echo JURI::base(); ?>images/rwcards/<?php echo(isset($sess['picture'])) ? @$sess['picture'] : $this->rwcards[0]->picture; ?>" hspace="2" vspace="2" alt="" /></p>
 </div>
 <div class="rwcardsfull">
 	<div class="rwcardsLeftForm">
