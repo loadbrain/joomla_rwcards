@@ -42,9 +42,12 @@
                 <filename>rwcards.php</filename>
                 <filename>controller.php</filename>
                 <folder>views</folder>
-				<folder>models</folder>
-				<folder>language</folder>
-				<folder>captcha</folder>				
+		<folder>models</folder>
+		<folder>language</folder>
+		<folder>captcha</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>css</folder>				
         </files>
         <media destination="com_rwcards" folder="media">
                 <filename>index.html</filename>
@@ -63,7 +66,7 @@
                         <filename>index.html</filename>
                         <filename>config.xml</filename>
                         <filename>access.xml</filename>
-						<filename>rwcards.php</filename>
+			<filename>rwcards.php</filename>
                         <filename>controller.php</filename>
                         <folder>sql</folder>
                         <!-- tables files section -->
