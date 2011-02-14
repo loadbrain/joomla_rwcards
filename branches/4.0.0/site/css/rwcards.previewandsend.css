@@ -60,8 +60,13 @@ margin-bottom:20px;
 	height:auto;
 	min-height:220px;
 }
+
 .rwcards_buttons_bottom
 {
+	margin-top:20px;
+	padding-top:8px;
+	margin-bottom:5px;
+	border-top: 1px #999 dotted;
 	font-size: 12px;
 	text-align: center;
 }
@@ -76,11 +81,19 @@ margin-bottom:20px;
 	clear: both;
 }
 
+.rwcards_button, .rwcardsLink
+{
+	/* same as rwcards_button in other style sheet*/
+	width:150px;
+	border: 1px groove black;	
+}
+
 .rwcardsLink
 {
 	font-family:Verdana;
 	font-size:12px;
 	font-weight:bold;
+	border: 0px;
 }
 
 .rwcardsLink:hover
@@ -89,4 +102,72 @@ margin-bottom:20px;
 	font-size:12px;
 	font-weight:bold;
 	color:#135CAE;
+}
+
+#rwCardsBack, #rwCardsPreviewCard, #rwCardsSendCard, #rwcardsGoBack, #rwcardsSend, #showFrontCard, #showBackCard, #rwcardsReWriteCard {
+	cursor: pointer;
+}
+
+/* replacing many of the style elements */
+
+#rwcardsViewWrapper {
+	position:relative;
+	width:auto;
+	text-align:center;
+}
+
+#frontCard img.thecard {
+	border:1px solid black;
+}
+
+div.rw_date {
+	text-align:right;
+	float: right;
+	font-weight:bold;
+}
+p.rw_from {
+	font-weight:bold;
+}
+span.rw_label {
+	/* labels like "Your Name", "Message", "Recipient Name" */
+}
+p.rw_from span.rw_from_name {}
+p.rw_from span.rw_from_email {}
+
+p.rw_message {
+	font-weight:bold;
+}
+
+p.rw_message span.rw_text {}
+
+p.rw_postmark {
+	text-align:right;
+}
+p.rw_to {
+	font-weight:bold;
+	text-align:right;
+}
+/* each receiver in the preview page is inside one of these: */
+p.rw_receiver {
+	font-weight:bold;
+	text-decoration:underline;
+	text-align:right;
+	padding-right:5px;
+}
+p.rw_receiver span.rw_to_name {}
+p.rw_receiver span.rw_to_email {}
+
+div.rw_reply_now div.rw_reply_image {
+	text-align:right;
+	padding-right:5px;
+}
+
+div.rw_reply_now div.rw_reply_text {
+	text-align:right;
+	padding-right:5px;
+	font-weight:bold;
+}
+
+#rwcardsReWriteCard {
+	margin-top: 1em;
 }
