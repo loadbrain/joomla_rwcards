@@ -13,20 +13,23 @@
 
 	 // no direct access
 	defined('_JEXEC') or die('Restricted access');
-	global $mainframe;
+
 	// Load the moo.fx scripts
 	$document = &JFactory::getDocument();
+
 
 
 	// start build additional Stylesheet by A. Dalebout
 	$style = '';
 	if ( count($this->rwcards[0]) > 0) {
 	    for ($i=0; $i < count($this->rwcards); $i++) {
+	    	$thumb_box_width = ($this->active->query["thumb_box_width"] != "" ) ? $this->active->query["thumb_box_width"] : '260px';
+	    	$thumb_box_height = ($this->active->query["thumb_box_height"] != "") ? $this->active->query["thumb_box_height"] : '220px';
 	        $style .="
 #myGallery_rwcards_".$i."
 {
-	width: " . $this->params->get("thumb_box_width", '260px') . " !important;
-	height: " . $this->params->get("thumb_box_height", '220px') . " !important;
+	width: " . $thumb_box_width . " !important;
+	height: " . $thumb_box_height . " !important;
 	border: 1px solid #000;
 }
 
@@ -52,8 +55,7 @@
 	$document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.slideshow.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 ?>
 
-	<h1><?php echo $this->params->get('cats_page_heading','View Cards'); ?></h1>
-
+	<h1><?php echo ($this->active->query["cats_page_heading"] != "" ? $this->active->query["cats_page_heading"] : JText::_('COM_RWCARDS_VIEW_CARDS')); ?></h1>
 <?php
 	if ( count($this->rwcards[0]) > 0) {
 	    for ($i=0; $i < count($this->rwcards); $i++) {

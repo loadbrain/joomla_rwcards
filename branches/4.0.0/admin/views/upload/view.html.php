@@ -20,6 +20,7 @@ class RwcardsViewUpload extends JView{
 		$this->form		= $this->get('Form');
 		$items = $this->get('Items');
 		$pagination = $this->get('Pagination');
+		$this->state = $this->get('State');
 		$this->images = $this->get('Images');
 		$params =& JComponentHelper::getParams( 'com_rwcards' );
    		$this->params = $params;
@@ -48,8 +49,11 @@ class RwcardsViewUpload extends JView{
 	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar()
-	{
+	protected function addToolBar(){
+		require_once JPATH_COMPONENT.DS.'helpers'.DS.'rwcardhelper.php';
+
+		$user = JFactory::getUser();
+		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
 		JToolBarHelper::cancel('rwcard.cancel', 'JTOOLBAR_CANCEL');
 	}

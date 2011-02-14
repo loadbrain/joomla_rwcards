@@ -42,12 +42,17 @@ class RwcardsViewCats extends JView{
 	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar()
-	{
-		JToolBarHelper::title(JText::_('COM_RWCARDS_SUBMENU_CATEGORIES'));
-		JToolBarHelper::deleteListX('', 'cats.delete');
-		JToolBarHelper::editListX('cat.edit');
-		JToolBarHelper::addNewX('cat.add');
+	protected function addToolBar(){
+		require_once JPATH_COMPONENT.DS.'helpers'.DS.'rwcardhelper.php';
+
+		$user = JFactory::getUser();
+		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
+		if ($this->canDo->get('core.edit')){
+			JToolBarHelper::title(JText::_('COM_RWCARDS_SUBMENU_CATEGORIES'));
+			JToolBarHelper::deleteListX('', 'cats.delete');
+			JToolBarHelper::editListX('cat.edit');
+			JToolBarHelper::addNewX('cat.add');
+		}
 	}
 
         /**

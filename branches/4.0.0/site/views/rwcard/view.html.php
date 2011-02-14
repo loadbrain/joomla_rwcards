@@ -41,7 +41,10 @@ class RwcardsViewRwcard extends JView{
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
 		$this->sessionId = $sessionId;
 		$this->limitstart = JRequest::getVar('limitstart', 0, 'request', 'int');
-		//var_dump($_REQUEST);
+
+		$menu = $app->getMenu();
+		$active = $menu->getActive();
+		$this->active = $active;
 		parent::display($tpl);
 	}
 }
