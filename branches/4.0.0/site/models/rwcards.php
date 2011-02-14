@@ -66,9 +66,13 @@ class RwcardsModelRwcards extends JModel{
 			// now generate info for placing over the thumbnails, based on the parameters.
 			$params =& JComponentHelper::getParams( 'com_rwcards' );
 
-			$a_prefix	= $params->get( 'titleauthor_prefix' );
-			$d_prefix	= $params->get( 'description_prefix' );
-			$type		= $params->get( 'thumbnail_data', 'a-d' );
+			$menu = $app->getMenu();
+			$active = $menu->getActive();
+			$this->active = $active;
+
+			$a_prefix	= $this->active->query["titleauthor_prefix"];
+			$d_prefix	= $this->active->query["description_prefix"];
+			$type		= $this->active->query['thumbnail_data'];
 
 			foreach ($this->_data as $key1=>$value1 ) {
 				foreach ($value1 as $key2=>$value2 ) {

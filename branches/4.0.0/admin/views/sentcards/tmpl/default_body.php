@@ -8,7 +8,10 @@ defined('_JEXEC') or die('Restricted Access');
                         <?php echo $item->id; ?>
                 </td>
                 <td>
-                        <?php echo JHtml::_('grid.id', $i, $item->id); ?>
+                        <?php
+                        if ($this->canDo->get('core.edit')){
+                        	echo JHtml::_('grid.id', $i, $item->id);
+                        }?>
                 </td>
                 <td>
                         <?php echo JTEXT::_($item->nameTo); ?> < <?php  echo JTEXT::_($item->emailTo); ?>

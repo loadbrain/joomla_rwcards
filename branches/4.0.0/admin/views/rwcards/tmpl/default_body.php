@@ -14,11 +14,19 @@ $ordering	= ($listOrder == 'ordering');?>
         <tr class="row<?php echo $i % 2; ?>">
 
                 <td colspan="2" align="center">
-                        <?php echo JHtml::_('grid.id', $i, $item->id); ?>
+                        <?php
+                        if ($this->canDo->get('core.edit')){
+                        	echo JHtml::_('grid.id', $i, $item->id);
+                        }
+                        else{
+                        echo $item->id;
+                        }?>
                 </td>
                 <td>
+                <?php if ($this->canDo->get('core.edit')){ ?>
 		                <a href="<?php echo JRoute::_('index.php?option=com_rwcards&task=rwcard.edit&id='.$item->id);?>">
-                        <?php echo JTEXT::_($item->autor); ?>
+                <?php }
+                        echo JTEXT::_($item->autor); ?>
                         </a>
                 </td>
                 <td>

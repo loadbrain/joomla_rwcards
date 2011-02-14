@@ -12,7 +12,7 @@ class RwcardsViewRwcards extends JView
 {
 	// Overwriting JView display method
 	function display($tpl = null){
-
+		$app = JFactory::getApplication();
 		$reWritetoSender = false;
 		$task = JRequest::getVar('task', '', 'request', 'string');
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
@@ -21,6 +21,10 @@ class RwcardsViewRwcards extends JView
 		$suffix = '@' . $params->get("thumbnail_suffix", 'rwcards' );
 		$this->suffix = $suffix;
 		$this->params = $params;
+
+		$menu = $app->getMenu();
+		$active = $menu->getActive();
+		$this->active = $active;
 
 		// Assign data to the view
 		$data = $this->get( 'Items' );

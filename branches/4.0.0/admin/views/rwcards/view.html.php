@@ -17,8 +17,9 @@ class RwcardsViewRwcards extends JView{
 		// Get data from the model
 		$this->get('CaptchaFolder');
 		$items = $this->get('Items');
+		$this->state	= $this->get('State');
 		$pagination = $this->get('Pagination');
-		$this->state		= $this->get('State');
+		$this->state = $this->get('State');
 		$this->get('CreateThumbnails');
 
 		// Check for errors.
@@ -44,25 +45,31 @@ class RwcardsViewRwcards extends JView{
 	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar()
-	{
+	protected function addToolBar(){
+		require_once JPATH_COMPONENT.DS.'helpers'.DS.'rwcardhelper.php';
+
+		$user		= JFactory::getUser();
+		$this->canDo		= RwcardHelper::getActions($this->state->get('filter.id'));
+
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
-		JToolBarHelper::deleteListX('', 'rwcards.delete');
-		JToolBarHelper::editListX('rwcard.edit');
-		JToolBarHelper::addNewX('rwcard.add');
-		JToolBarHelper::preferences('com_rwcards');
+		if ($this->canDo->get('core.edit')){
+			JToolBarHelper::deleteListX('', 'rwcards.delete');
+			JToolBarHelper::editListX('rwcard.edit');
+			JToolBarHelper::addNewX('rwcard.add');
+			JToolBarHelper::preferences('com_rwcards');
+		}
 	}
 
-        /**
-         * Method to set up the document properties
-         *
-         * @return void
-         */
-        protected function setDocument()
-        {
-                $document = JFactory::getDocument();
-                $document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
-        }
+	/**
+	 * Method to set up the document properties
+	 *
+	 * @return void
+	 */
+	protected function setDocument()
+	{
+		$document = JFactory::getDocument();
+		$document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
+	}
 
 }
 ?>

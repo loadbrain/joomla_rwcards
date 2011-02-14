@@ -5,6 +5,16 @@ defined('_JEXEC') or die('Restricted Access');
 // load tooltip behavior
 JHtml::_('behavior.tooltip');
 ?>
+<div class="error">
+	<dl id="system-message">
+	<dt class="notice"></dt>
+	<dd class="notice message">
+		<ul>
+			<li><?php echo JText::_('COM_RWCARDS_USAGE_HINT'); ?></li>
+		</ul>
+	</dd>
+	</dl>
+</div>
 <form action="<?php echo JRoute::_('index.php?option=com_rwcards'); ?>" method="post" name="adminForm">	<fieldset id="filter-bar">
 		<div class="filter-search fltlft">
 			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
