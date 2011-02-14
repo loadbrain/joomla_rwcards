@@ -8,12 +8,13 @@ $listDirn	= $this->state->get('list.direction');
 $canOrder	= $user->authorise('core.edit.state', 'com_rwcards.rwcards');
 $saveOrder	= 'ordering';
 ?>
-<tr>
         <th width="5">
                 <?php echo JText::_('COM_RWCARDS_RWCARDS_HEADING_ID'); ?>
         </th>
         <th width="20">
+        <?php if ($this->canDo->get('core.edit')){ ?>
                 <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($this->items); ?>);" />
+        <?php }?>
         </th>
         <th>
                 <?php echo JText::_('COM_RWCARDS_RWCARDS_AUTOR'); ?>

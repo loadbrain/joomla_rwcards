@@ -7,7 +7,9 @@ defined('_JEXEC') or die('Restricted Access');
                 <?php echo JText::_('COM_RWCARDS_RWCARDS_HEADING_ID'); ?>
         </th>
         <th width="20">
+        <?php if ($this->canDo->get('core.edit')){?>
                 <input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count($this->items); ?>);" />
+        <?php }  ?>
         </th>
         <th>
                 <?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_RECEIVER'); ?>

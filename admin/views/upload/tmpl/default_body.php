@@ -5,12 +5,16 @@ defined('_JEXEC') or die('Restricted Access');
 	<tr>
 		<td>
 			<div id="image">
-					<?php foreach($this->form->getFieldset('image') as $field): ?>
+					<?php
+					if ($this->canDo->get('core.edit')){
+					foreach($this->form->getFieldset('image') as $field): ?>
 						<?php if (!$field->hidden): ?>
 							<?php echo $field->label; ?>
 						<?php endif; ?>
 						<?php echo $field->input; ?>
-					<?php endforeach; ?>
+					<?php endforeach;
+					}
+					?>
 				</div>
 		</td>
 	</tr>

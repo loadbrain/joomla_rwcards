@@ -20,7 +20,7 @@ class RwcardsViewSentcards extends JView{
 		$items = $this->get('Items');
 
 		$pagination = $this->get('Pagination');
-
+		$this->state = $this->get('State');
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))
@@ -47,11 +47,17 @@ class RwcardsViewSentcards extends JView{
 	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar()
-	{
+	protected function addToolBar()	{
+		require_once JPATH_COMPONENT.DS.'helpers'.DS.'rwcardhelper.php';
+
+		$user = JFactory::getUser();
+		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
+
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
-		JToolBarHelper::deleteListX('', 'sentcards.delete');
-	}
+			if ($this->canDo->get('core.edit')){
+				JToolBarHelper::deleteListX('', 'sentcards.delete');
+			}
+		}
 
         /**
          * Method to set up the document properties

@@ -55,7 +55,7 @@ $document->addStyleDeclaration($style);
 
 ?>
 
-<h1><?php echo $this->params->get('cards_page_heading','View Cards'); ?></h1>
+<h1><?php echo ($this->active->query["cats_page_heading"] != "" ? $this->active->query["cats_page_heading"] : JText::_('COM_RWCARDS_VIEW_CARDS')); ?></h1>
 
 <div id="category-box">
 	<?php echo JText::_('COM_RWCARDS_CHOSEN_CATEGORY') . ": " . $this->categories; ?>
