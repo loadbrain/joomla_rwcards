@@ -7,8 +7,8 @@
         <author>Ralf Weber</author>
         <authorEmail>ralf@weberr.de</authorEmail>
         <authorUrl>http://www.weberr.de</authorUrl>
-        <copyright>Copyright Info</copyright>
-        <license>License Info</license>
+        <copyright>Copyright LoadBrain</copyright>
+        <license>GPLv2</license>
         <!--  The version string is recorded in the components table -->
         <version>4.0.0</version>
         <!-- The description is optional and defaults to the name -->
