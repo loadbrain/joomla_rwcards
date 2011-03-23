@@ -1,18 +1,15 @@
 <?php
-/**
- * RWCards Template for RWCards Entry page
- *
- * @author Ralf Weber  <ralf@weberr.de>
- * @cleanup code by A. Dalebout <siam@kiwuweb.de>
- * @version 3.1
- * @copyright Copyright (c) 2010, LoadBrain
- * @link http://www.weberr.de/
- * @link http://www.kiwuweb.de/
- * @license GNU/GPL
- */
-
-	 // no direct access
-	defined('_JEXEC') or die('Restricted access');
+/*------------------------------------------------------------------------
+# com_rwcards4 - RWCards for Joomla 1.6
+# ------------------------------------------------------------------------
+# author Ralf Weber, LoadBrain
+# copyright (C) 2011 www.weberr.de. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.weberr.de
+# Technical Support: Forum - http://www.weberr.de/forum.html
+-------------------------------------------------------------------------*/
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 	// Load the moo.fx scripts
 	$document = &JFactory::getDocument();
