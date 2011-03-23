@@ -1,14 +1,15 @@
 <?php
-/**
- * @version		$Id: article.php 20196 2011-01-09 02:40:25Z ian $
- * @package		Joomla.Administrator
- * @subpackage	com_content
- * @copyright	Copyright (C) 2005 - 2011 Open Source Matters, Inc. All rights reserved.
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- */
-
-// No direct access
-defined('_JEXEC') or die;
+/*------------------------------------------------------------------------
+# com_rwcards4 - RWCards for Joomla 1.6
+# ------------------------------------------------------------------------
+# author Ralf Weber, LoadBrain
+# copyright (C) 2011 www.weberr.de. All Rights Reserved.
+# @license - http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL
+# Websites: http://www.weberr.de
+# Technical Support: Forum - http://www.weberr.de/forum.html
+-------------------------------------------------------------------------*/
+// no direct access
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 jimport('joomla.application.component.controllerform');
 
