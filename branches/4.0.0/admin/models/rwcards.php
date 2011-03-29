@@ -10,7 +10,6 @@
 -------------------------------------------------------------------------*/
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
-
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
 jimport( 'joomla.filesystem.file' );
@@ -116,6 +115,9 @@ class RwcardsModelRwcards extends JModelList{
 	}
 
 	public function getImages(){
+	if(!is_dir(JPath::clean(JPATH_ROOT . "/images/rwcards"))){
+		$this->getImageFolder();
+	}
 		return JFolder::files(JFolder::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
 
 	}
@@ -138,6 +140,7 @@ class RwcardsModelRwcards extends JModelList{
 		$sizemin = array($breite, $hoehe);
 
 		$images = $this->getImages();
+		if($images){
 		foreach ($images as $file){
 			$image = $file;
 			$fileExtension = strtolower( substr($image, strrpos($image, ".")) );
@@ -146,8 +149,13 @@ class RwcardsModelRwcards extends JModelList{
 				JFile::delete(JPATH_ROOT . "/images/rwcards/" . $name);
 			}
 		}
+		}
 
 		$images = $this->getImages();
+		if(!$images){
+			$this->getImageFolder();
+		}
+		if($images){
 		foreach ($images as $file){
 			$image = $file;
 			$fileExtension = strtolower( substr($image, strrpos($image, ".")) );
@@ -233,6 +241,7 @@ class RwcardsModelRwcards extends JModelList{
 				}
 			}
 
+		}
 		}
 	}
 
