@@ -54,8 +54,7 @@ window.addEvent('domready', function()
    Form.Validator.add('validate-email', {
 	    errorMsg: '<?php echo JText::_('COM_RWCARDS_FORM_ERROR_EMAIL'); ?>',
 	    test: function(element){
-	    	return element.get('value').test(/\@/,'i');
-
+		return element.get('value').test(/^(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]\.?){0,63}[a-z0-9!#$%&'*+\/=?^_`{|}~-]@(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\])$/,'i'
 	    }
 	});
 
