@@ -161,7 +161,9 @@ class RwcardsModelRwcardssendcard extends JModel{
 		$id = JRequest::getVar('id', '', 'request', 'string');
 
 		$db =& JFactory::getDBO();
-		// check the config settings
+		// check the config settings$id = 
+		$db->getEscaped( $id );
+		$sessionId = $db->getEscaped( $sessionId );
 		$query = "SELECT * FROM #__rwcardsdata where sessionId = '" . $sessionId . "' and id = '" . $id . "'";
 		$this->_data = $this->_getList( $query );
 
