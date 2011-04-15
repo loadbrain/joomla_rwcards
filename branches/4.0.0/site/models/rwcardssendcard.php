@@ -92,10 +92,10 @@ class RwcardsModelRwcardssendcard extends JModel{
 				// Prepare email body
 
 				$linkToRWCards = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&Itemid=' . $Itemid
+				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
 				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
 				$linkToViewOnly = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&Itemid=' . $Itemid
+				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
 				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
 
 				$subject = JText::_('COM_RWCARDS_SUBJECT') . " " . $FromName;
