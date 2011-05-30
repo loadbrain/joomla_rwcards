@@ -57,10 +57,10 @@ ALTER TABLE `#__rwcards_category` MODIFY COLUMN `ordering` int(11) NOT NULL defa
 CREATE TABLE IF NOT EXISTS `#__rwcardsconfig` (
 	`id` int(99) unsigned NOT NULL auto_increment,
 	`version` varchar(10) NOT NULL default '',
+	`params` text NOT NULL,
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
-ALTER TABLE `#__rwcardsconfig` ADD `params` VARCHAR(1024) NOT NULL DEFAULT '';
 
 INSERT INTO `#__rwcardsconfig` (`version`) VALUES
-        ('4.0.0');
+        ('4.0.2');
 
