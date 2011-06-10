@@ -84,8 +84,8 @@ class RwcardsModelSentcard extends JModelAdmin{	/**
 	{
 		$user = JFactory::getUser();
 
-		if (!empty($record->catid)) {
-			return $user->authorise('core.delete', 'com_banners.category.'.(int) $record->catid);
+		if (!empty($record->id)) {
+			return $user->authorise('core.delete', 'com_rwcards.'.(int) $record->id);
 		}
 		else {
 			return parent::canDelete($record);
