@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 // load tooltip behavior
 JHtml::_('behavior.tooltip');
 ?>
-<form action="<?php echo JRoute::_('index.php?option=com_rwcards'); ?>" method="post" name="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_rwcards&amp;view=sentcards&amp;extension=com_rwcards'); ?>" method="post" name="adminForm">
         <table class="adminlist">
                 <thead><?php echo $this->loadTemplate('head');?></thead>
                 <tfoot><?php echo $this->loadTemplate('foot');?></tfoot>
