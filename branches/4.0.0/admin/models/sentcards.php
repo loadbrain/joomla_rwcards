@@ -70,7 +70,7 @@ class RwcardsModelSentcards extends JModelList{
 		{
 			if ($rows[$i]->writtenOn <= $lifetimeDate)
 			{
-				//echo "DELETE FROM #__rwcardsdata WHERE writtenOn <= '" . $lifetimeDate . "'<br>";
+				echo "DELETE FROM #__rwcardsdata WHERE writtenOn <= '" . $lifetimeDate . "'<br>";
 				$db->query( $db->setQuery("DELETE FROM #__rwcardsdata WHERE writtenOn <= '" . $lifetimeDate . "'" ) );
 			}
 		}
