@@ -38,8 +38,8 @@ JHtml::_('behavior.tooltip');
 	<tr>
 		<td colspan="2" >
 			<a href="http://www.weberr.de/" target="_blank"><?php echo JText::_('COM_RWCARDS_ABOUT_HOMEPAGE'); ?></a><br/>
-			<a href="http://www.weberr.de/index.php/forum.html" target="_blank"><?php echo JText::_('COM_RWCARDS_ABOUT_FORUM'); ?></a><br/>
-			<a href="http://www.weberr.de/index.php/downloads-mainmenu-27.html" target="_blank"><?php echo JText::_('COM_RWCARDS_ABOUT_NEW_VERSION'); ?></a>
+			<a href="http://www.weberr.de/" target="_blank"><?php echo JText::_('COM_RWCARDS_ABOUT_FORUM'); ?></a><br/>
+			<a href="http://www.weberr.de/downloads.html" target="_blank"><?php echo JText::_('COM_RWCARDS_ABOUT_NEW_VERSION'); ?></a>
 		</td>
 	</tr>
 	</tbody>
