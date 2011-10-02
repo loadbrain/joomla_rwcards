@@ -108,6 +108,7 @@ class RwcardsModelRwcardssendcard extends JModel{
 					. $FromName . " " . JText::_('COM_RWCARDS_MSG_ATTACHEMENT_1') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_2') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_3') . "\n\n"
+					//. nl2br( $sess['rwCardsFormMessage'] )
 					. nl2br( $sess['rwCardsFormMessage'] )
 					. "\n\n" . JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n\n"
 					.  $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT'));
