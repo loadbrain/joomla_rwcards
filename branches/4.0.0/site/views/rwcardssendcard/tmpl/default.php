@@ -20,7 +20,7 @@ JHTML::_('behavior.mootools');
 $document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.previewandsend.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 
 $separate_front_back = $this->params->get('separate_front_back', true );
-$set_height = $this->params->get('set_height', 1 );
+$set_height = ($this->params->get('set_height', 1 )) ? $this->params->get('set_height', 1 ) : 0;
 $is_enduser = JRequest::getVar("sessionId") != null;
 
 // if we have stuff in the session then we're previewing. Otherwise, the end recipient is viewing.
