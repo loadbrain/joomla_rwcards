@@ -118,6 +118,18 @@ else
 	JError::raiseWarning('ERROR_CODE', JText::_('COM_COM_RWCARDS_NO_CATEGORY_PUBLISHED_OR_CREATED') . " " . JText::_('COM_RWCARDS_NO_PICTURES_PUBLISHED_OR_CREATED'));
 }
 ?>
+<!-- Problem showing Overlay from Joomla >= 1.7 fixed -->
+<script type="text/javascript">//<![CDATA[
+window.addEvent('domready', function() {
+if($defined($('lbOverlay'))){ 
+$('lbOverlay').setStyles({
+	'top': '0px',
+	'bottom': '0px',
+	'position': 'absolute'
+});
+}
+});
+//]]></script>
 
 <script type="text/javascript">//<![CDATA[
 
