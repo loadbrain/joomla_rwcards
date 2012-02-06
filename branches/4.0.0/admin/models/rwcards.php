@@ -206,14 +206,14 @@ class RwcardsModelRwcards extends JModelList{
 					$sizemin[1] = $sizemin[1];
 				}
 
-				if (eregi( "\.gif", $file ))
+				if (preg_match( "/\.gif/i", $file ))
 				{
 					$im = ImageCreateFromGif(JPATH_ROOT . "/images/rwcards/" . $file);
 				}
-				if (eregi( "\.png", $file )){
+				if (preg_match( "/\.png/i", $file )){
 					$im = ImageCreateFromPNG(JPATH_ROOT . "/images/rwcards/" . $file);
 				}
-				if (eregi( "\.jpg", $file ))
+				if (preg_match( "/\.jpg/i", $file ))
 				{
 					$im = @imagecreatefromjpeg(JPATH_ROOT . "/images/rwcards/" . $file);
 				}
@@ -222,11 +222,11 @@ class RwcardsModelRwcards extends JModelList{
 				ImageCopyResampled($small, $im, 0, 0, 0, 0, $sizemin[0], $sizemin[1], $size[0], $size[1]);
 				ImageDestroy($im);
 
-				if (eregi( "\.gif", $file ))
+				if (preg_match( "/\.gif/i", $file ))
 				{
 					imagegif($small, JPATH_ROOT . "/images/rwcards/" . $name, "100");
 				}
-				if (eregi( "\.png", $file ))
+				if (preg_match( "/\.png/i", $file ))
 				{
 					imagepng($small, JPATH_ROOT . "/images/rwcards/" . $name);
 				}
