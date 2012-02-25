@@ -46,7 +46,7 @@ class RwcardsModelRwcardsfilloutcard extends JModel{
 			$query = $db->getQuery(true);
 			$query->select('#__rwcardsdata.*, #__rwcards.*');
 			$query->from('#__rwcardsdata, #__rwcards');
-			$query->where('#__rwcards.id = ' . $rwcards_id . ' and #__rwcardsdata.sessionId = ' . $sessionId);
+			$query->where('#__rwcards.id = ' . $rwcards_id . ' and #__rwcardsdata.sessionId = "' . $sessionId . '"');
 			$db->setQuery( $query );
 			//$query = "select #__rwcardsdata.*, #__rwcards.* from #__rwcardsdata, #__rwcards where #__rwcards.id = '" . $rwcards_id . "' and #__rwcardsdata.sessionId = '" . $sessionId ."'";
 		}
