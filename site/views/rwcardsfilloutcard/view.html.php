@@ -123,31 +123,31 @@ class RwcardsViewRwcardsfilloutcard extends JView
 		$rwCardsError = array();
 
 		$nameFrom = JRequest::getVar('rwCardsFormNameFrom', '', 'session', 'string');
-		if ( $nameFrom == "" ) array_push($rwCardsError, JText::_('RWCARDS_FORM_ERROR_NAME_FROM'));
+		if ( $nameFrom == "" ) array_push($rwCardsError, JText::_('COM_RWCARDS_FORM_ERROR_NAME_FROM'));
 
 		$message = JRequest::getVar('rwCardsFormMessage', '', 'session', 'string');
-		if ( $message== "" ) array_push($rwCardsError, JText::_('RWCARDS_FORM_ERROR_MESSAGE'));
+		if ( $message== "" ) array_push($rwCardsError, JText::_('COM_RWCARDS_FORM_ERROR_MESSAGE'));
 
 		$emailFrom = JRequest::getVar('rwCardsFormEmailFrom', '', 'session', 'string');
-		if ( !in_array(JText::_('RWCARDS_FORM_ERROR_EMAIL'), $rwCardsError) )
+		if ( !in_array(JText::_('COM_RWCARDS_FORM_ERROR_EMAIL'), $rwCardsError) )
 		{
 			$emailFrom = (JMailHelper::isEmailAddress($emailFrom)) ? true : "";
-			if ($emailFrom == "") array_push($rwCardsError, JText::_('RWCARDS_FORM_ERROR_EMAIL'));
+			if ($emailFrom == "") array_push($rwCardsError, JText::_('COM_RWCARDS_FORM_ERROR_EMAIL'));
 		}
 
 		for ($i = 0; $i < count($_SESSION['rwcardsSession']['rwCardsFormNameTo']); $i++)
 		{
 			$nameTo[$i] = $_SESSION['rwcardsSession']['rwCardsFormNameTo'][$i];
-			if ( !in_array(JText::_('RWCARDS_FORM_ERROR_NAME_TO'), $rwCardsError) )
+			if ( !in_array(JText::_('COM_RWCARDS_FORM_ERROR_NAME_TO'), $rwCardsError) )
 			{
 				$nameTo[$i] = $_SESSION['rwcardsSession']['rwCardsFormNameTo'][$i];
-				if ($nameTo[$i] == "") array_push($rwCardsError, JText::_('RWCARDS_FORM_ERROR_NAME_TO'));
+				if ($nameTo[$i] == "") array_push($rwCardsError, JText::_('COM_RWCARDS_FORM_ERROR_NAME_TO'));
 			}
 			$emailTo[$i] = $_SESSION['rwcardsSession']['rwCardsFormEmailTo'][$i];
-			if ( !in_array(JText::_('RWCARDS_FORM_ERROR_EMAIL_TO'), $rwCardsError) )
+			if ( !in_array(JText::_('COM_RWCARDS_FORM_ERROR_EMAIL_TO'), $rwCardsError) )
 			{
 				$emailTo[$i] = (JMailHelper::isEmailAddress($emailTo[$i])) ? true : "";
-				if ($emailTo[$i] == "") array_push($rwCardsError, JText::_('RWCARDS_FORM_ERROR_EMAIL_TO'));
+				if ($emailTo[$i] == "") array_push($rwCardsError, JText::_('COM_RWCARDS_FORM_ERROR_EMAIL_TO'));
 			}
 		}
 		return $rwCardsError;
