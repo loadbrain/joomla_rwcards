@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_rwcards/models/rules">
+        <fieldset name="details">
+                <field
+                        name="id"
+                        type="hidden"
+                />
+                <field
+                        name="autor"
+                        type="text"
+                        label="COM_RWCARDS_RWCARDS_AUTOR"
+                        description="COM_RWCARDS_RWCARDS_AUTOR_DESC"
+                        size="40"
+                        class="inputbox validate-autor"
+                        validate="autor"
+						required="true"
+                        default=""
+                />
+                <field
+                        name="email"
+                        type="text"
+                        label="COM_RWCARDS_RWCARDS_EMAIL"
+                        description="COM_RWCARDS_RWCARDS_EMAIL_DESC"
+                        size="40"
+                        default=""
+                />
+                <field
+                        name="description"
+                        type="textarea"
+                        label="COM_RWCARDS_RWCARDS_DESCRIPTION"
+                        description="COM_RWCARDS_RWCARDS_DESCRIPTION_DESC"
+                        rows="8"
+						cols="20"
+                        class=""
+                        default=""
+                />
+                <field
+                        name="category_id"
+                        type="sql"
+                        label="COM_RWCARDS_RWCARDS_CATEGORY"
+                        description="COM_RWCARDS_RWCARDS_CATEGORY_DESC"
+						query="SELECT category_kategorien_name, id  FROM #__rwcards_category" key_field="id"  value_field="category_kategorien_name"
+						default="category_id"
+                />
+                <field
+                        name="picture"
+                        type="imagelist"
+                        label="COM_RWCARDS_RWCARDS_PICTURE_LABEL"
+                        description="COM_RWCARDS_RWCARDS_PICTURE_DESC"
+                        class="inputbox validate-picture"
+                        hide_default="true"
+						directory="../images/rwcards"
+                        validate="picture"
+						required="true"
+						exclude="\@rwcards"
+                />
+
+<field name="published" type="list" label="COM_RWCARDS_FIELD_PUBLISHED_LABEL" description="COM_RWCARDS_FIELD_PUBLISHED_DESC" class="inputbox" size="1" Default="1">
+	<option value="1">JPUBLISHED</option>
+	<option	value="0">JUNPUBLISHED</option>
+</field>
+
+<field name="access" type="accesslevel" label="JFIELD_ACCESS_LABEL" description="JFIELD_ACCESS_DESC" class="inputbox" size="1" />
+        </fieldset>
+</form>
