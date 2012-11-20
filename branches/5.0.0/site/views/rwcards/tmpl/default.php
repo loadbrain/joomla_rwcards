@@ -52,7 +52,6 @@ JHtml::_('formbehavior.chosen', 'select');
 	$document->addScript(JURI::base() . 'components/com_rwcards/js/mootools-more-1.4.0.1.js');
 	$document->addScript(JURI::base() . 'components/com_rwcards/js/rwcards.gallery.js');
 	$document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.slideshow.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
-	print_r("asdf" . $this->sessionId);
 ?>
 
 	<h1><?php echo ($this->active->query["cats_page_heading"] != "" ? $this->active->query["cats_page_heading"] : JText::_('COM_RWCARDS_VIEW_CARDS')); ?></h1>
