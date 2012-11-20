@@ -113,7 +113,7 @@ else
 				</tbody>
                 <tfoot>
 					<tr>
-						<td colspan="4">RWCards Version - &copy 2011</td>
+						<td colspan="4">RWCards Version - &copy 2012</td>
 					</tr>
 				</tfoot>
         </table>
