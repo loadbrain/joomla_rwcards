@@ -118,7 +118,7 @@ class RwcardsViewRwcards extends JViewLegacy{
 	{
 		return array(
 			'ordering' => JText::_('JGRID_HEADING_ORDERING'),
-			'autor' => JText::_('COM_RWCARDS_CAT_HEADING_NAME'),
+			'autor' => JText::_('COM_RWCARDS_RWCARDS_AUTOR'),
 			'email' => JText::_('COM_RWCARDS_CAT_HEADING_NAME'),
 			'description' => JText::_('COM_RWCARDS_CAT_HEADING_DESCRIPTION'),
 			'id' => JText::_('JGRID_HEADING_ID')

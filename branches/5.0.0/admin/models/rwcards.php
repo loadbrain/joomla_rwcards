@@ -24,7 +24,7 @@ class RwcardsModelRwcards extends JModelList{
 		$app = JFactory::getApplication('administrator');
 
 		// Load the filter state.
-		$search = $app->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
+		$search = $this->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
 
 		$accessId = $app->getUserStateFromRequest($this->context.'.filter.access', 'filter_access', null, 'int');
@@ -38,7 +38,7 @@ class RwcardsModelRwcards extends JModelList{
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('uc.name', 'asc');
+		parent::populateState('autor', 'asc');
 	}
 
 	/**
@@ -73,20 +73,20 @@ class RwcardsModelRwcards extends JModelList{
 			}
 			else
 			{
-				$search = $db->Quote('%'.$db->getEscaped($search, true).'%');
+				$search = $db->Quote('%'.$db->escape($search, true).'%');
 				$query->where('( #__rwcards.autor LIKE '.$search.' OR #__rwcards.email LIKE '.$search.')');
 			}
 		}
 
 		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering');
-		$orderDirn	= $this->state->get('list.direction');
-		if ($orderCol != 'ordering') {
-			$orderCol = 'ordering';
+		$orderCol	= $this->state->get('list.ordering', 'autor');
+		$orderDirn	= $this->state->get('list.direction', 'asc');
+		if ($orderCol == 'ordering' || $orderCol == 'autor') {
+			$orderCol = 'autor, category_id, ordering';
 		}
+		$query->order($db->escape($orderCol.' '.$orderDirn));
 
-		//$query->order($db->escape($this->getState('list.ordering')).' '.$db->escape($this->getState('list.direction', 'DESC')));
-		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); exit;
+		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
 		return $query;
 	}
 
