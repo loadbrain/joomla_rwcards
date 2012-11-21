@@ -64,7 +64,6 @@ class RwcardsViewUpload extends JViewLegacy{
 		$user = JFactory::getUser();
 		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
-		JToolBarHelper::cancel('rwcard.cancel', 'JTOOLBAR_CANCEL');
 	}
 
         /**
