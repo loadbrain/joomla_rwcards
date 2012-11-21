@@ -172,7 +172,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_rwcards.rwcards.' . $item
 				<?php endif; ?>				
 				
                 <?php if ($canEdit){?>
-                        <a href="<?php echo JRoute::_('index.php?option=com_rwcards&task=cat.edit&id=' . $item -> id); ?>"><?php echo JTEXT::_($item->autor); ?></a>
+                        <a href="<?php echo JRoute::_('index.php?option=com_rwcards&task=rwcard.edit&id=' . $item -> id); ?>"><?php echo JTEXT::_($item->autor); ?></a>
                  <?php } else{
 				echo JTEXT::_($item->autor);
 				}
