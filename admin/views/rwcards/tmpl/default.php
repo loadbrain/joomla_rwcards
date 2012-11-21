@@ -30,25 +30,24 @@ if ($saveOrder) {
 	JHtml::_('sortablelist.sortable', 'articleList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
 }
 $sortFields = $this -> getSortFields();
-$cntx = 'rwcards';
 ?>
 <script type="text/javascript">
-		Joomla.orderTable = function() {
+	Joomla.orderTable = function() {
 		table = document.getElementById("sortTable");
 		direction = document.getElementById("directionTable");
 		order = table.options[table.selectedIndex].value;
-		if (order != '<?php echo $listOrder; ?>
-			') {
+		if (order != '<?php echo $listOrder; ?>') {
 			dirn = 'asc';
-			} else {
+		} else {
 			dirn = direction.options[direction.selectedIndex].value;
-			}
-			Joomla.tableOrdering(order, dirn, '');
-			}
+		}
+		Joomla.tableOrdering(order, dirn, '');
+	}
 </script>
-<div class="error">
+<div style="background:#F06534; padding: 5px; border: 1px solid black; color:#fff;font-weight:bold;">
 <?php echo JText::_('COM_RWCARDS_USAGE_HINT'); ?>
 </div>
+<br/>
 <form action="<?php echo JRoute::_('index.php?option=com_rwcards'); ?>" method="post" name="adminForm" id="adminForm">	<fieldset id="filter-bar">
 <?php if(!empty( $this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
@@ -86,12 +85,6 @@ $cntx = 'rwcards';
 					<?php echo JHtml::_('select.options', $sortFields, 'value', 'text', $listOrder); ?>
 				</select>
 			</div>
-		</div>
-		<div class="filter-search fltlft">
-			<label class="filter-search-lbl" for="filter_search"><?php echo JText::_('JSEARCH_FILTER_LABEL'); ?></label>
-			<input type="text" name="filter_search" id="filter_search" value="<?php echo $this->state->get('filter.search'); ?>" title="<?php echo JText::_('COM_PHOCAGUESTBOOK_SEARCH_IN_TITLE'); ?>" />
-			<button type="submit"><?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?></button>
-			<button type="button" onclick="document.id('filter_search').value='';this.form.submit();"><?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?></button>
 		</div>
 		<div class="filter-select fltrt">
 

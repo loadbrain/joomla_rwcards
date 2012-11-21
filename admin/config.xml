@@ -5,17 +5,15 @@
                 label="COM_RWCARDS_CONFIG_SETTINGS_LABEL"
                 description="COM_RWCARDS_CONFIG_SETTINGS_DESC"
         >
-                <field
-                        name="show_category"
-                        type="radio"
-                        label="COM_RWCARDS_CONFIG_SHOW_CATEGORY_LABEL"
-                        description="COM_RWCARDS_CONFIG_SHOW_CATEGORY_DESC"
-                        default="0"
-                >
-                        <option value="0">JHIDE</option>
-                        <option value="1">JSHOW</option>
-                </field>
-<field name="lifetime"
+		<field name="show_category"
+			type="radio"
+			label="COM_RWCARDS_CONFIG_SHOW_CATEGORY_LABEL"
+			description="COM_RWCARDS_CONFIG_SHOW_CATEGORY_DESC"
+			default="0">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field name="lifetime"
 			type="text"
 			default="7"
 			label="COM_RWCARDS_CONFIG_LIFETIME"

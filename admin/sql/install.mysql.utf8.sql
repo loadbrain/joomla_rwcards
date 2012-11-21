@@ -62,5 +62,5 @@ CREATE TABLE IF NOT EXISTS `#__rwcardsconfig` (
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
 INSERT INTO `#__rwcardsconfig` (`version`) VALUES
-        ('4.0.0');
+        ('5.0.0');
 
