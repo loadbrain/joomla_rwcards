@@ -24,7 +24,7 @@ JHtml::_('behavior.tooltip');
 	</thead>
 	<tbody>
 		<tr class="row<?php $i++; echo $i % 2; ?>">
-			<td><?php echo $this->version; ?></td>
+			<td><?php echo $this->version; ?> for Joomla 3.x</td>
 		</tr>
 	</tbody>
 </table>
