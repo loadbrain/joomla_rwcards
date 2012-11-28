@@ -18,6 +18,32 @@ jimport('joomla.application.component.modellist');
  */
 class RwcardsModelSentcards extends JModelList{
 
+	/**
+	 * Constructor.
+	 *
+	 * @param	array	An optional associative array of configuration settings.
+	 * @see		JController
+	 * @since	1.6
+	 */
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields'])) {
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'nameTo', 'a.nameTo',
+				'nameFrom', 'a.nameFrom',
+				'emailTo', 'a.emailTo',
+				'emailFrom', 'a.emailFrom',				
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',					
+				'ordering', 'a.ordering',
+				'published', 'a.published'
+			);
+		}
+
+		parent::__construct($config);
+	}
+	
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// Initialise variables.
@@ -30,7 +56,7 @@ class RwcardsModelSentcards extends JModelList{
 		$params = JComponentHelper::getParams('com_rwcards');
 		$this->setState('params', $params);
 		// List state information.
-		parent::populateState('written_on', 'asc');
+		parent::populateState('writtenOn', 'asc');
 	}
 	
 	/**
@@ -59,7 +85,14 @@ class RwcardsModelSentcards extends JModelList{
 				$query->where('( #__rwcardsdata.nameTo LIKE '.$search.' OR #__rwcardsdata.nameFrom LIKE '.$search.')');
 			}
 		}
-		$query->order('writtenOn');
+
+		// Add the list ordering clause.
+		$orderCol	= $this->state->get('list.ordering', 'a.writtenOn');
+		$orderDirn	= $this->state->get('list.direction', 'asc');
+		if ($orderCol == 'a.ordering' || $orderCol == 'a.writtenOn') {
+			$orderCol = 'a.writtenOn '.$orderDirn.', a.ordering';
+		}
+		$query->order($db->escape($orderCol.' '.$orderDirn));
 
 		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
 		return $query;

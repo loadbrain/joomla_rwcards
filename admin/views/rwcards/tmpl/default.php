@@ -48,7 +48,7 @@ $sortFields = $this -> getSortFields();
 <?php echo JText::_('COM_RWCARDS_USAGE_HINT'); ?>
 </div>
 <br/>
-<form action="<?php echo JRoute::_('index.php?option=com_rwcards'); ?>" method="post" name="adminForm" id="adminForm">	<fieldset id="filter-bar">
+<form action="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcards'); ?>" method="post" name="adminForm" id="adminForm">	
 <?php if(!empty( $this->sidebar)): ?>
 	<div id="j-sidebar-container" class="span2">
 		<?php echo $this -> sidebar; ?>
@@ -113,16 +113,16 @@ $sortFields = $this -> getSortFields();
 						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_EMAIL', 'email', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_DESCRIPTION', 'description', $listDirn, $listOrder); ?>
+						<?php echo JText::_('COM_RWCARDS_RWCARDS_DESCRIPTION'); ?>
 					</th>	
 					<th>
-						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_HEADING_IMAGE', 'picture', $listDirn, $listOrder); ?>
+						<?php echo JText::_('COM_RWCARDS_RWCARDS_HEADING_IMAGE'); ?>
 					</th>
 					<th>
-						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_CAT_HEADING_CATEGORY', 'category_id ', $listDirn, $listOrder); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_CAT_HEADING_CATEGORY', 'category_id', $listDirn, $listOrder); ?>
 					</th>					
 					<th width="1%" class="nowrap center hidden-phone">
-						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
+						<?php echo JText::_('JGRID_HEADING_ID'); ?>
 					</th>
 				</tr>
 			</thead>

@@ -91,9 +91,7 @@ class RwcardsViewSentcards extends JViewLegacy{
 		return array(
 			'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 			'nameTo' => JText::_('COM_RWCARDS_SENTCARD_HEADING_RECEIVER'),
-			'nameFrom' => JText::_('COM_RWCARDS_SENTCARD_HEADING_SENDER'),
-			'cardSent' => JText::_('COM_RWCARDS_SENTCARD_HEADING_CARD_SENT'),
-			'cardRead' => JText::_('COM_RWCARDS_SENTCARD_HEADING_CARD_READ'),
+			'nameFrom' => JText::_('COM_RWCARDS_SENTCARD_HEADING_SENDER'),		
 			'id' => JText::_('JGRID_HEADING_ID')
 		);
 	}		
