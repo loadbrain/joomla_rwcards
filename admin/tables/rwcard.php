@@ -1,6 +1,6 @@
 <?php
 /*------------------------------------------------------------------------
-# com_rwcards4 - RWCards for Joomla 1.6
+# com_rwcards - RWCards for Joomla 3.x
 # ------------------------------------------------------------------------
 # author Ralf Weber, LoadBrain
 # copyright (C) 2011 www.weberr.de. All Rights Reserved.
