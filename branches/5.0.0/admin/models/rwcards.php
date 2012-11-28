@@ -18,6 +18,31 @@ jimport('joomla.filesystem.folder');
  */
 class RwcardsModelRwcards extends JModelList{
 
+	/**
+	 * Constructor.
+	 *
+	 * @param	array	An optional associative array of configuration settings.
+	 * @see		JController
+	 * @since	1.6
+	 */
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields'])) {
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'autor', 'a.autor',
+				'email', 'a.email',
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',
+				'category_id', 'a.category_id',
+				'ordering', 'a.ordering',
+				'published', 'a.published'
+			);
+		}
+
+		parent::__construct($config);
+	}
+	
 	protected function populateState($ordering = null, $direction = null)
 	{
 		// Initialise variables.
@@ -38,7 +63,7 @@ class RwcardsModelRwcards extends JModelList{
 		$this->setState('params', $params);
 
 		// List state information.
-		parent::populateState('autor', 'asc');
+		parent::populateState('ordering', 'asc');
 	}
 
 	/**
@@ -79,10 +104,10 @@ class RwcardsModelRwcards extends JModelList{
 		}
 
 		// Add the list ordering clause.
-		$orderCol	= $this->state->get('list.ordering', 'autor');
-		$orderDirn	= $this->state->get('list.direction', 'asc');
-		if ($orderCol == 'ordering' || $orderCol == 'autor') {
-			$orderCol = 'autor, category_id, ordering';
+		$orderCol	= $this->state->get('list.ordering', 'ordering');
+		$orderDirn	= $this->state->get('list.direction', 'ASC');
+		if ($orderCol == 'id' || $orderCol == 'category_id') {
+			$orderCol = 'category_id '.$orderDirn.', ordering';
 		}
 		$query->order($db->escape($orderCol.' '.$orderDirn));
 

@@ -19,6 +19,29 @@ jimport('joomla.application.component.modellist');
  */
 class RwcardsModelCats extends JModelList{
 
+	/**
+	 * Constructor.
+	 *
+	 * @param	array	An optional associative array of configuration settings.
+	 * @see		JController
+	 * @since	1.6
+	 */
+	public function __construct($config = array())
+	{
+		if (empty($config['filter_fields'])) {
+			$config['filter_fields'] = array(
+				'id', 'a.id',
+				'category_kategorien_name', 'a.category_kategorien_name',
+				'checked_out', 'a.checked_out',
+				'checked_out_time', 'a.checked_out_time',
+				'ordering', 'a.ordering',
+				'published', 'a.published'
+			);
+		}
+
+		parent::__construct($config);
+	}
+	
 	protected function populateState($ordering = null, $direction = null){
 		// Initialise variables.
 		$app = JFactory::getApplication('administrator');
@@ -80,11 +103,12 @@ class RwcardsModelCats extends JModelList{
 		// Add the list ordering clause.
 		$orderCol	= $this->state->get('list.ordering');
 		$orderDirn	= $this->state->get('list.direction');
-		if ($orderCol != 'ordering') {
-			$orderCol = 'ordering';
+		if ($orderCol == 'id' || $orderCol == 'category_kategorien_name') {
+			//$orderCol = 'ordering';category_kategorien_name
+			$orderCol = 'category_kategorien_name '.$orderDirn.', ordering';
 		}
 		$query->order($db->escape($this->getState('list.ordering')).' '.$db->escape($this->getState('list.direction', 'DESC')));
-		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); exit;
+		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
 		return $query;
 	}
 
