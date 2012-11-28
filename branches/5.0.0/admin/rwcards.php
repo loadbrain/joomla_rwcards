@@ -19,8 +19,6 @@ JLoader::register('RwcardsHelper', dirname(__FILE__) . DS . 'helpers' . DS . 'rw
 // import joomla controller library
 jimport('joomla.application.component.controller');
 
-// Get an instance of the controller prefixed by Rwcards
-//$controller = JController::getInstance('Rwcards');
 $controller = JControllerLegacy::getInstance('Rwcards'); 
 
 // Perform the Request task

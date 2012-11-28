@@ -102,7 +102,7 @@ $cntx = 'cat';
 						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_CAT_HEADING_NAME', 'category_kategorien_name', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_CAT_HEADING_DESCRIPTION', 'category_description', $listDirn, $listOrder); ?>
+						<?php echo JText::_('COM_RWCARDS_CAT_HEADING_DESCRIPTION'); ?>
 					</th>
 					<th width="1%" class="nowrap center hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>

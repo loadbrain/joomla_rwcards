@@ -116,7 +116,6 @@ class RwcardsViewCats extends JViewLegacy{
 		return array(
 			'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 			'category_kategorien_name' => JText::_('COM_RWCARDS_CAT_HEADING_NAME'),
-			'category_description' => JText::_('COM_RWCARDS_CAT_HEADING_DESCRIPTION'),
 			'id' => JText::_('JGRID_HEADING_ID')
 		);
 	}

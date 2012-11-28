@@ -2,14 +2,14 @@
 <extension type="component" version="3.0" method="upgrade">
         <name>COM_RWCARDS</name>
         <!-- The following elements are optional and free of formatting conttraints -->
-        <creationDate>October 2012</creationDate>
+        <creationDate>November 2012</creationDate>
         <author>Ralf Weber</author>
         <authorEmail>ralf@weberr.de</authorEmail>
         <authorUrl>http://www.weberr.de</authorUrl>
         <copyright>Copyright LoadBrain</copyright>
         <license>http://www.gnu.org/licenseses/gpl-2.0.html GNU/GPL</license>
         <!--  The version string is recorded in the components table -->
-        <version>5.0.0</version>
+        <version>5.0.1</version>
         <!-- The description is optional and defaults to the name -->
         <description>COM_RWCARDS_DESCRIPTION</description>
 
