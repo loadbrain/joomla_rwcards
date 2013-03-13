@@ -58,6 +58,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 	    for ($i=0; $i < count($this->rwcards); $i++) {
 	?>
 <script type="text/javascript">
+(function($) {
 	function startGallery_rwcards_<?php echo $i; ?>() {
 		var myGallery = new gallery($('myGallery_rwcards_<?php echo $i; ?>'), {
 			timed: true,
@@ -66,6 +67,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 		});
 	}
 	window.addEvent('domready', startGallery_rwcards_<?php echo $i; ?>);
+})(document.id);
 </script>
 
 <table id="rwcardsTable<?php echo $i;?>" border="0">
