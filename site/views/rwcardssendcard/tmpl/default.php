@@ -132,6 +132,7 @@ if ( $this->viewing and !$this->hasData) {
 	</div>
 </div>
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function()
 {
 <?php if ( $separate_front_back ) { ?>
@@ -161,6 +162,7 @@ window.addEvent('domready', function()
 	});
 	}
 });
+})(document.id);
 //]]></script>
 
 <div class="rwcardsClr"></div>

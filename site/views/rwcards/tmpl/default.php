@@ -60,6 +60,7 @@ JHtml::_('formbehavior.chosen', 'select');
 	    for ($i=0; $i < count($this->rwcards); $i++) {
 	?>
 <script type="text/javascript">
+(function($) {
 	function startGallery_rwcards_<?php echo $i; ?>() {
 		var myGallery = new gallery($('myGallery_rwcards_<?php echo $i; ?>'), {
 			timed: true,
@@ -68,6 +69,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		});
 	}
 	window.addEvent('domready', startGallery_rwcards_<?php echo $i; ?>);
+})(document.id);
 </script>
 
 <table id="rwcardsTable<?php echo $i;?>" border="0">

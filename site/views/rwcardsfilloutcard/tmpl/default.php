@@ -20,6 +20,7 @@ if ( $this->params->get("rwCardsFormValidator",'mooToolsFV' )  == 'mooToolsFV' )
 
 	?>
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function()
 {
    myFormValidator = new Form.Validator.Inline($('rwCardsForm'), {
@@ -58,10 +59,8 @@ window.addEvent('domready', function()
 		return element.get('value').test(/^(?:[a-z0-9!#$%&'*+\/=?^_`{|}~-]\.?){0,63}[a-z0-9!#$%&'*+\/=?^_`{|}~-]@(?:(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)*[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\])$/,'i'
 	    )}
 	});
-
-
-
 });
+})(document.id);
 //]]></script>
 <?php
 }
@@ -89,6 +88,7 @@ ERROR - card does not exist!
 		?>
 
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function()
 {
 	$('captchaCode').setProperty('value', '<?php echo  join('\r\n', $this->rwCardsError );  ?>').addClass('rwCardsErrorCaptchaError');
@@ -99,6 +99,7 @@ window.addEvent('domready', function()
 
 
 });
+})(document.id);
 //]]>
 </script>
 
@@ -110,11 +111,13 @@ window.addEvent('domready', function()
 		else if ( $this->params->get("rwCardsFormValidator",'mooToolsFV' ) == 'js' ){ // standard Joomla alert
 			?>
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function()
 {
 	alert( '<?php echo  join('\r\n', $this->rwCardsError );  ?>')
 
 });
+})(document.id);
 //]]>
 </script>
 			<?php
@@ -255,6 +258,7 @@ window.addEvent('domready', function()
 <div class="rwcardsClr"></div>
 
 <script type="text/javascript">//<![CDATA[
+(function($) {
 	if ($$('.rwcardsReceiver').length >= 2) {
 		$('lessReceivers').setStyle('visibility', 'visible');
 	}
@@ -271,6 +275,7 @@ window.addEvent('domready', function()
 		}
 		$$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ].dispose();
 	});
+})(document.id);
 //]]></script>
 <?php
 
@@ -278,7 +283,9 @@ window.addEvent('domready', function()
 
 ?>
 <script type="text/javascript">//<![CDATA[
+(function($) {
 	$('rwCardsBack').addEvent('click', function() {
 		document.location.href='<?php echo str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcard&Itemid=' . JRequest::getCmd('Itemid') . '&category_id=' . JRequest::getInt( 'category_id' ) . '&sessionId=' . $this->sessionId ) ); ?>';
 	});
+})(document.id);
 //]]></script>

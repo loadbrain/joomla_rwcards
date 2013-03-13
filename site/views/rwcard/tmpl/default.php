@@ -126,6 +126,7 @@ else
 ?>
 <!-- Problem showing Overlay from Joomla >= 1.7 fixed -->
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function() {
 if($('lbOverlay') != null){ 
 $('lbOverlay').setStyles({
@@ -158,4 +159,5 @@ $('category_id').addEvent('change', function(){
 	document.location.href = all_cats[ chosenCategory ];
 });
 });
+})(document.id);
 //]]></script>
