@@ -100,6 +100,7 @@ $set_width = $this->params->get('set_width', true );
 </div>
 
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function()
 {
 <?php
@@ -130,6 +131,7 @@ window.addEvent('domready', function()
 		document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&task=sendrwcard&Itemid=' . JRequest::getCmd('Itemid') . '&id=' . $this->id ) ); ?>'
 	});
 });
+})(document.id);
 //]]></script>
 
 <div class="rwcardsClr"></div>
