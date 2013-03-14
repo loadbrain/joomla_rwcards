@@ -10,12 +10,7 @@
  -------------------------------------------------------------------------*/
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
-
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('dropdown.init');
-JHtml::_('formbehavior.chosen', 'select');
-
+JHtml::_('behavior.framework', 'core');
 //print_r($this->rwcards);
 
 	// start build additional Stylesheet by A. Dalebout
@@ -24,32 +19,17 @@ JHtml::_('formbehavior.chosen', 'select');
 	    for ($i=0; $i < count($this->rwcards); $i++) {
 	    	$thumb_box_width = ($this->active->query["thumb_box_width"] != "" ) ? $this->active->query["thumb_box_width"] : '260px';
 	    	$thumb_box_height = ($this->active->query["thumb_box_height"] != "") ? $this->active->query["thumb_box_height"] : '220px';
-	        $style .="
-#myGallery_rwcards_".$i."
-{
-	width: " . $thumb_box_width . " !important;
-	height: " . $thumb_box_height . " !important;
-	border: 1px solid #000;
-}
-
-#myGallery_rwcards_".$i." img.thumbnail
-{
-	display: none;
-}
-#rwcardsTable
-{
-	width:100%;
-	border:0px;
-	padding:1em;
-	border:1px solid black;
-	margin:2px;
-}";
+			$style .="
+#myGallery_rwcards_".$i." {width: " . $thumb_box_width . "; height: " . $thumb_box_height . " !important;}
+#myGallery_rwcards_".$i." img.thumbnail{display: none;}
+#description_" . $i . "{position: absolute; float:left; margin: 0px 0px 0px " . $thumb_box_width . "; padding: 5px 10px; float: left;}
+#rwcards_gallery {clear:left; float:left;}
+#rwcardsTable" . $i. "{width: 100%; float:left; border-bottom: 1px solid #000000; padding: 10px; margin:10px;}";
 	    }
 	  }
 	// finish build additional Stylesheet by A. Dalebout
 	$document = JFactory::getDocument();
 	$document->addStyleDeclaration($style); // send additional Stylesheet to joomlal by A.Dalebout
-	$document->addScript(JURI::base() . 'components/com_rwcards/js/mootools-more-1.4.0.1.js');
 	$document->addScript(JURI::base() . 'components/com_rwcards/js/rwcards.gallery.js');
 	$document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.slideshow.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 ?>
@@ -72,12 +52,9 @@ JHtml::_('formbehavior.chosen', 'select');
 })(document.id);
 </script>
 
-<table id="rwcardsTable<?php echo $i;?>" border="0">
-<tr>
-<td width="150px">
+<div id="rwcardsTable<?php echo $i;?>">
 	<div id="rwcards_gallery">
 		<div id="myGallery_rwcards_<?php echo $i; ?>">
-
 <?php
 			// loop through cards in section
 			foreach ($this->rwcards[$i] as $key => $val) {
@@ -100,16 +77,14 @@ JHtml::_('formbehavior.chosen', 'select');
 ?>
 		</div>
 	</div>
-</td>
-
-<td valign="top" style="width:200px; padding: 0px 5px;">
-	<span style="font-weight: bold; text-decoration:underline;"><?php //  print_r( $this->rwcards[$i]); // sb ?>
-		<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
-			. '&amp;category_id=' . $this->categoryData[$i]->id
-			. '&amp;reWritetoSender=' . @$this->reWritetoSender
-			. '&amp;sessionId=' . @$this->sessionId );
-		?>" class="open"><?php echo htmlentities( $this->categoryData[$i]->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?></a>
-	</span>
+	<div id="description_<?php echo $i; ?>">
+		<span style="font-weight: bold; text-decoration:underline;"><?php //  print_r( $this->rwcards[$i]); // sb ?>
+			<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
+				. '&amp;category_id=' . $this->categoryData[$i]->id
+				. '&amp;reWritetoSender=' . @$this->reWritetoSender
+				. '&amp;sessionId=' . @$this->sessionId );
+			?>" class="open"><?php echo htmlentities( $this->categoryData[$i]->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?></a>
+		</span>
 	<br />
 	<br />
 
@@ -122,9 +97,10 @@ JHtml::_('formbehavior.chosen', 'select');
 		. '&amp;reWritetoSender=' . @$this->reWritetoSender
 		. '&amp;sessionId=' . @$this->sessionId );
 	?>" class="open"><?php echo JText::_('COM_RWCARDS_SEE_ALL_CARDS'); ?></a>
-</td>
-</tr>
-</table>
+		</div>
+</div>
+
+
 <?php
 		}
 	}
