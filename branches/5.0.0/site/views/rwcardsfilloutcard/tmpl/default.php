@@ -14,7 +14,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 //session_destroy();
 $document = JFactory::getDocument();
 
-JHtml::_('behavior.multiselect');
+JHtml::_('behavior.framework', 'core');
 	
 if ( $this->params->get("rwCardsFormValidator",'mooToolsFV' )  == 'mooToolsFV' ) {
 
@@ -64,7 +64,7 @@ window.addEvent('domready', function()
 //]]></script>
 <?php
 }
-$document->addScript(JURI::base() . 'components/com_rwcards/js/mootools-more-1.4.0.1.js');
+
 $document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.filloutform.css', 'text/css', null, array( 'id' => 'StyleSheet2' ) );
 require_once (JPATH_COMPONENT.DS.'captcha'.DS. 'class.captcha.php');
 
