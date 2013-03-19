@@ -20,11 +20,21 @@ JHtml::_('behavior.framework', 'core');
 	    	$thumb_box_width = ($this->active->query["thumb_box_width"] != "" ) ? $this->active->query["thumb_box_width"] : '260px';
 	    	$thumb_box_height = ($this->active->query["thumb_box_height"] != "") ? $this->active->query["thumb_box_height"] : '220px';
 			$style .="
+@media only screen and (min-width:450px){
 #myGallery_rwcards_".$i." {width: " . $thumb_box_width . "; height: " . $thumb_box_height . " !important;}
 #myGallery_rwcards_".$i." img.thumbnail{display: none;}
 #description_" . $i . "{position: absolute; float:left; margin: 0px 0px 0px " . $thumb_box_width . "; padding: 5px 10px; float: left;}
 #rwcards_gallery {clear:left; float:left;}
-#rwcardsTable" . $i. "{width: 100%; float:left; border-bottom: 1px solid #000000; padding: 10px; margin:10px;}";
+#rwcardsTable" . $i. "{width: 90%; float:left; border-bottom: 1px solid #000000; padding: 10px; margin:10px;}
+}
+@media only screen and (min-width:90px) and (max-width:449px){
+#myGallery_rwcards_".$i." {display:none; width: " . $thumb_box_width . "; height: " . $thumb_box_height . " !important;}
+#myGallery_rwcards_".$i." img.thumbnail{display: none;}
+#description_" . $i . "{float:left; padding:15px 0 0;width: " . $thumb_box_width . ";}
+#rwcards_gallery {clear:left; float:left;}
+#rwcardsTable" . $i. "{width: 90%; float:left; border-bottom: 1px solid #000000; padding: 10px; margin:10px;}
+}
+";
 	    }
 	  }
 	// finish build additional Stylesheet by A. Dalebout
