@@ -18,7 +18,7 @@ jimport('joomla.application.component.modellist');
  */
 class RwcardsModelCats extends JModelList{
 
-	protected function populateState(){
+	protected function populateState($ordering = null, $direction = null){
 		// Initialise variables.
 		$app = JFactory::getApplication('administrator');
 

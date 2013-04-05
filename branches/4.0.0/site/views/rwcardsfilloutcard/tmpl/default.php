@@ -12,7 +12,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
 //session_destroy();
-$document = &JFactory::getDocument();
+$document = JFactory::getDocument();
 JHTML::_('behavior.mootools');
 
 if ( $this->params->get("rwCardsFormValidator",'mooToolsFV' )  == 'mooToolsFV' ) {

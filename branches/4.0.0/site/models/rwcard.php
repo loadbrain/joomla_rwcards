@@ -37,10 +37,10 @@ class RwcardsModelRwcard extends JModel{
 	function getItems()
 	{
 		global $option;
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');
 		if ( $category_id == 0 ) $category_id = $params->get( 'category_id', 0 );
 		if ( $category_id == 0 ) $category_id = $this->category_id;
@@ -80,7 +80,7 @@ class RwcardsModelRwcard extends JModel{
 
 	function getFirstValidCategory()
 	{
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 		$query = "select id from #__rwcards_category limit 1";
 		$db->setQuery( $query );
 		$this->category_id = $db->loadResult();
@@ -89,11 +89,11 @@ class RwcardsModelRwcard extends JModel{
 
 	function getCategories()
 	{
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 
 		// First all categories;
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');
 		if ( $category_id == 0 ) $category_id = $params->get( 'category_id', 0 );
 		if ( $category_id == 0 ) $category_id = $this->category_id;
@@ -120,7 +120,7 @@ class RwcardsModelRwcard extends JModel{
 
 	function _catIds()
 	{
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 		$query = "SELECT id AS value, category_kategorien_name AS text FROM #__rwcards_category where published > 0 order by ordering, category_kategorien_name asc";
 		$this->_db->setQuery( $query );
 		return $this->_db->loadObjectList();

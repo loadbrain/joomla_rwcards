@@ -33,9 +33,9 @@ class RwcardsModelRwcardsprelookcard extends JModel{
 	 * @return array The data to be displayed to the user
 	 */
 	function getItems(){
-		$db =& JFactory::getDBO();
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$db = JFactory::getDBO();
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');
 		//var_dump($category_id);
@@ -55,7 +55,7 @@ class RwcardsModelRwcardsprelookcard extends JModel{
 
 	function getCategories()
 	{
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 
 		// First all categories;
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');

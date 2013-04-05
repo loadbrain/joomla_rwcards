@@ -26,7 +26,7 @@ class RwcardsViewRwcards extends JView
 		$task = JRequest::getVar('task', '', 'request', 'string');
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
 
-		$params =& JComponentHelper::getParams( 'com_rwcards' );
+		$params = JComponentHelper::getParams( 'com_rwcards' );
 		$suffix = '@' . $params->get("thumbnail_suffix", 'rwcards' );
 		$this->suffix = $suffix;
 		$this->params = $params;

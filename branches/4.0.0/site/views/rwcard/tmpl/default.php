@@ -15,7 +15,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 $suffix = '@' . $this->params->get("thumbnail_suffix", 'rwcards' );
 
 // Load the moo.fx scripts
-$document = &JFactory::getDocument();
+$document = JFactory::getDocument();
 JHTML::_('behavior.mootools');
 if ( $this->params->get('lightbox_type', 0) == 0 ) {
 	$document->addScript(JURI::base() . 'components/com_rwcards/js/slimbox.js');

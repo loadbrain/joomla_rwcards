@@ -36,8 +36,8 @@ class RwcardsViewRwcardsprelookcard extends JView{
 		$this->isCaptcha = $isCaptcha;
 		$this->rwCardsError = $rwCardsError;
 
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$this->params = $params;
 
 		parent::display($tpl);

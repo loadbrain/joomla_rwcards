@@ -38,7 +38,7 @@ class RwcardsModelRwcards extends JModel{
 		$this->_items = array();
 		if(!count($this->_items)){
 			$app = JFactory::getApplication('site');
-			$params =& JComponentHelper::getParams( 'com_rwcards' );
+			$params = JComponentHelper::getParams( 'com_rwcards' );
 			//var_dump($params);
 			$db = JFactory::getDBO();
 			$query = $db->getQuery(true);
@@ -74,7 +74,7 @@ class RwcardsModelRwcards extends JModel{
 			}
 
 			// now generate info for placing over the thumbnails, based on the parameters.
-			$params =& JComponentHelper::getParams( 'com_rwcards' );
+			$params = JComponentHelper::getParams( 'com_rwcards' );
 
 			$menu = $app->getMenu();
 			$active = $menu->getActive();

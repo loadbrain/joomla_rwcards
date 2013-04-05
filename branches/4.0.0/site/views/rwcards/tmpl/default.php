@@ -12,7 +12,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' ); 
 
 	// Load the moo.fx scripts
-	$document = &JFactory::getDocument();
+	$document = JFactory::getDocument();
 
 
 

@@ -22,7 +22,7 @@ class RwcardsViewRwcardsfilloutcard extends JView
 	// Overwriting JView display method
 	function display($tpl = null){
 
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 
 		$task =  JRequest::getVar('task', '', 'request', 'string');
 		// If clicked on rewrite to sender, do not delete session data!
@@ -31,8 +31,8 @@ class RwcardsViewRwcardsfilloutcard extends JView
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
 		$this->sessionId = $sessionId;
 		// Is Captcha activated in config?
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$this->params = $params;
 
 		$checkingCaptcha = false;
@@ -69,7 +69,7 @@ class RwcardsViewRwcardsfilloutcard extends JView
 	}
 
 	function CheckCaptcha( $tpl ){
-		$app = &JFactory::getApplication();
+		$app = JFactory::getApplication();
 		foreach ( $_POST as $key=>$value ) {
 			$_SESSION['rwcardsSession'][$key] = JRequest::getVar( $key, null, "post");
 		}
@@ -77,8 +77,8 @@ class RwcardsViewRwcardsfilloutcard extends JView
 		$rwCardsError = $this->checkRWCardsForm();
 		$rwCardsFieldsError = $this->getFieldsErrors();
 
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 
 		// If Captcha activated in config, then check it else set it to true
 		if ( $params->get( "captcha", true ))
