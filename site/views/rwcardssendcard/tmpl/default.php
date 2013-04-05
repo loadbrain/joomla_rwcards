@@ -15,7 +15,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 $separate_front_back = $this->params->get('separate_front_back', true );
 
 // Load the moo.fx scripts
-$document = &JFactory::getDocument();
+$document = JFactory::getDocument();
 JHTML::_('behavior.mootools');
 $document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.previewandsend.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 

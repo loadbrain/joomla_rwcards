@@ -19,7 +19,7 @@ jimport( 'joomla.filesystem.file' );
  */
 class RwcardsModelRwcards extends JModelList{
 
-	protected function populateState()
+	protected function populateState($ordering = null, $direction = null)
 	{
 		// Initialise variables.
 		$app = JFactory::getApplication('administrator');
@@ -133,7 +133,7 @@ class RwcardsModelRwcards extends JModelList{
 	 */
 	function getCreateThumbnails(){
 
-		$params =& JComponentHelper::getParams( 'com_rwcards' );
+		$params = JComponentHelper::getParams( 'com_rwcards' );
 		$suffix = '@' . $params->get("thumbnail_suffix", 'rwcards' );
 		$breite = 160;
 		$hoehe = 120;

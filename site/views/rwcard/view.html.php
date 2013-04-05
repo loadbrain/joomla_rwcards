@@ -21,8 +21,8 @@ class RwcardsViewRwcard extends JView{
 
 	// Overwriting JView display method
 	function display($tpl = null) {
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$this->params = $params ;
 
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');

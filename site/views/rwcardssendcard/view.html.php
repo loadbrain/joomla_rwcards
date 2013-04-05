@@ -21,8 +21,8 @@ class RWCardsViewRwcardssendcard extends JView
 	{
 		$task =  JRequest::getVar('task', '', 'request', 'string');
 
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 		$this->params = $params;
 
 		switch($task)
