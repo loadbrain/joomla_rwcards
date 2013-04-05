@@ -33,7 +33,7 @@ class RwcardsModelRwcardsfilloutcard extends JModel{
 	 */
 
 	public function getItems(){
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 		$rwcards_id = JRequest::getVar('id', 0, 'request', 'int');
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
 

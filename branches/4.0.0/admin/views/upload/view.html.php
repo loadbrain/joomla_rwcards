@@ -31,7 +31,7 @@ class RwcardsViewUpload extends JView{
 		$pagination = $this->get('Pagination');
 		$this->state = $this->get('State');
 		$this->images = $this->get('Images');
-		$params =& JComponentHelper::getParams( 'com_rwcards' );
+		$params = JComponentHelper::getParams( 'com_rwcards' );
    		$this->params = $params;
 
 		// Check for errors.

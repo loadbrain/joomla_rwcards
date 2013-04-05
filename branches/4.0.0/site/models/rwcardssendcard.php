@@ -37,9 +37,9 @@ class RwcardsModelRwcardssendcard extends JModel{
 	function getSaveSenderData()
 	{
 		jimport('joomla.mail.mail');
-		$db =& JFactory::getDBO();
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$db = JFactory::getDBO();
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 
 		$attachment = $params->get( "attachment", false );
 
@@ -75,7 +75,7 @@ class RwcardsModelRwcardssendcard extends JModel{
 				* Did not work for everyone... LoadBrain, 23.07.2009
 				* $mail =& JMail::getInstance();
 				*/
-				$mail =& JFactory::getMailer();
+				$mail = JFactory::getMailer();
 
 				if (!$sess['rwCardsFormEmailTo'][$i]
 				|| !$sess['rwCardsFormNameTo'][$i]
@@ -153,15 +153,15 @@ class RwcardsModelRwcardssendcard extends JModel{
 	{
 		jimport('joomla.mail.mail');
 
-		$app = &JFactory::getApplication();
-		$params =& $app->getParams('com_rwcards');
+		$app = JFactory::getApplication();
+		$params = $app->getParams('com_rwcards');
 
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
 		$read = JRequest::getVar('read', '', 'request', 'string');
 		$sendmail = JRequest::getVar('sendmail', '', 'request', 'string');
 		$id = JRequest::getVar('id', '', 'request', 'string');
 
-		$db =& JFactory::getDBO();
+		$db = JFactory::getDBO();
 		// check the config settings$id = 
 		$db->getEscaped( $id );
 		$sessionId = $db->getEscaped( $sessionId );
@@ -177,7 +177,7 @@ class RwcardsModelRwcardssendcard extends JModel{
 				* Did not work for everyone... LoadBrain, 23.07.2009
 				* $mail =& JMail::getInstance();
 				*/
-				$mail =& JFactory::getMailer();
+				$mail = JFactory::getMailer();
 				$subject =  JText::_('COM_RWCARDS_CARD_READ_SUBJECT');
 				$message = JText::_('COM_RWCARDS_GREETING') . " "
 				. $this->_data[0]->nameFrom . "\n"
