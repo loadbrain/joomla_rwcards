@@ -18,7 +18,7 @@
 .rwcardsLink:hover{font-family:Verdana;	font-size:12px;	font-weight:bold;	color:#135CAE;}
 #rwCardsBack, #rwCardsPreviewCard, #rwCardsSendCard, #rwcardsGoBack, #rwcardsSend, #showFrontCard, #showBackCard, #rwcardsReWriteCard {cursor: pointer;}
 #rwcardsViewWrapper {position:relative;width:auto;	text-align:center;}
-#frontCard img.thecard {border:1px solid black;}
+#frontCard img.theCard {-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9); -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9); box-shadow: 0 1px 5px rgba(0,0,0,0.9); margin:5px;}
 div.rw_date {text-align:right;float: right;font-weight:bold;}
 p.rw_from {	font-weight:bold;}
 span.rw_label {}

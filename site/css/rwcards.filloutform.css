@@ -1,6 +1,7 @@
 @media only screen and (min-width:500px){
 .rwcardsfull {border: 1px #999 solid;font-size: 12px;}
 .rwcardsImage{border: 1px #999 solid;width:auto;padding: 10px;margin-bottom:20px;}
+.rwcardsImage img{-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9); -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);	box-shadow: 0 1px 5px rgba(0,0,0,0.9);}
 * html .rwcardsfull  /* this is recognized by IE only */{width: auto;  /* total width, only for IE5.x/Win */w\idth: auto; /* content width for other IE */}
 .rwcardsfull{	width:auto;	padding: 10px;	margin-bottom:20px;	margin-left:0px;}
 * html .rwcards  /* this is recognized by IE only */{ width: auto;  /* total width, only for IE5.x/Win */w\idth: auto; /* content width for other IE */}
@@ -17,7 +18,7 @@
 #moreReceivers, #lessReceivers {font-weight: bold;}
 #captcha_caption {}
 #rwcardsCaptchaImage {}
-#rwcardsCaptchaImage img {}
+#rwcardsCaptchaImage img {-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9); -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);	box-shadow: 0 1px 5px rgba(0,0,0,0.9);}
 #rwcardsCaptchaInputLabel {}
 #rwcardsCaptchaInput {}
 #rwcardsCaptchaHints {}
