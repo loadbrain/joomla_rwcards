@@ -40,10 +40,12 @@ $style = "
 	font-weight:bold; float:right;
 }
 .img-thumb {
-	border: 1px solid black; margin:5px;
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+	box-shadow: 0 1px 5px rgba(0,0,0,0.9);
 }
 .send-this-img {
-	float:left; display:inline; width:165px; margin:0 5px 5px 5px; padding-bottom:10px; text-align: center
+	float:left; display:inline; width:165px; margin:5px; padding-bottom:10px; text-align: center
 }
 #limit {
 	text-align:center;

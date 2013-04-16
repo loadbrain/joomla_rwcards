@@ -51,7 +51,7 @@ if ( $this->viewing and !$this->hasData) {
 </p>
 <?php } ?>
 
-<div id="rwcardsViewWrapper" <?php if ( $set_height ) { ?>style="height:<?php echo $this->rwcards['pageheight']; ?>px;"<?php } ?>>
+<div id="rwcardsViewWrapper" <?php if ( $set_height ) { ?>style="height:<?php echo is_numeric($this->params->get('pageheight')) ? $this->params->get('pageheight') . "px" : $this->params->get('pageheight') ?>;"<?php } ?>>
 	<div id="frontCard" <?php echo $separate_front_back ? 'style="display:none;"' : '' ?>>
 		<img src='<?php echo JURI::base(); ?>images/rwcards/<?php echo (@$sess['picture'] != "") ? @$sess['picture'] : $this->rwcards[0]->picture; ?>'
 			alt='<?php echo @$sess['picture']; ?>'
@@ -61,9 +61,8 @@ if ( $this->viewing and !$this->hasData) {
 			class="theCard">
 	</div>
 	<div id="backCard" style="<?php echo $separate_front_back ? 'display:none;' : ''; ?>
-		<?php if ( $set_width ) { ?>width:<?php echo $this->rwcards['pagewidth'];?>px;<?php } ?>
-		<?php if ( $set_height ) { ?>height:<?php echo $this->rwcards['pageheight']; ?>px;<?php } ?>">
-
+		<?php if ( $set_width ) { ?>width:<?php echo $this->params->get('pagewidth');?>px;<?php } ?>
+		<?php if ( $set_height ) { ?>height:<?php echo is_numeric($this->params->get('pageheight')) ? $this->params->get('pageheight') . "px" : $this->params->get('pageheight');?><?php } ?>">
 	<div class="rwcardsfull">
 		<div class="rwcardsLeftForm">
 			<div class="rw_date"><?php echo date("d.m.Y"); ?></div>
