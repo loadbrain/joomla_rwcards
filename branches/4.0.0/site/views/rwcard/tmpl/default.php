@@ -15,7 +15,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 $suffix = '@' . $this->params->get("thumbnail_suffix", 'rwcards' );
 
 // Load the moo.fx scripts
-$document = JFactory::getDocument();
+$document = &JFactory::getDocument();
 JHTML::_('behavior.mootools');
 if ( $this->params->get('lightbox_type', 0) == 0 ) {
 	$document->addScript(JURI::base() . 'components/com_rwcards/js/slimbox.js');
@@ -36,7 +36,10 @@ $style = "
 	font-weight:bold; float:right;
 }
 .img-thumb {
-	border: 1px solid black; margin:5px;
+	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+	box-shadow: 0 1px 5px rgba(0,0,0,0.9);
+	margin:5px;
 }
 .send-this-img {
 	float:left; display:inline; width:165px; margin:0 5px 5px 5px; padding-bottom:10px; text-align: center
@@ -118,9 +121,7 @@ else
 	JError::raiseWarning('ERROR_CODE', JText::_('COM_COM_RWCARDS_NO_CATEGORY_PUBLISHED_OR_CREATED') . " " . JText::_('COM_RWCARDS_NO_PICTURES_PUBLISHED_OR_CREATED'));
 }
 ?>
-<!-- Problem showing Overlay from Joomla >= 1.7 fixed -->
 <script type="text/javascript">//<![CDATA[
-(function($) {
 window.addEvent('domready', function() {
 if($defined($('lbOverlay'))){ 
 $('lbOverlay').setStyles({
@@ -130,11 +131,9 @@ $('lbOverlay').setStyles({
 });
 }
 });
-})(document.id);
 //]]></script>
-
 <script type="text/javascript">//<![CDATA[
-(function($) {
+
 $('category_id').addEvent('change', function()
 {
 	var chosenCategory = $('category_id').get('value');
@@ -158,5 +157,4 @@ $('category_id').addEvent('change', function()
 	?>
 	document.location.href = all_cats[ chosenCategory ];
 });
-})(document.id);
 //]]></script>
