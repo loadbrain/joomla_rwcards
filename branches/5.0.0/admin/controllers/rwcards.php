@@ -22,7 +22,7 @@ class RwcardsControllerRwcards extends JControllerAdmin{
          * Proxy for getModel.
          * @since       1.6
          */
-        public function getModel($name = 'Rwcard', $prefix = 'RwcardsModel', $config = array('ignore_request' => true){
+        public function getModel($name = 'Rwcard', $prefix = 'RwcardsModel', $config = array('ignore_request' => true)){
                 $model = parent::getModel($name, $prefix, array('ignore_request' => true));
 
                 return $model;
