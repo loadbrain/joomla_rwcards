@@ -92,9 +92,11 @@ class RwcardsModelUpload extends JModelAdmin{
 			return parent::canDelete($record);
 		}
 	}
-	
+	/**
+	* @see RWCardsHelper::makeSafe
+	*/
 	public function getImages(){
-		return JFolder::files(JFolder::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
+		return JFolder::files(RwcardsHelper::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
 		
 	}
 	
