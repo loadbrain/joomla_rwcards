@@ -50,5 +50,13 @@ abstract class RwcardsHelper
                         $document->setTitle(JText::_('COM_RWCARDS_SUBMENU_ABOUT'));
                 }
         }
+		
+		/**
+		* Overriding JFolder::makeSafe so the dot is not removed from path like /var/www/xxx.net/html...
+		*/
+		public function makeSafe($path){
+		   $regex = array('#[^A-Za-z0-9:_.\\\/-]#');
+		   return preg_replace($regex, '', $path);
+		}		
 }
 ?>
