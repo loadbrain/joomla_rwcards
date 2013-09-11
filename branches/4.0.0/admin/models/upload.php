@@ -93,8 +93,11 @@ class RwcardsModelUpload extends JModelAdmin{
 		}
 	}
 	
+	/**
+	* @see RWCardsHelper::makeSafe
+	*/
 	public function getImages(){
-		return JFolder::files(JFolder::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
+		return JFolder::files(RwcardsHelper::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
 		
 	}
 	
