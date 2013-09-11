@@ -121,7 +121,10 @@ class RwcardsModelRwcards extends JModelList{
 	if(!is_dir(JPath::clean(JPATH_ROOT . "/images/rwcards"))){
 		$this->getImageFolder();
 	}
-		return JFolder::files(JFolder::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
+		/**
+		* @see RWCardsHelper::makeSafe
+		*/
+		return JFolder::files(RwcardsHelper::makeSafe(JPATH_ROOT . "/images/rwcards"), $filter= '.', $recurse=true );
 
 	}
 
