@@ -264,7 +264,8 @@ window.addEvent('domready', function()
 	}
 
 	$('moreReceivers').addEvent('click', function() {
-		$$('.rwcardsReceiver')[0].clone().inject( $$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ]);
+		//$$('.rwcardsReceiver')[0].clone().inject( $$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ]);
+		$$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ].clone().inject( $$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ]);
 		$('lessReceivers').setStyle('visibility', 'visible');
 		$$('.rwcardsReceiver')[$$('.rwcardsReceiver').length - 1 ].getElements('input').set('value', '');
 	});
