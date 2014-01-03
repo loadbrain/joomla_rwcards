@@ -54,7 +54,7 @@ $cntx = 'sentcards';
 <?php else : ?>
 	<div id="j-main-container">
 <?php endif; ?>
-<form action="<?php echo JRoute::_('index.php?option=com_rwcards&amp;view=sentcards&amp;extension=com_rwcards'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?php echo JRoute::_('index.php?option=com_rwcards&amp;view=sentcards&amp;extension=com_rwcards'); ?>" method="post" name="adminForm">
 		<div id="filter-bar" class="btn-toolbar">
 			<div class="filter-search btn-group pull-left">
 				<label for="filter_search" class="element-invisible"><?php echo JText::_('COM_RWCARDS_SEARCH_IN_TITLE'); ?></label>
@@ -99,22 +99,22 @@ $cntx = 'sentcards';
 						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_SENDER', 'nameFrom', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JText::_('COM_RWCARDS_RWCARDS_HEADING_IMAGE'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_HEADING_IMAGE', 'picture', $listDirn, $listOrder); ?>
 					</th>					
 					<th>
-						<?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_MESSAGE'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_MESSAGE', 'message', $listDirn, $listOrder); ?>
 					</th>	
 					<th>
-						<?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_WRITTEN_ON'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_WRITTEN_ON', 'writtenOn ', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_READ_ON'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_READ_ON', 'readOn ', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_CARD_SENT', 'cardSent'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_CARD_SENT', 'cardSent ', $listDirn, $listOrder); ?>
 					</th>
 					<th>
-						<?php echo JText::_('COM_RWCARDS_SENTCARD_HEADING_CARD_READ'); ?>
+						<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_SENTCARD_HEADING_CARD_READ', 'cardRead ', $listDirn, $listOrder); ?>
 					</th>					
 					<th width="1%" class="nowrap center hidden-phone">
 						<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
@@ -158,10 +158,10 @@ $canChange  = $user->authorise('core.edit.state', 'com_rwcards.sentcards.' . $it
 						<?php echo JHtml::_('grid.id', $i, $item -> id); ?>
 					</td>	
                 <td>
-                        <?php echo JTEXT::_($item->nameTo); ?>
+                        <?php echo JTEXT::_($item->nameTo); ?> (<?php echo JTEXT::_($item->emailTo); ?>)
                 </td>
 				<td>
-					<?php echo JTEXT::_($item->nameFrom); ?>
+					<?php echo JTEXT::_($item->nameFrom); ?> (<?php echo JTEXT::_($item->emailFrom); ?>)
 				</td>
 				<td>
 					<?php echo "<img src='../images/rwcards/" .  JTEXT::_($item->picture) . "' />"; ?>
