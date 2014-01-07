@@ -106,20 +106,40 @@ window.addEvent('domready', function()
 <?php
 	if ( $separate_front_back ) {
 ?>
+
+    
+    var myFrontCardFx = new Fx.Tween('frontCard', {
+        duration:550,
+        property: 'opacity'
+    });
+    
+    var myBackCardFx = new Fx.Tween('backCard', {
+        duration:550,
+        property: 'opacity'
+    });    
+
+    var setDisplayOfCard = function(myElement, styleProperty){
+        $(myElement).setStyle('display', ''+ styleProperty +'');
+    };
+	
 	$('frontCard').setStyle('display', 'inline');
 
 	// Click on ShowFrontCard
 	$('showFrontCard').addEvent('click', function()
 	{
-		$('backCard').setStyle('display', 'none');
-		$('frontCard').setStyle('display', 'inline');
+        myBackCardFx.start(1, 0);
+		setDisplayOfCard.delay(500, 'backCard',['backCard', 'none']);
+        myFrontCardFx.start(0, 1);
+        setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'inline']);
 	});
 
 	// Click on ShowBackCard
 	$('showBackCard').addEvent('click', function()
 	{
-		$('frontCard').setStyle('display', 'none');
-		$('backCard').setStyle('display', 'inline');
+        myFrontCardFx.start(1, 0);
+        setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'none']);
+		setDisplayOfCard.delay(500, 'backCard',['backCard', 'inline']);
+		$('backCard').tween('opacity', 1);
 	});
 <?php } ?>
 
