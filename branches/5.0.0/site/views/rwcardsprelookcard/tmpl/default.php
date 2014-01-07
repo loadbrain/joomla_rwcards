@@ -108,38 +108,37 @@ window.addEvent('domready', function()
 ?>
 
     
-    var myFrontCardFx = new Fx.Tween('frontCard', {
+    var myCardFx;
+    var myEffect = function(cardId){
+        return myCardFx = new Fx.Tween(''+cardId+'', {
         duration:550,
         property: 'opacity'
     });
-    
-    var myBackCardFx = new Fx.Tween('backCard', {
-        duration:550,
-        property: 'opacity'
-    });    
+
+    };
 
     var setDisplayOfCard = function(myElement, styleProperty){
         $(myElement).setStyle('display', ''+ styleProperty +'');
     };
-	
+    
 	$('frontCard').setStyle('display', 'inline');
 
 	// Click on ShowFrontCard
 	$('showFrontCard').addEvent('click', function()
 	{
-        myBackCardFx.start(1, 0);
+        myEffect('frontCard').start(0, 1);
 		setDisplayOfCard.delay(500, 'backCard',['backCard', 'none']);
-        myFrontCardFx.start(0, 1);
+        myEffect('backCard').start(1, 0);
         setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'inline']);
 	});
 
 	// Click on ShowBackCard
 	$('showBackCard').addEvent('click', function()
 	{
-        myFrontCardFx.start(1, 0);
+		myEffect('frontCard').start(1, 0);
         setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'none']);
 		setDisplayOfCard.delay(500, 'backCard',['backCard', 'inline']);
-		$('backCard').tween('opacity', 1);
+		myEffect('backCard').start(0, 1);
 	});
 <?php } ?>
 
