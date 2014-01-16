@@ -57,7 +57,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. "', nameFrom = '" . $sess['rwCardsFormNameFrom'] 
 				. "', emailTo = '" . $sess['rwCardsFormEmailTo'][$i]
 				. "', emailFrom = '" . $sess['rwCardsFormEmailFrom'] 
-				. "', message = '" . $sess['rwCardsFormMessage'] 
+				. "', message = '" . addslashes($sess['rwCardsFormMessage'])
 				. "', sessionId = '" . $sess['sessionCode']
 				. "' , writtenOn = '" . date("Y-m-d")
 				. "' , cardSent = '0'";
