@@ -66,7 +66,7 @@ class RwcardsModelRwcard extends JModel{
 		$query = $db->getQuery(true);
 		$query->select('#__rwcards.*');
 		$query->from('#__rwcards');
-		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1');
+		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1 LIMIT ' . $this->limitstart .', ' . $this->limit);
 		//$query = "select #__rwcards.* from #__rwcards where #__rwcards.category_id = '" . $category_id . "' and #__rwcards.published = '1' order by ordering";
 		//$this->_data['rows'] = $db->loadObjectList( $query, $this->limitstart, $this->limit );
 		$db->setQuery($query);
