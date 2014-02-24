@@ -47,6 +47,7 @@ class RwcardsModelRwcard extends JModelList{
 
 		// get the total number of records
 		$this->cardsPerLine = $params->get( 'cardsperpage', 3 );
+		$this->rowsperpage = $params->get( 'rowsperpage', 3 );
 
 		// for pagebreak in view
 		$this->limit = $params->get( 'rowsperpage', 3 );
@@ -60,18 +61,21 @@ class RwcardsModelRwcard extends JModelList{
 		//$query = "select count(*) from #__rwcards where #__rwcards.category_id = '" . $category_id . "' and #__rwcards.published = '1' order by ordering";;
 		$db->setQuery( $query );
 		$this->total = $db->loadResult();
+		/*
+		echo "total: " . $this->total;
+		echo " <br>rowsperpage " . $this->rowsperpage;
+		echo "<br>cardsPerLine " . $this->cardsPerLine;
+		echo "<br>limit: " .$this->limit;
+		*/
 		jimport('joomla.html.pagination');
 		$this->_data['_pageNav'] = new JPagination( $this->total, $this->limitstart, $this->limit );
 		// All published pictures from this category;
 		$query = $db->getQuery(true);
 		$query->select('#__rwcards.*');
 		$query->from('#__rwcards');
-		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1');
-		//$query = "select #__rwcards.* from #__rwcards where #__rwcards.category_id = '" . $category_id . "' and #__rwcards.published = '1' order by ordering";
-		//$this->_data['rows'] = $db->loadObjectList( $query, $this->limitstart, $this->limit );
+		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1 LIMIT ' . $this->limitstart .', ' . $this->limit);
 		$db->setQuery($query);
 		$this->_data['rows'] = $db->loadObjectList();
-
 		$this->_data['limit'] = $this->limit * $this->cardsPerLine;
 		$this->_data['cardsPerLine'] = $this->cardsPerLine;
 
