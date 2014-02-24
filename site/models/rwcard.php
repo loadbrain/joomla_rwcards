@@ -47,7 +47,6 @@ class RwcardsModelRwcard extends JModelList{
 
 		// get the total number of records
 		$this->cardsPerLine = $params->get( 'cardsperpage', 3 );
-		$this->rowsperpage = $params->get( 'rowsperpage', 3 );
 
 		// for pagebreak in view
 		$this->limit = $params->get( 'rowsperpage', 3 );
