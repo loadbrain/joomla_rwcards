@@ -42,7 +42,6 @@
                 <filename>controller.php</filename>
                 <folder>views</folder>
 		<folder>models</folder>
-		<folder>language</folder>
 		<folder>captcha</folder>	
 		<folder>css</folder>	
 		<folder>images</folder>	
@@ -52,7 +51,12 @@
                 <filename>index.html</filename>
                 <folder>images</folder>
         </media>
-		
+
+	<languages>
+		<language tag="en-GB" client="site">site/language/en-GB/en-GB.com_rwcards.ini</language>
+		<language tag="de-DE" client="site">site/language/de-DE/de-DE.com_rwcards.ini</language>
+	</languages>
+	
         <administration>
                 <!-- Administration Menu Section -->
 		<menu img="../media/com_rwcards/images/rwcards_icon.png">COM_RWCARDS_MENU</menu>
@@ -79,12 +83,13 @@
                         <!-- helpers files section -->
                         <folder>helpers</folder>		
 			<folder>images</folder>	
-			<folder>language</folder>
                 </files>
-                <!--<languages folder="admin">
-                        <language tag="en-GB">language/en-GB/en-GB.com_rwcards.ini</language>
-                        <language tag="en-GB">language/en-GB/en-GB.com_rwcards.sys.ini</language>
-                </languages>-->
+		<languages>
+			<language tag="en-GB">admin/language/en-GB/en-GB.com_rwcards.ini</language>
+			<language tag="en-GB">admin/language/en-GB/en-GB.com_rwcards.sys.ini</language>
+			<language tag="de-De">admin/language/de-De/de-DE.com_rwcards.ini</language>
+			<language tag="de-De">admin/language/de-De/de-DE.com_rwcards.sys.ini</language>
+		</languages>
         </administration>
 
 </extension>
