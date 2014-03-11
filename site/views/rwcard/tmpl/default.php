@@ -121,21 +121,19 @@ else
 	JError::raiseWarning('ERROR_CODE', JText::_('COM_COM_RWCARDS_NO_CATEGORY_PUBLISHED_OR_CREATED') . " " . JText::_('COM_RWCARDS_NO_PICTURES_PUBLISHED_OR_CREATED'));
 }
 ?>
+<!-- Problem showing Overlay from Joomla >= 1.7 fixed -->
 <script type="text/javascript">//<![CDATA[
+(function($) {
 window.addEvent('domready', function() {
-if($defined($('lbOverlay'))){ 
+if($('lbOverlay') != null){ 
 $('lbOverlay').setStyles({
 	'top': '0px',
 	'bottom': '0px',
 	'position': 'absolute'
 });
 }
-});
-//]]></script>
-<script type="text/javascript">//<![CDATA[
 
-$('category_id').addEvent('change', function()
-{
+$('category_id').addEvent('change', function(){
 	var chosenCategory = $('category_id').get('value');
 
 	var all_cats = {
@@ -157,4 +155,6 @@ $('category_id').addEvent('change', function()
 	?>
 	document.location.href = all_cats[ chosenCategory ];
 });
+});
+})(document.id);
 //]]></script>

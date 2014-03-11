@@ -136,20 +136,38 @@ if ( $this->viewing and !$this->hasData) {
 window.addEvent('domready', function()
 {
 <?php if ( $separate_front_back ) { ?>
+
+    var myCardFx;
+    var myEffect = function(cardId){
+        return myCardFx = new Fx.Tween(''+cardId+'', {
+        duration:550,
+        property: 'opacity'
+    });
+
+    };
+
+    var setDisplayOfCard = function(myElement, styleProperty){
+        $(myElement).setStyle('display', ''+ styleProperty +'');
+    };
+    
 	$('frontCard').setStyle('display', 'inline');
 
 	// Click on ShowFrontCard
 	$('showFrontCard').addEvent('click', function()
 	{
-		$('backCard').setStyle('display', 'none');
-		$('frontCard').setStyle('display', 'inline');
+        myEffect('frontCard').start(0, 1);
+		setDisplayOfCard.delay(500, 'backCard',['backCard', 'none']);
+        myEffect('backCard').start(1, 0);
+        setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'inline']);
 	});
 
 	// Click on ShowBackCard
 	$('showBackCard').addEvent('click', function()
 	{
-		$('frontCard').setStyle('display', 'none');
-		$('backCard').setStyle('display', 'inline');
+		myEffect('frontCard').start(1, 0);
+        setDisplayOfCard.delay(500, 'frontCard',['frontCard', 'none']);
+		setDisplayOfCard.delay(500, 'backCard',['backCard', 'inline']);
+		myEffect('backCard').start(0, 1);
 	});
 <?php } ?>
 
