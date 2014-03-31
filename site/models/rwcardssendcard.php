@@ -40,7 +40,8 @@ class RwcardsModelRwcardssendcard extends JModelList{
 		$db = JFactory::getDBO();
 		$app = JFactory::getApplication();
 		$params = $app->getParams('com_rwcards');
-
+		$sfp_name = $params->get('sfp_name', false );
+		$sfp_email = $params->get('sfp_email', false );
 		$attachment = $params->get( "attachment", false );
 
 		$Itemid = JRequest::getCmd('Itemid');
@@ -57,7 +58,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. "', nameFrom = '" . $sess['rwCardsFormNameFrom'] 
 				. "', emailTo = '" . $sess['rwCardsFormEmailTo'][$i]
 				. "', emailFrom = '" . $sess['rwCardsFormEmailFrom'] 
-				. "', message = '" . addslashes($sess['rwCardsFormMessage'])
+				. "', message = '" . addslashes($sess['rwCardsFormMessage']) 
 				. "', sessionId = '" . $sess['sessionCode']
 				. "' , writtenOn = '" . date("Y-m-d")
 				. "' , cardSent = '0'";
@@ -127,8 +128,19 @@ class RwcardsModelRwcardssendcard extends JModelList{
 					. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
 				}
 
+				
 				$mail->addRecipient( $sess['rwCardsFormEmailTo'][$i] );
-				$mail->setSender( array( $MailFrom, $FromName ) );
+
+				//SFP Check
+				if(isset($sfp_name) && !empty($sfp_name)){
+					if( isset($sfp_email) && !empty($sfp_email)){
+						$mail->setSender( array( $sfp_name, $sfp_email ) );
+						$mail->addReplyTo( array( $MailFrom, $FromName ) );	
+					}
+				} else{
+					$mail->setSender( array( $MailFrom, $FromName ) );
+				}				
+				
 				$mail->setSubject( $subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
@@ -191,7 +203,15 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
 
 				$mail->addRecipient( $this->_data[0]->emailFrom );
-				$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+				//SFP Check
+				if(isset($sfp_name) && !empty($sfp_name)){
+					if( isset($sfp_email) && !empty($sfp_email)){
+						$mail->setSender( array( $sfp_name, $sfp_email ) );
+						$mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+					}
+				} else{
+					$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+				}			
 				$mail->setSubject( $this->_data[0]->nameFrom.': '.$subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
