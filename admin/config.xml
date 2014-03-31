@@ -102,6 +102,22 @@
 			description="COM_RWCARDS_CONFIG_THUMBNAIL_SUFFIX_DESC"
 			size="14" />
 
+		<field name="sfp_note" type="note" class="alert" label="SFP_LABEL" description="SFP_LABEL_DESC" />			
+		
+		<field name="sfp_name"
+			type="text"
+			default=""
+			label="COM_RWCARDS_CONFIG_SFP_NAME"
+			description="COM_RWCARDS_CONFIG_SFP_NAME_DESC"
+			size="14" />			
+
+		<field name="sfp_email"
+			type="text"
+			default=""
+			label="COM_RWCARDS_CONFIG_SFP_EMAIL"
+			description="COM_RWCARDS_CONFIG_SFP_EMAIL_DESC"
+			size="14" />
+			
 		<!--<field name='msg_copyright'
 			type="textarea"
 			rows="3"

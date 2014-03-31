@@ -40,9 +40,9 @@ class RwcardsModelRwcardssendcard extends JModel{
 		$db = JFactory::getDBO();
 		$app = JFactory::getApplication();
 		$params = $app->getParams('com_rwcards');
-
 		$attachment = $params->get( "attachment", false );
-
+		$sfp_name = $params->get('sfp_name', false );
+		$sfp_email = $params->get('sfp_email', false );
 		$Itemid = JRequest::getCmd('Itemid');
 
 		$sess = $_SESSION['rwcardsSession'];
@@ -127,7 +127,15 @@ class RwcardsModelRwcardssendcard extends JModel{
 				}
 
 				$mail->addRecipient( $sess['rwCardsFormEmailTo'][$i] );
-				$mail->setSender( array( $MailFrom, $FromName ) );
+				//SFP Check
+				if(isset($sfp_name) && !empty($sfp_name)){
+					if( isset($sfp_email) && !empty($sfp_email)){
+						$mail->setSender( array( $sfp_name, $sfp_email ) );
+						$mail->addReplyTo( array( $MailFrom, $FromName ) );	
+					}
+				} else{
+					$mail->setSender( array( $MailFrom, $FromName ) );
+				}	
 				$mail->setSubject( $subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
@@ -191,7 +199,15 @@ class RwcardsModelRwcardssendcard extends JModel{
 				. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
 
 				$mail->addRecipient( $this->_data[0]->emailFrom );
-				$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+				//SFP Check
+				if(isset($sfp_name) && !empty($sfp_name)){
+					if( isset($sfp_email) && !empty($sfp_email)){
+						$mail->setSender( array( $sfp_name, $sfp_email ) );
+						$mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+					}
+				} else{
+					$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+				}
 				$mail->setSubject( $this->_data[0]->nameFrom.': '.$subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
