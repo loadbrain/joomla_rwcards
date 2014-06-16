@@ -77,9 +77,9 @@ class RwcardsModelRwcards extends JModelList{
 			$active = $menu->getActive();
 			$this->active = $active;
 
-			$a_prefix	= $this->active->query["titleauthor_prefix"];
-			$d_prefix	= $this->active->query["description_prefix"];
-			$type		= $this->active->query['thumbnail_data'];
+			$a_prefix	= (isset($this->active->query["titleauthor_prefix"])) ? $this->active->query["titleauthor_prefix"] : "";
+			$d_prefix	= (isset($this->active->query["description_prefix"])) ? $this->active->query["description_prefix"] : "";
+			$type		= (isset($this->active->query['thumbnail_data'])) ? $this->active->query['thumbnail_data'] : "";
 
 			foreach ($this->_data as $key1=>$value1 ) {
 				foreach ($value1 as $key2=>$value2 ) {
