@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<config>
+        <fieldset
+                name="config"
+                label="COM_RWCARDS_CONFIG_SETTINGS_LABEL"
+                description="COM_RWCARDS_CONFIG_SETTINGS_DESC"
+        >
+		<field name="show_category"
+			type="radio"
+			label="COM_RWCARDS_CONFIG_SHOW_CATEGORY_LABEL"
+			description="COM_RWCARDS_CONFIG_SHOW_CATEGORY_DESC"
+			default="0">
+			<option value="0">JHIDE</option>
+			<option value="1">JSHOW</option>
+		</field>
+		<field name="lifetime"
+			type="text"
+			default="7"
+			label="COM_RWCARDS_CONFIG_LIFETIME"
+			size="6" />
+
+		<field name="cardsperpage"
+			type="text"
+			default="3"
+			label="COM_RWCARDS_CONFIG_CARDSPERPAGE"
+			size="6" />
+
+		<field name="rowsperpage"
+			type="text"
+			default="3"
+			label="COM_RWCARDS_CONFIG_ROWSPERPAGE"
+			size="6" />
+
+		<field name="pagewidth"
+			type="text"
+			default="400"
+			label="COM_RWCARDS_CONFIG_PAGEWIDTH"
+			size="6" />
+
+		<field name="pageheight"
+			type="text"
+			default="300"
+			label="COM_RWCARDS_CONFIG_PAGEHEIGHT"
+			size="6" />
+
+		<field name="attachment" type="radio" default="0" label="COM_RWCARDS_CONFIG_ATTACHEMENT">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
+
+		<field name="captcha" type="radio" default="1" label="COM_RWCARDS_CONFIG_CAPTCHA">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
+
+		<field name="separate_front_back" type="radio" default="1" label="COM_RWCARDS_CONFIG_SEPARATE_FRONT_BACK">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
+
+		<field name="set_height" type="radio" default="1" label="COM_RWCARDS_CONFIG_SET_FRONT_AND_HEIGHT_OF_CARDS">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
+
+		<field name="set_width" type="radio" default="1" label="COM_RWCARDS_CONFIG_SET_WIDTH_FOR_FRONT_AND_BACK_OF_CARDS">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
+
+		<field name="lightbox_type" type="radio" default="0" label="COM_RWCARDS_CONFIG_LIGHTBOX_TYPE">
+			<option value="0">Built-in</option>
+			<option value="1">Other</option>
+		</field>
+
+		<field name="lightbox_rel"
+			type="text"
+			default=""
+			label="COM_RWCARDS_CONFIG_LIGHTBOX_REL_VALUE"
+			description="Set the rel parameter here if you're using your own lightbox implementation"
+			size="20" />
+
+		<field name="rwCardsFormValidator" type="radio" default="mooToolsFV" label="COM_RWCARDS_CONFIG_ERROR_NOTIFICATIONS" description="COM_RWCARDS_CONFIG_ERROR_NOTIFICATIONS_DESC">
+			<option value="mooToolsFV">MooTools FormValidator</option>
+			<option value="js">JS Alert</option>
+			<option value="joomla">Joomla</option>
+		</field>
+
+		<field name="adminimagesperrow"
+			type="text"
+			default="3"
+			label="COM_RWCARDS_CONFIG_ADMINIMAGESPERROW"
+			description=""
+			size="6" />
+
+		<field name="thumbnail_suffix"
+			type="text"
+			default="rwcards"
+			label="COM_RWCARDS_CONFIG_THUMBNAIL_SUFFIX"
+			description="COM_RWCARDS_CONFIG_THUMBNAIL_SUFFIX_DESC"
+			size="14" />
+
+		<field name="sfp_note" type="note" class="alert" label="SFP_LABEL" description="SFP_LABEL_DESC" />			
+		
+		<field name="sfp_name"
+			type="text"
+			default=""
+			label="COM_RWCARDS_CONFIG_SFP_NAME"
+			description="COM_RWCARDS_CONFIG_SFP_NAME_DESC"
+			size="14" />			
+
+		<field name="sfp_email"
+			type="text"
+			default=""
+			label="COM_RWCARDS_CONFIG_SFP_EMAIL"
+			description="COM_RWCARDS_CONFIG_SFP_EMAIL_DESC"
+			size="14" />			
+			
+
+		<!--<field name='msg_copyright'
+			type="textarea"
+			rows="3"
+			cols="50"
+			default="RWCards - Copyright Ralf Weber / LoadBrain - http://www.weberr.de/"
+			label="MSG_COPYRIGHT_CONFIG_TEXT"
+			style="readonly"
+			description="MSG_COPYRIGHT_DESC" />-->
+
+        </fieldset>
+		
+			
+
+
+			
+</config>
+
+
