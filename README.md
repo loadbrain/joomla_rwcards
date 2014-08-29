@@ -1,4 +1,4 @@
-RWcards for Joomla
+RWCards for Joomla
 ==============
 
 
