@@ -63,8 +63,17 @@ class RwcardsViewSentcards extends JViewLegacy{
 		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
 
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
+		if ($this->state->get('filter.state') == -2 && $canDo->get('core.delete'))
+		{
+			JToolbarHelper::deleteList('', 'sentcards.delete', 'JTOOLBAR_EMPTY_TRASH');
+		}
+		elseif ($this->canDo->get('core.edit.state'))
+		{
+			JToolbarHelper::trash('sentcards.trash');
+		}
 			if ($this->canDo->get('core.edit')){
-				JToolBarHelper::deleteList('', 'sentcards.delete');
+				//JToolBarHelper::deleteList('', 'sentcards.delete');
+
 			}
 		}
 

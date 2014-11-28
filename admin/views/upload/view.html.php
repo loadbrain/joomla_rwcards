@@ -23,6 +23,7 @@ class RwcardsViewUpload extends JViewLegacy{
 	 * @return void
 	 */
 	function display($tpl = null){
+		
 
 		// Get data from the model
 		$this->get('ImageFolder');

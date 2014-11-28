@@ -16,6 +16,8 @@ JHtml::_('behavior.multiselect');
 JHtml::_('dropdown.init');
 JHtml::_('formbehavior.chosen', 'select');
 
+$i=0;
+
 
 ?>
 	<div class="clr"> </div>
@@ -35,7 +37,7 @@ JHtml::_('formbehavior.chosen', 'select');
 				<tr><td colspan="4">RWCards &copy 2011</td></tr>
 			</tfoot>
             <tbody>
-			<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id?>">
+			<tr class="row<?php echo $i % 2; ?>">
 					<td class="order nowrap center hidden-phone">
 			<div id="image">
 					<?php

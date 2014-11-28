@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `#__rwcardsdata` (
 	`readOn` DATE NOT NULL,
 	`cardSent` enum('0','1') NOT NULL default '0',
 	`cardRead` enum('0','1') NOT NULL default '0',
+	`ordering` int(11) NOT NULL default '0',
 	PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 

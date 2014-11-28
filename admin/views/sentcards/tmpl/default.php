@@ -133,6 +133,7 @@ $canCreate  = $user->authorise('core.create',     'com_rwcards.sentcards.' . $it
 $canEdit    = $user->authorise('core.edit',       'com_rwcards.sentcards.' . $item->id);
 $canCheckin = $user->authorise('core.manage',     'com_checkin') || $item->checked_out == $userId || $item->checked_out == 0;
 $canChange  = $user->authorise('core.edit.state', 'com_rwcards.sentcards.' . $item->id) && $canCheckin;
+
 ?>	
 				<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->id?>">
 					<td class="order nowrap center hidden-phone">
@@ -155,7 +156,7 @@ $canChange  = $user->authorise('core.edit.state', 'com_rwcards.sentcards.' . $it
 					<?php endif; ?>
 					</td>
 					<td class="center hidden-phone">
-						<?php echo JHtml::_('grid.id', $i, $item -> id); ?>
+						<?php echo JHtml::_('grid.id', $i, $item->id); ?>
 					</td>	
                 <td>
                         <?php echo JTEXT::_($item->nameTo); ?> (<?php echo JTEXT::_($item->emailTo); ?>)

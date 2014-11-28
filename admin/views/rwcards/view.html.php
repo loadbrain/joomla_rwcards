@@ -25,11 +25,13 @@ class RwcardsViewRwcards extends JViewLegacy{
 		// Get data from the model
 		$this->get('CaptchaFolder');
 		$items = $this->get('Items');
-		//print_r($items); exit;
+		#print_r($items); exit;
 		$this->state	= $this->get('State');
 		$pagination = $this->get('Pagination');
 		$this->state = $this->get('State');
-		$this->get('CreateThumbnails');
+		if(count($items) > 0){
+			$this->get('CreateThumbnails');
+		}
 
 		// Check for errors.
 		if (count($errors = $this->get('Errors')))

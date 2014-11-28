@@ -219,14 +219,14 @@ class RwcardsModelRwcards extends JModelList{
 				if (preg_match( "/\.png/i", $file )){
 					$im = ImageCreateFromPNG(JPATH_ROOT . "/images/rwcards/" . $file);
 				}
-				if (preg_match( "/\.jpg/i", $file ))
+				if (preg_match( "/\.jpe?g/i", $file ))
 				{
 					$im = @imagecreatefromjpeg(JPATH_ROOT . "/images/rwcards/" . $file);
 				}
 				$small = imagecreatetruecolor($sizemin[0], $sizemin[1] );
 
-				ImageCopyResampled($small, $im, 0, 0, 0, 0, $sizemin[0], $sizemin[1], $size[0], $size[1]);
-				ImageDestroy($im);
+				@ImageCopyResampled($small, $im, 0, 0, 0, 0, $sizemin[0], $sizemin[1], $size[0], $size[1]);
+				@ImageDestroy($im);
 
 				if (preg_match( "/\.gif/i", $file ))
 				{
