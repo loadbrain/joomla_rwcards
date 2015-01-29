@@ -106,7 +106,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				if ($attachment)
 				{
 					$message = JText::_('COM_RWCARDS_GREETING') . " "
-					. $sess['rwCardsFormNameTo'][$i] . "\n\n"
+					. $sess['rwCardsFormNameTo'][$i] . ",\n\n"
 					. $FromName . " " . JText::_('COM_RWCARDS_MSG_ATTACHEMENT_1') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_2') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_3') . "\n\n"
@@ -119,7 +119,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				else
 				{
 					$message = JText::_('COM_RWCARDS_GREETING') . " "
-					. $sess['rwCardsFormNameTo'][$i] . "\n\n"
+					. $sess['rwCardsFormNameTo'][$i] . ",\n\n"
 					. $FromName . " "
 					. JText::_('COM_RWCARDS_MSG_PART_1') . "\n\n"
 					. JText::_('COM_RWCARDS_MSG_PART_2') . "\n\n"
@@ -192,7 +192,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				$mail =& JFactory::getMailer();
 				$subject =  JText::_('COM_RWCARDS_CARD_READ_SUBJECT');
 				$message = JText::_('COM_RWCARDS_GREETING') . " "
-				. $this->_data[0]->nameFrom . "\n"
+				. $this->_data[0]->nameFrom . ",\n"
 				. $this->_data[0]->nameTo . " "
 				. JText::_('COM_RWCARDS_CARD_READ_MSG_1') . " "
 				. date("d.m.Y") . " "
