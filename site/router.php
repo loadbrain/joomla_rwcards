@@ -44,33 +44,35 @@ function RwcardsBuildRoute(&$query) {
         $segments[] = $query['rwcardsfilloutcard'];
         unset($query['rwcardsfilloutcard']);
     }
-    //rwcardssendcard
-    if (isset($query['rwcardssendcard'])) {
-        $segments[] = $query['rwcardssendcard'];
-        unset($query['rwcardssendcard']);
-    }
     #print_r($segments); exit;
     return $segments;
 }
 
 function RwcardsParseRoute($segments) {
-    print_r($segments);
+    #print_r($segments);
     $vars = array();
     switch ($segments[0]) {
         case 'rwcard':
             $vars['view'] = 'rwcard';
             //$category_id = explode(':', $segments[1]);
             $vars['category_id'] = (int) $segments[1];
+            $vars['sessionId'] = $segments[2];
             break;
         case 'category':
             $vars['view'] = 'category';
             $id = explode(':', $segments[1]);
             $vars['id'] = (int) $id[0];
             break;
+        case 'rwcards':
+            $vars['view'] = 'rwcards';
+            $vars['id'] = (int) $segments[1];
+            $vars['sessionId'] = $segments[1];
+            break;
         case 'rwcardsfilloutcard':
             $vars['view'] = 'rwcardsfilloutcard';
             $id = explode(':', $segments[1]);
             $vars['id'] = (int) $id[0];
+            $vars['sessionId'] = $segments[3];
             break;
         case 'rwcardsprelookcard':
             $vars['view'] = 'rwcardsprelookcard';
@@ -80,11 +82,15 @@ function RwcardsParseRoute($segments) {
         case 'rwcardssendcard':
             $vars['view'] = 'rwcardssendcard';
             $vars['id'] = (int) $segments[1];
-			$vars['sessionId'] = $segments[2];
-			$vars['sendmail'] = $segments[3];
-			$vars['task'] = $segments[4];
-
+            $vars['sessionId'] = $segments[2];
+            $vars['task'] = $segments[2];
+            $vars['read'] = (int) $segments[3];
+            $vars['sendmail'] = (int) $segments[4];
+            //task=viewCard&read=1&sendmail=1
             break;
+        case 'rwcardsReWriteCard':
+            $vars['view'] = 'rwcards';
+            $vars['sessionId'] = $segments[1];
     }
     return $vars;
 }

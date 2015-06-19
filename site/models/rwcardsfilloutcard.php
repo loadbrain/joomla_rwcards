@@ -37,7 +37,7 @@ class RwcardsModelRwcardsfilloutcard extends JModelList{
 
 		$rwcards_id = JRequest::getVar('id', 0, 'request', 'int');
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
-
+print_r($sessionId); 
 
 		$rwcards_id = $db->escape( $rwcards_id );
 		$sessionId = $db->escape( $sessionId );

@@ -62,7 +62,7 @@ class RWCardsViewRwcardssendcard extends JViewLegacy
         $viewCardOnly = JRequest::getVar('read', '', 'request', 'string');
 		$this->viewCardOnly = $viewCardOnly;
 		$data = $this->get( 'ViewCardsData' );
-		
+
 		$this->rwcards = $data;
 
 		// if there's no data, we can't view it.

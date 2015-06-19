@@ -94,9 +94,11 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				// Prepare email body
 
 				$linkToRWCards = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&id=" . $lastId[$i] . "&sessionId=" . $sess['sessionCode'] . "&read=1&sendmail=1" ) );
+				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
+				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
 				$linkToViewOnly = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&id=" . $lastId[$i] . "&sessionId=" . $sess['sessionCode'] . "&task=viewCard&sendmail=0" ) );
+				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&sessionId=" . $sess['sessionCode'] . 
+                "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
 
 				$subject = JText::_('COM_RWCARDS_SUBJECT') . " " . $FromName;
 
@@ -152,6 +154,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				 *  email only to one sender no concatenating of all if several, 01.09.2008 RW
 				 */
 				$mail = null;
+                print_r($linkToRWCards); 
 			}
 		}
 		else
@@ -176,6 +179,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 
 
 		$query = "SELECT * FROM #__rwcardsdata where sessionId = '" . $sessionId . "' and id = '" . $id . "'";
+
 		$this->_data = $this->_getList( $query );
 
 		if ( is_array( $this->_data ) and count ( $this->_data ) )
