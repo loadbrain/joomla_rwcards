@@ -94,11 +94,11 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				// Prepare email body
 
 				$linkToRWCards = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
-				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
+				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&sessionId=" . $sess['sessionCode'] . 
+                "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
 				$linkToViewOnly = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
-				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
+				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&sessionId=" . $sess['sessionCode'] . 
+                "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
 
 				$subject = JText::_('COM_RWCARDS_SUBJECT') . " " . $FromName;
 
@@ -158,7 +158,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 		}
 		else
 		{
-			$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?option=com_rwcards&Itemid=' . $Itemid )));
+			$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php')));
 		}
 	}
 

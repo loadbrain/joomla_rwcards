@@ -42,6 +42,7 @@ class RwcardsModelRwcard extends JModelList{
 		$app = JFactory::getApplication();
 		$params = $app->getParams('com_rwcards');
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');
+        
 		if ( $category_id == 0 ) $category_id = $params->get( 'category_id', 0 );
 		if ( $category_id == 0 ) $category_id = $this->category_id;
 
@@ -59,6 +60,7 @@ class RwcardsModelRwcard extends JModelList{
 		$query->order('ordering');
 		//$query = "select count(*) from #__rwcards where #__rwcards.category_id = '" . $category_id . "' and #__rwcards.published = '1' order by ordering";;
 		$db->setQuery( $query );
+        //echo $query; exit;
 		$this->total = $db->loadResult();
 		/*
 		echo "total: " . $this->total;

@@ -16,6 +16,7 @@ $separate_front_back = $this->params->get('separate_front_back', true );
 
 // Load the moo.fx scripts
 $document = JFactory::getDocument();
+JHtml::_('behavior.framework', 'core');
 JHtml::_('behavior.multiselect');
 $document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.previewandsend.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 
@@ -175,7 +176,7 @@ window.addEvent('domready', function()
 	{
 	$('rwcardsReWriteCard').addEvent('click', function()
 	{
-	document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&Itemid=' . $this->Itemid . '&task=rwcardsReWriteCard&sessionId=' . @$this->rwcards[0]->sessionId ) ); ?>'
+	document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?view=rwcardsReWriteCard&sessionId=' . @$this->rwcards[0]->sessionId ) ); ?>'
 	});
 	}
 });

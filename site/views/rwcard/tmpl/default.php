@@ -16,6 +16,7 @@ $suffix = '@' . $this->params->get("thumbnail_suffix", 'rwcards' );
 
 // Load the moo.fx scripts
 $document = JFactory::getDocument();
+JHtml::_('behavior.framework', 'core');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('dropdown.init');
@@ -97,8 +98,7 @@ for ($i=0, $n=count( $this->rwcards['rows'] ); $i < $n; $i++)
 		class="img-thumb" /></a>
 	<br />
 	<span class="send-this-img">
-		<a href="<?php echo JRoute::_('index.php?option=com_rwcards&amp;view=rwcardsfilloutcard&amp;Itemid=' . JRequest::getCmd('Itemid')
-			. '&amp;id=' . intval($this->rwcards['rows'][$i]->id)
+		<a href="<?php echo JRoute::_('index.php?view=rwcardsfilloutcard&id=' . intval($this->rwcards['rows'][$i]->id)
 			. '&amp;category_id=' . JRequest::getInt('category_id')
 			. '&amp;reWritetoSender=' . $this->reWritetoSender
 			. '&amp;sessionId=' . $this->sessionId
@@ -151,8 +151,7 @@ $('category_id').addEvent('change', function(){
 //			. '&category_id=' . $categoryId . '&reWritetoSender=' . @$this->reWritetoSender . '&sessionId=' . @$this->sessionId ) ) . "'";
 
 		echo "'$categoryId': '" . str_replace('&amp;', '&',
-		JRoute::_('index.php?option=com_rwcards&amp;view=rwcard&amp;Itemid=' . JRequest::getCmd('Itemid')
-			. '&amp;category_id=' . $categoryId
+		JRoute::_('index.php?view=rwcard&amp;category_id=' . $categoryId
 			. '&amp;reWritetoSender=' . @$this->reWritetoSender
 			. '&amp;sessionId=' . $this->sessionId) ) . "'";
 	}

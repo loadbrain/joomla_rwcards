@@ -13,6 +13,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // Load the moo.fx scripts
 $document = JFactory::getDocument();
+JHtml::_('behavior.framework', 'core');
 JHtml::_('behavior.multiselect');
 $document->addStyleSheet( JURI::base() . 'components/com_rwcards/css/rwcards.previewandsend.css', 'text/css', null, array( 'id' => 'StyleSheet' ) );
 $sess = @$_SESSION['rwcardsSession'];
@@ -143,11 +144,11 @@ window.addEvent('domready', function()
 <?php } ?>
 
 	$('rwcardsGoBack').addEvent('click', function() {
-		document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsfilloutcard&Itemid=' . JRequest::getCmd('Itemid') . '&id=' . $this->id ) ); ?>'
+		document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?view=rwcardsfilloutcard&id=' . $this->id ) ); ?>'
 	});
 
 	$('rwcardsSend').addEvent('click', function() {
-		document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&task=sendrwcard&Itemid=' . JRequest::getCmd('Itemid') . '&id=' . $this->id ) ); ?>'
+		document.location.href='<?php echo str_replace('&amp;', '&', JRoute::_( 'index.php?view=rwcardssendcard&id=' . $this->id ) ); ?>'
 	});
 });
 })(document.id);

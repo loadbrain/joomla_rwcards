@@ -72,11 +72,14 @@ JHtml::_('behavior.framework', 'core');
 		<div class="imageElement">
 			<h3><?php echo $val->thumb_title; ?></h3>
 			<p><?php echo $val->thumb_desc; ?></p>
-			<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
-				. '&amp;category_id=' . $val->category_id
+<!--			<a href="<?php echo JRoute::_('index.php?view=rwcard&category_id=' . $val->category_id
 				. '&amp;reWritetoSender=' . @$this->reWritetoSender
 				. '&amp;sessionId=' . @$this->sessionId);
-			?>" title="<?php echo htmlentities( $val->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?>" class="open"></a>
+			?>" title="<?php echo htmlentities( $val->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?>" class="open"></a>-->
+			<a href="<?php echo JRoute::_('index.php?view=rwcard&amp;category_id=' . $val->category_id
+				. '&amp;reWritetoSender=' . @$this->reWritetoSender
+				. '&amp;sessionId=' . @$this->sessionId);
+			?>" title="<?php echo htmlentities( $val->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?>" class="open"></a>            
 			<img src="<?php echo JURI::base(); ?>images/rwcards/<?php echo strtolower(substr($val->picture, 0, -4) )
 				. $this->suffix . strtolower( substr($val->picture, strrpos($val->picture, ".")) );
 			?>" class="full" alt="<?php echo nl2br( htmlentities( $val->category_kategorien_name, ENT_QUOTES, 'UTF-8' )); ?>" />
@@ -89,10 +92,9 @@ JHtml::_('behavior.framework', 'core');
 	</div>
 	<div id="description_<?php echo $i; ?>">
 		<span style="font-weight: bold; text-decoration:underline;"><?php //  print_r( $this->rwcards[$i]); // sb ?>
-			<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
-				. '&amp;category_id=' . $this->categoryData[$i]->id
-				. '&amp;reWritetoSender=' . @$this->reWritetoSender
-				. '&amp;sessionId=' . @$this->sessionId );
+			<a href="<?php echo JRoute::_('index.php?view=rwcard&category_id=' . $this->categoryData[$i]->id
+				. '&reWritetoSender=' . @$this->reWritetoSender
+				. '&sessionId=' . @$this->sessionId );
 			?>" class="open"><?php echo htmlentities( $this->categoryData[$i]->category_kategorien_name, ENT_QUOTES, 'UTF-8' ); ?></a>
 		</span>
 	<br />
@@ -102,8 +104,7 @@ JHtml::_('behavior.framework', 'core');
 
 	<br /><br /><br /><br />
 
-	<a href="<?php echo JRoute::_('index.php?option=com_rwcards&view=rwcard&amp;Itemid=' . JRequest::getCmd( "Itemid" )
-		. '&amp;category_id=' . $this->categoryData[$i]->id
+	<a href="<?php echo JRoute::_('index.php?view=rwcard&amp;category_id=' . $this->categoryData[$i]->id
 		. '&amp;reWritetoSender=' . @$this->reWritetoSender
 		. '&amp;sessionId=' . @$this->sessionId );
 	?>" class="open"><?php echo JText::_('COM_RWCARDS_SEE_ALL_CARDS'); ?></a>

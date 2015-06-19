@@ -97,11 +97,11 @@ class RwcardsViewRwcardsfilloutcard extends JViewLegacy
 			$id = JRequest::getVar('id', 0, 'request', 'int');
 			if ( $submit == JTEXT::_('COM_RWCARDS_PREVIEW_CARD') ){
 
-				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardsprelookcard&task=previewrwcard&Itemid=' . $Itemid . '&id=' . $id )));
+				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?view=rwcardsprelookcard&id=' . $id )));
 			}
 			else
 			{
-				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&task=sendrwcard&Itemid=' . $Itemid . '&id=' . $id )));
+				$app->redirect( str_replace('&amp;','&', JRoute::_( 'index.php?view=rwcardssendcard&id=' . $id )));
 			}
 		}
 		else

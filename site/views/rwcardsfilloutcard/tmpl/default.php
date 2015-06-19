@@ -9,13 +9,12 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
  -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' );
-
-//session_destroy();
+defined( '_JEXEC' ) or die( 'Restricted access' ); 
+// Load the moo.fx scripts
 $document = JFactory::getDocument();
-
 JHtml::_('behavior.framework', 'core');
-	
+
+
 if ( $this->params->get("rwCardsFormValidator",'mooToolsFV' )  == 'mooToolsFV' ) {
 
 	?>
@@ -286,7 +285,7 @@ window.addEvent('domready', function()
 <script type="text/javascript">//<![CDATA[
 (function($) {
 	$('rwCardsBack').addEvent('click', function() {
-		document.location.href='<?php echo str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcard&Itemid=' . JRequest::getCmd('Itemid') . '&category_id=' . JRequest::getInt( 'category_id' ) . '&sessionId=' . $this->sessionId ) ); ?>';
+		document.location.href='<?php echo str_replace( '&amp;', '&', JRoute::_( 'index.php?view=rwcard&category_id=' . JRequest::getInt( 'category_id' ) . '&sessionId=' . $this->sessionId ) ); ?>';
 	});
 })(document.id);
 //]]></script>
