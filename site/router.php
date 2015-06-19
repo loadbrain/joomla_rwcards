@@ -44,6 +44,11 @@ function RwcardsBuildRoute(&$query) {
         $segments[] = $query['rwcardsfilloutcard'];
         unset($query['rwcardsfilloutcard']);
     }
+    //rwcardssendcard
+    if (isset($query['rwcardssendcard'])) {
+        $segments[] = $query['rwcardssendcard'];
+        unset($query['rwcardssendcard']);
+    }
     #print_r($segments); exit;
     return $segments;
 }
@@ -74,8 +79,11 @@ function RwcardsParseRoute($segments) {
             break;
         case 'rwcardssendcard':
             $vars['view'] = 'rwcardssendcard';
-            $id = explode(':', $segments[1]);
-            $vars['id'] = (int) $id[0];
+            $vars['id'] = (int) $segments[1];
+			$vars['sessionId'] = $segments[2];
+			$vars['sendmail'] = $segments[3];
+			$vars['task'] = $segments[4];
+
             break;
     }
     return $vars;
