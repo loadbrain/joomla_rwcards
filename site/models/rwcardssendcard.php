@@ -153,8 +153,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				/**
 				 *  email only to one sender no concatenating of all if several, 01.09.2008 RW
 				 */
-				$mail = null;
-                print_r($linkToRWCards); 
+				$mail = null; 
 			}
 		}
 		else
@@ -191,6 +190,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				* Did not work for everyone... LoadBrain, 23.07.2009
 				* $mail =& JMail::getInstance();
 				*/
+
 				$mail =& JFactory::getMailer();
 				$subject =  JText::_('COM_RWCARDS_CARD_READ_SUBJECT');
 				$message = JText::_('COM_RWCARDS_GREETING') . " "
@@ -223,6 +223,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. "' and id = '" . $id . "'";
 				$db->setQuery( $query );
 				$db->query();
+
 			}
 		}
 
