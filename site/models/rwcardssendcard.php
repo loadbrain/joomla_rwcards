@@ -134,8 +134,20 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				//SFP Check
 				if(isset($sfp_name) && !empty($sfp_name)){
 					if( isset($sfp_email) && !empty($sfp_email)){
-						$mail->setSender( array( $sfp_name, $sfp_email ) );
-						$mail->addReplyTo( array( $MailFrom, $FromName ) );	
+						$mail->setSender( array( $sfp_email, $sfp_name ) );
+						// @see: http://joomla.stackexchange.com/questions/16051/fix-the-invalid-address-error-after-upgrading-to-joomla-3-5-1
+						try {
+							if(version_compare(JVERSION, '3.0', 'ge')) {
+							  $mail->addReplyTo( $MailFrom, $FromName );	
+							  //$mailer->addReplyTo($replyTo, $replyToName);
+							} else {
+							  $mail->addReplyTo( array( $MailFrom, $FromName ) );	
+							}		
+						}
+						catch (Exception $e) {
+							// do exception handling and logging here
+							print_r($e); 
+						}
 					}
 				} else{
 					$mail->setSender( array( $MailFrom, $FromName ) );
@@ -208,8 +220,20 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				//SFP Check
 				if(isset($sfp_name) && !empty($sfp_name)){
 					if( isset($sfp_email) && !empty($sfp_email)){
-						$mail->setSender( array( $sfp_name, $sfp_email ) );
-						$mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+						$mail->setSender( array( $sfp_email,$sfp_name ) );
+						//$mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
+						// @see: http://joomla.stackexchange.com/questions/16051/fix-the-invalid-address-error-after-upgrading-to-joomla-3-5-1
+						try{
+							if(version_compare(JVERSION, '3.0', 'ge')) {
+							  $mail->addReplyTo( $this->_data[0]->emailTo, $this->_data[0]->nameTo );	
+							  //$mailer->addReplyTo($replyTo, $replyToName);
+							} else {
+							  $mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );	
+							}
+						} catch (Exception $e) {
+							// do exception handling and logging here
+							print_r($e); 
+						}
 					}
 				} else{
 					$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
