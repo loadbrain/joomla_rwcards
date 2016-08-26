@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
         <fieldset
-                name="config"
+                name="configuration"
                 label="COM_RWCARDS_CONFIG_SETTINGS_LABEL"
                 description="COM_RWCARDS_CONFIG_SETTINGS_DESC"
         >
