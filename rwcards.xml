@@ -9,13 +9,13 @@
     <copyright>Copyright LoadBrain</copyright>
     <license>http://www.gnu.org/licenseses/gpl-2.0.html GNU/GPL</license>
     <!--  The version string is recorded in the components table -->
-    <version>5.1.1</version>
+    <version>5.1.2</version>
     <!-- The description is optional and defaults to the name -->
     <description>COM_RWCARDS_DESCRIPTION</description>
 
     <!-- Runs on install/uninstall/update; New in 1.6 -->
     <scriptfile>script.php</scriptfile>
-        
+
     <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -43,10 +43,10 @@
         <filename>router.php</filename>
         <folder>views</folder>
         <folder>models</folder>
-        <folder>captcha</folder>	
-        <folder>css</folder>	
-        <folder>images</folder>	
-        <folder>js</folder>	
+        <folder>captcha</folder>
+        <folder>css</folder>
+        <folder>images</folder>
+        <folder>js</folder>
     </files>
     <media destination="com_rwcards" folder="media">
         <filename>index.html</filename>
@@ -57,7 +57,7 @@
         <language tag="en-GB" client="site">site/language/en-GB/en-GB.com_rwcards.ini</language>
         <language tag="de-DE" client="site">site/language/de-DE/de-DE.com_rwcards.ini</language>
     </languages>
-	
+
     <administration>
         <!-- Administration Menu Section -->
         <menu img="../media/com_rwcards/images/rwcards_icon.png">COM_RWCARDS_MENU</menu>
@@ -82,8 +82,8 @@
             <!-- controllers files section -->
             <folder>controllers</folder>
             <!-- helpers files section -->
-            <folder>helpers</folder>		
-            <folder>images</folder>	
+            <folder>helpers</folder>
+            <folder>images</folder>
         </files>
         <languages>
             <language tag="en-GB">admin/language/en-GB/en-GB.com_rwcards.ini</language>
@@ -94,4 +94,3 @@
     </administration>
 
 </extension>
-
