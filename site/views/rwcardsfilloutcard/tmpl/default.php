@@ -183,7 +183,7 @@ window.addEvent('domready', function()
 			}
 		}
 		else
-		{ $i= (count(@$sess['rwCardsFormEmailTo']) > 0) ? count(@$sess['rwCardsFormEmailTo']) : 0;
+		{ $i= ( is_array($sess['rwCardsFormEmailTo']) && count(@$sess['rwCardsFormEmailTo']) > 0) ? count(@$sess['rwCardsFormEmailTo']) : 0;
 		?>
 			<div class="rwcardsReceiver">
 				<div><label for="rwCardsFormNameTo[<?php echo $i; ?>]"><?php echo JText::_('COM_RWCARDS_NAME_TO');?></label></div>

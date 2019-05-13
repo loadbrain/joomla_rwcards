@@ -49,14 +49,14 @@ function RwcardsBuildRoute(&$query) {
 }
 
 function RwcardsParseRoute($segments) {
-    #print_r($segments);
+    #print_r(isset($segments[2]));
     $vars = array();
     switch ($segments[0]) {
         case 'rwcard':
             $vars['view'] = 'rwcard';
             //$category_id = explode(':', $segments[1]);
             $vars['category_id'] = (int) $segments[1];
-            $vars['sessionId'] = $segments[2];
+            $vars['sessionId'] = (isset($segments[2] )) ? $segments[2] : null;
             break;
         case 'category':
             $vars['view'] = 'category';
@@ -72,7 +72,7 @@ function RwcardsParseRoute($segments) {
             $vars['view'] = 'rwcardsfilloutcard';
             $id = explode(':', $segments[1]);
             $vars['id'] = (int) $id[0];
-            $vars['sessionId'] = $segments[3];
+            $vars['sessionId'] = (isset($segments[3])) ? $segments[3] : null;
             break;
         case 'rwcardsprelookcard':
             $vars['view'] = 'rwcardsprelookcard';
