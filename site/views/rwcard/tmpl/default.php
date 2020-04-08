@@ -82,38 +82,40 @@ if ( count($this->rwcards['rows']) > 0)
 <tr>
 <?php
 $k="";
-for ($i=0, $n=count( $this->rwcards['rows'] ); $i < $n; $i++)
-{
-?>
-<td>
-	<a href="<?php echo JURI::base(); ?>images/rwcards/<?php echo $this->rwcards['rows'][$i]->picture;?>"
-		rel="<?php echo $this->params->get('lightbox_type', 0) ? $this->params->get('lightbox_rel') : "lightbox[atomium]"; ?>"
-		title="<?php echo strip_tags($this->rwcards['rows'][$i]->description); ?>"><img
-		src="<?php echo JURI::base(); ?>images/rwcards/<?php
-			echo strtolower(substr($this->rwcards['rows'][$i]->picture, 0, -4) )
-			. $suffix
-			. strtolower( substr( $this->rwcards['rows'][$i]->picture, strrpos($this->rwcards['rows'][$i]->picture, ".")) );
-			 ?>"
-		alt="<?php echo strip_tags($this->rwcards['rows'][$i]->description); ?>"
-		class="img-thumb" /></a>
-	<br />
-	<span class="send-this-img">
-		<a href="<?php echo JRoute::_('index.php?view=rwcardsfilloutcard&id=' . intval($this->rwcards['rows'][$i]->id)
-			. '&amp;category_id=' . JRequest::getInt('category_id')
-			. '&amp;reWritetoSender=' . $this->reWritetoSender
-			. '&amp;sessionId=' . $this->sessionId
-		); ?>"><?php echo JText::_('COM_RWCARDS_SEND_THIS_IMAGE'); ?></a>
-	</span>
-</td>
-<?php
-	$k++;
-	if($k % $this->rwcards['cardsPerLine'] == 0) {
-		echo "</tr><tr>";
-	}
-}
-?>
-</tr>
-</table>
+    for ($i=0, $n=count($this->rwcards['rows']); $i < $n; $i++) {
+        ?>
+			<td>
+				<a href="<?php echo JRoute::_(
+    'index.php?view=rwcardsfilloutcard&id=' . intval($this->rwcards['rows'][$i]->id)
+            . '&amp;category_id=' . JRequest::getInt('category_id')
+            . '&amp;reWritetoSender=' . $this->reWritetoSender
+            . '&amp;sessionId=' . $this->sessionId
+); ?>"
+					title="<?php echo strip_tags($this->rwcards['rows'][$i]->description); ?>"><img
+						src="<?php echo JURI::base(); ?>images/rwcards/<?php
+            echo strtolower(substr($this->rwcards['rows'][$i]->picture, 0, -4))
+            . $suffix
+            . strtolower(substr($this->rwcards['rows'][$i]->picture, strrpos($this->rwcards['rows'][$i]->picture, "."))); ?>"
+						alt="<?php echo strip_tags($this->rwcards['rows'][$i]->description); ?>"
+						class="img-thumb" /></a>
+				<br />
+				<span class="send-this-img">
+					<a href="<?php echo JRoute::_(
+                 'index.php?view=rwcardsfilloutcard&id=' . intval($this->rwcards['rows'][$i]->id)
+            . '&amp;category_id=' . JRequest::getInt('category_id')
+            . '&amp;reWritetoSender=' . $this->reWritetoSender
+            . '&amp;sessionId=' . $this->sessionId
+             ); ?>"><?php echo JText::_('COM_RWCARDS_SEND_THIS_IMAGE'); ?></a>
+				</span>
+			</td>
+			<?php
+    $k++;
+        if ($k % $this->rwcards['cardsPerLine'] == 0) {
+            echo "</tr><tr>";
+        }
+    } ?>
+		</tr>
+	</table>
 </div>
 
 <div id="limit"><?php echo $this->rwcards['_pageNav']->getPagesLinks(); ?></div>
