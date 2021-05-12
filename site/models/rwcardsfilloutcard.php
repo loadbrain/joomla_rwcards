@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
@@ -37,7 +37,6 @@ class RwcardsModelRwcardsfilloutcard extends JModelList{
 
 		$rwcards_id = JRequest::getVar('id', 0, 'request', 'int');
 		$sessionId = JRequest::getVar('sessionId', '', 'request', 'string');
-print_r($sessionId); 
 
 		$rwcards_id = $db->escape( $rwcards_id );
 		$sessionId = $db->escape( $sessionId );
@@ -100,4 +99,3 @@ print_r($sessionId);
 
 	}
 }
-?>
