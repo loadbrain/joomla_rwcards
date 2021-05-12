@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
 jimport('joomla.filesystem.folder');
@@ -75,7 +75,7 @@ class RwcardsModelRwcards extends JModelList{
 			else
 			{
 				$search = $db->Quote('%'.$db->escape($search, true).'%');
-				$query->where('( #__rwcards.autor LIKE '.$search.' OR #__rwcards.email LIKE '.$search.')');
+				$query->where('( #__rwcards_category.category_kategorien_name LIKE '.$search.' OR #__rwcards.autor LIKE '.$search.' OR #__rwcards.email LIKE '.$search.')');
 			}
 		}
 
@@ -85,13 +85,19 @@ class RwcardsModelRwcards extends JModelList{
 		if ($orderCol == 'ordering' || $orderCol == 'autor') {
 			$orderCol = 'autor, category_id, ordering';
 		}
+
+		// Wird neu sortiert -> POST Request
+		if(	isset($_POST['sortTable']) && $_POST['sortTable'] != ""){
+			$orderCol = $_POST['sortTable'];
+			$this->setState('list.ordering', $orderCol);
+		}
 		$query->order($db->escape($orderCol.' '.$orderDirn));
 
-		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
+		// echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
 		return $query;
 	}
 
-	
+
 
 	/**
 	 * Returns a reference to the a Table object, always creating it.

@@ -10,7 +10,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
@@ -41,11 +41,10 @@ class RwcardsModelCats extends JModelList{
 
 		parent::__construct($config);
 	}
-	
+
 	protected function populateState($ordering = null, $direction = null){
 		// Initialise variables.
 		$app = JFactory::getApplication('administrator');
-
 		// Load the filter state.
 		$search = $app->getUserStateFromRequest($this->context.'.filter.search', 'filter_search');
 		$this->setState('filter.search', $search);
@@ -89,7 +88,7 @@ class RwcardsModelCats extends JModelList{
 		// Filter by search in title
 		$search = $this->getState('filter.search');
 		if (!empty($search))
-		{ 
+		{
 			if (stripos($search, 'id:') === 0) {
 				$query->where('#__rwcards_category.id = '.(int) substr($search, 3));
 			}
@@ -107,8 +106,17 @@ class RwcardsModelCats extends JModelList{
 			//$orderCol = 'ordering';category_kategorien_name
 			$orderCol = 'category_kategorien_name '.$orderDirn.', ordering';
 		}
-		$query->order($db->escape($this->getState('list.ordering')).' '.$db->escape($this->getState('list.direction', 'DESC')));
-		//echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
+
+		// New Order by post request
+		if(	isset($_POST['sortTable']) && $_POST['sortTable'] != ""){
+			$orderCol = $_POST['sortTable'];
+		}
+		if(isset($_POST['directionTable']) && $_POST['directionTable'] != ""){
+			$orderDirn = $_POST['directionTable'];
+		}
+		// $query->order($db->escape($this->getState('list.ordering')).' '.$db->escape($this->getState('list.direction', 'DESC')));
+		$query->order($db->escape($orderCol.' '.$orderDirn));
+		// echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
 		return $query;
 	}
 
