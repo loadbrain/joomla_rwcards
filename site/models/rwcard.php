@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
@@ -42,7 +42,7 @@ class RwcardsModelRwcard extends JModelList{
 		$app = JFactory::getApplication();
 		$params = $app->getParams('com_rwcards');
 		$category_id = JRequest::getVar('category_id', 0, 'request', 'int');
-        
+
 		if ( $category_id == 0 ) $category_id = $params->get( 'category_id', 0 );
 		if ( $category_id == 0 ) $category_id = $this->category_id;
 
@@ -74,7 +74,7 @@ class RwcardsModelRwcard extends JModelList{
 		$query = $db->getQuery(true);
 		$query->select('#__rwcards.*');
 		$query->from('#__rwcards');
-		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1 LIMIT ' . $this->limitstart .', ' . $this->limit);
+		$query->where('#__rwcards.category_id = ' .(int) $category_id . ' and #__rwcards.published = 1 ORDER BY ordering ASC LIMIT ' . $this->limitstart .', ' . $this->limit);
 		$db->setQuery($query);
 		$this->_data['rows'] = $db->loadObjectList();
 		$this->_data['limit'] = $this->limit * $this->cardsPerLine;
@@ -131,4 +131,3 @@ class RwcardsModelRwcard extends JModelList{
 		return $this->_db->loadObjectList();
 	}
 }
-?>
