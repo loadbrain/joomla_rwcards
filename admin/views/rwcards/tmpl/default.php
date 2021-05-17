@@ -110,7 +110,7 @@ $sortFields = $this->getSortFields();
 						<th width="5%" class="nowrap center">
 							<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
 						</th>
-						<th class="title">ddd
+						<th class="title">
 							<?php echo JHtml::_('searchtools.sort', 'COM_RWCARDS_RWCARDS_AUTOR', 'autor', $listDirn, $listOrder); ?>
 						</th>
 						<th width="5%" class="nowrap hidden-phone">
@@ -143,7 +143,6 @@ $sortFields = $this->getSortFields();
                     $canCreate = $user->authorise('core.create', 'com_rwcards.rwcards.' . $item->id);
                     $canEdit = $user->authorise('core.edit', 'ccom_rwcards.rwcards.' . $item->id);
                     $canCheckin = $user->authorise('core.manage', 'com_checkin') || $item->checked_out == $user->get('id') || $item->checked_out == 0;
-                    $canEditOwn = $user->authorise('core.edit.own', 'rwcards.category.' . $item->catid) && $item->created_by == $user->id;
                     $canChange = $user->authorise('core.edit.state', 'com_rwcards.rwcards.' . $item->id) && $canCheckin;
                     ?>
 <tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->catid; ?>">
@@ -183,8 +182,13 @@ $sortFields = $this->getSortFields();
 								<?php if ($item->checked_out) : ?>
 									<?php echo JHtml::_('jgrid.checkedout', $i, $item->editor, $item->checked_out_time, 'rwcards.', $canCheckin); ?>
 								<?php endif; ?>
-										<?php echo $this->escape($item->autor); ?>
-							</div>
+								<?php if ($canEdit) {?>
+								                      <a href="<?php echo JRoute::_('index.php?option=com_rwcards&task=rwcard.edit&id=' . $item->id); ?>"><?php echo JTEXT::_($item->autor); ?></a>
+                 <?php } else {
+                                    echo $this->escape($item->autor);
+                                }
+                ?>
+				</div>
 						</td>
 						<td class="small hidden-phone">
 							<?php echo $this->escape($item->email); ?>
