@@ -89,13 +89,16 @@ $sortFields = $this->getSortFields();
 							<?php echo JHtml::_('select.options', $sortFields, 'value', 'text', $listOrder); ?>
 						</select>
 					</div>
-				</div>
-				<div class="filter-select fltrt">
-
-					<select name="filter_published" class="inputbox" onchange="this.form.submit()">
-						<option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
-						<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions', ['archived' => 0, 'trash' => 0]), 'value', 'text', $this->state->get('filter.state'), true); ?>
-					</select>
+					<!-- Get Categories -->
+					<div class="btn-group pull-right">
+						<?php echo $this->categories; ?>
+					</div>
+					<div class="btn-group pull-left">
+						<select name="filter_published" class="inputbox" onchange="this.form.submit()">
+							<option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
+							<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions', ['archived' => 0, 'trash' => 0]), 'value', 'text', $this->state->get('filter.state'), true); ?>
+						</select>
+					</div>
 				</div>
 				<div class="clr"> </div>
 				<table class="table table-striped" id="rwcardsList">

@@ -26,6 +26,9 @@ class RwcardsViewRwcards extends JViewLegacy
         $this->get('CaptchaFolder');
         $items = $this->get('Items');
 
+        $categories = $this->get('Categories');
+        $this->categories = $categories;
+
         $this->state = $this->get('State');
         $pagination = $this->get('Pagination');
         $this->state = $this->get('State');

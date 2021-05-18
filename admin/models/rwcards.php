@@ -59,6 +59,10 @@ class RwcardsModelRwcards extends JModelList
         $state = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
         $this->setState('filter.state', $state);
 
+        $category_id = $app->getUserStateFromRequest($this->context . '.filter.category_id', 'filter_category_id', '', 'int');
+        // $state = $this->setState('filter.category_id', $this->getUserStateFromRequest($this->context . '.filter.category_id', 'filter_category_id', '', 'cmd'));
+        $this->setState('filter.category_id', $category_id);
+
         // Load the parameters.
         $params = JComponentHelper::getParams('com_rwcards');
         $this->setState('params', $params);
@@ -114,13 +118,46 @@ class RwcardsModelRwcards extends JModelList
         }
 
         // Add the list ordering clause.
-        $orderCol = $this->state->get('list.ordering', 'autor');
+        $orderCol = $this->state->get('list.ordering', 'ordering, category_id');
         $orderDirn = $this->state->get('list.direction', 'asc');
 
         $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
 
-        echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
+        // echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
         return $query;
+    }
+
+    /**
+     * Create a list of categories to filter from
+     */
+    public function getCategories()
+    {
+        // Filtered Category?
+        $chosenCategoryId = JRequest::getVar('filter_category_id', 0, 'request', 'int');
+        if ($chosenCategoryId == 0) $chosenCategoryId = 0;
+        $db = JFactory::getDBO();
+        // First all categories;
+        $categories[] = JHTML::_('select.option',  $category_id, '- ' . JText::_('COM_RWCARDS_RWCARDS_CATEGORY') . ' -');
+        $query = "SELECT id AS value, category_kategorien_name AS text FROM #__rwcards_category where published > 0 order by ordering, category_kategorien_name asc";
+        $this->_db->setQuery($query);
+        $categories = array_merge($categories, $this->_catIds());
+        $lists['categories'] = JHTML::_('select.genericlist', $categories, "filter.category_id", "class=\"inputbox\" size=\"1\" onchange=\"this.form.submit()\"", 'value', 'text',  $chosenCategoryId);
+
+        return $lists['categories'];
+    }
+
+    /**
+     * Get the categories from database
+     * Used for filling select list
+     * @see: getCategories
+     */
+
+    public function _catIds()
+    {
+        $db = JFactory::getDBO();
+        $query = "SELECT id AS value, category_kategorien_name AS text FROM #__rwcards_category where published > 0 order by ordering, category_kategorien_name asc";
+        $this->_db->setQuery($query);
+        return $this->_db->loadObjectList();
     }
 
     /**
@@ -173,8 +210,8 @@ class RwcardsModelRwcards extends JModelList
             $this->getImageFolder();
         }
         /**
-        * @see RWCardsHelper::makeSafe
-        */
+         * @see RWCardsHelper::makeSafe
+         */
         return JFolder::files(RwcardsHelper::makeSafe(JPATH_ROOT . '/images/rwcards'), $filter = '.', $recurse = true);
     }
 
