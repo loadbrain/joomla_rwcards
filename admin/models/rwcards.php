@@ -107,7 +107,7 @@ class RwcardsModelRwcards extends JModelList
                 $query->where('#__rwcards.id = ' . (int) substr($search, 3));
             } else {
                 $search = $db->Quote('%' . $db->escape($search, true) . '%');
-                $query->where('( #__rwcards_category.category_kategorien_name LIKE ' . $search . ' OR #__rwcards.autor LIKE ' . $search . ' OR #__rwcards.email LIKE ' . $search . ')');
+                $query->where('( #__rwcards_category.category_kategorien_name LIKE ' . $search . ' OR #__rwcards.autor LIKE ' . $search . ' OR #__rwcards.email LIKE ' . $search . ' OR #__rwcards.description LIKE ' . $search . ')');
             }
         }
 
@@ -122,7 +122,6 @@ class RwcardsModelRwcards extends JModelList
         $orderDirn = $this->state->get('list.direction', 'asc');
 
         $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
-
         // echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
         return $query;
     }

@@ -64,7 +64,7 @@ $sortFields = $this->getSortFields();
 					</div>
 					<div class="btn-group pull-left">
 						<button type="submit" class="btn hasTooltip" title="<?php echo JText::_('JSEARCH_FILTER_SUBMIT'); ?>"><i class="icon-search"></i></button>
-						<button type="button" class="btn hasTooltip" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.id('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
+						<button type="button" class="btn hasTooltip" title="<?php echo JText::_('JSEARCH_FILTER_CLEAR'); ?>" onclick="document.getElementById('filter_search').value='';this.form.submit();"><i class="icon-remove"></i></button>
 					</div>
 					<div class="btn-group pull-right hidden-phone">
 						<label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC'); ?></label>
@@ -105,31 +105,31 @@ $sortFields = $this->getSortFields();
 					<thead>
 						<tr>
 							<th width="1%" class="nowrap center hidden-phone">
-								<?php echo JHtml::_('searchtools.sort', '', 'ordering', $listDirn, $listOrder, null, 'asc', 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
+								<?php echo JHtml::_('grid.sort', '', 'ordering', $listDirn, $listOrder, 'JGRID_HEADING_ORDERING', 'icon-menu-2'); ?>
 							</th>
 							<th width="1%">
 								<?php echo JHtml::_('grid.checkall'); ?>
 							</th>
 							<th width="5%" class="nowrap center">
-								<?php echo JHtml::_('searchtools.sort', 'JSTATUS', 'a.published', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort', 'JSTATUS', 'published', $listDirn, $listOrder); ?>
 							</th>
 							<th width="15%" class="title">
-								<?php echo JHtml::_('searchtools.sort', 'COM_RWCARDS_RWCARDS_AUTOR', 'autor', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_AUTOR', 'autor', $listDirn, $listOrder); ?>
 							</th>
 							<th width="15%" class="nowrap hidden-phone">
-								<?php echo JHtml::_('searchtools.sort', 'COM_RWCARDS_RWCARDS_EMAIL', 'email', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_RWCARDS_EMAIL', 'email', $listDirn, $listOrder); ?>
 							</th>
 							<th width="15%" class="nowrap hidden-phone">
-								<?php echo JHtml::_('searchtools.sort', 'COM_RWCARDS_RWCARDS_DESCRIPTION', 'description', $listDirn, $listOrder); ?>
+								<?php echo JText::_('COM_RWCARDS_RWCARDS_DESCRIPTION'); ?>
 							</th>
 							<th width="35%" class="nowrap">
 								<?php echo JText::_('COM_RWCARDS_RWCARDS_HEADING_IMAGE'); ?>
 							</th>
 							<th width="10%" class="nowrap hidden-phone">
-								<?php echo JHtml::_('searchtools.sort', 'COM_RWCARDS_CAT_HEADING_CATEGORY', 'category_id', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort', 'COM_RWCARDS_CAT_HEADING_CATEGORY', 'category_id', $listDirn, $listOrder); ?>
 							</th>
 							<th width="1%" class="nowrap hidden-phone">
-								<?php echo JHtml::_('searchtools.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
+								<?php echo JHtml::_('grid.sort', 'JGRID_HEADING_ID', 'id', $listDirn, $listOrder); ?>
 							</th>
 						</tr>
 					</thead>
@@ -212,22 +212,6 @@ $sortFields = $this->getSortFields();
 						<?php endforeach; ?>
 					</tbody>
 				</table>
-				<?php // Load the batch processing form if user is allowed
-				?>
-				<?php
-				/*if ($user->authorise('core.create', 'com_newsfeeds')
-                && $user->authorise('core.edit', 'com_newsfeeds')
-                && $user->authorise('core.edit.state', 'com_newsfeeds')) : ?>
-                <?php echo JHtml::_(
-                    'bootstrap.renderModal',
-                    'collapseModal',
-                    [
-                        'title' => JText::_('COM_NEWSFEEDS_BATCH_OPTIONS'),
-                        'footer' => $this->loadTemplate('batch_footer'),
-                    ],
-                    $this->loadTemplate('batch_body')
-                ); ?>
-            <?php endif; */ ?>
 			<?php endif; ?>
 
 			<input type="hidden" name="task" value="" />
