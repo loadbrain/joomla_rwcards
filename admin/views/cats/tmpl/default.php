@@ -66,6 +66,12 @@ $sortFields = $this->getSortFields();
 						<label for="limit" class="element-invisible"><?php echo JText::_('JFIELD_PLG_SEARCH_SEARCHLIMIT_DESC'); ?></label>
 						<?php echo $this->pagination->getLimitBox(); ?>
 					</div>
+					<div class="btn-group pull-left">
+						<select name="filter_published" class="inputbox" onchange="this.form.submit()">
+							<option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
+							<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions', ['archived' => 2, 'trash' => -2]), 'value', 'text', $this->state->get('filter.state'), true); ?>
+						</select>
+					</div>
 					<div class="btn-group pull-right hidden-phone">
 						<label for="directionTable" class="element-invisible"><?php echo JText::_('JFIELD_ORDERING_DESC'); ?></label>
 						<select name="directionTable" id="directionTable" class="input-medium" onchange="Joomla.orderTable()">

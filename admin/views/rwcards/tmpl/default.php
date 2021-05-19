@@ -96,7 +96,7 @@ $sortFields = $this->getSortFields();
 					<div class="btn-group pull-left">
 						<select name="filter_published" class="inputbox" onchange="this.form.submit()">
 							<option value=""><?php echo JText::_('JOPTION_SELECT_PUBLISHED'); ?></option>
-							<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions', ['archived' => 0, 'trash' => 0]), 'value', 'text', $this->state->get('filter.state'), true); ?>
+							<?php echo JHtml::_('select.options', JHtml::_('jgrid.publishedOptions', ['archived' => 2, 'trash' => -2]), 'value', 'text', $this->state->get('filter.state'), true); ?>
 						</select>
 					</div>
 				</div>

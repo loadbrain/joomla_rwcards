@@ -56,6 +56,9 @@ class RwcardsModelRwcards extends JModelList
         $accessId = $app->getUserStateFromRequest($this->context . '.filter.access', 'filter_access', null, 'int');
         $this->setState('filter.access', $accessId);
 
+        // Filter by published state.
+        $published = $app->getUserStateFromRequest($this->context . '.filter.published', 'filter_published', null, 'int');
+
         $state = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
         $this->setState('filter.state', $state);
 
@@ -122,7 +125,7 @@ class RwcardsModelRwcards extends JModelList
         $orderDirn = $this->state->get('list.direction', 'asc');
 
         $query->order($db->escape($orderCol) . ' ' . $db->escape($orderDirn));
-        // echo nl2br(str_replace('#__', 'jos_', $query->__toString())); //exit;
+        // echo nl2br(str_replace('#__', 'efidk_', $query->__toString())); //exit;
         return $query;
     }
 
