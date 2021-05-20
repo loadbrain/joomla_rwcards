@@ -9,31 +9,36 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined('_JEXEC') or die('Restricted access');
 
 // import Joomla view library
 jimport('joomla.application.component.view');
 
-
 /**
  * Rwcards View
  */
-class RwcardsViewSentcards extends JViewLegacy{
+class RwcardsViewSentcards extends JViewLegacy
+{
 	/**
 	 * Rwcards view display method
 	 * @return void
 	 */
-	function display($tpl = null){
+	function display($tpl = null)
+	{
 
+		$app = JFactory::getApplication('administrator');
+		$input = JFactory::getApplication()->input;
+
+		if ($input->getCmd('task') === "getDeleteSentCards") {
+			$this->get('DeleteSentCards');
+		};
 		// Get data from the model
 		$items = $this->get('Items');
-
 		$pagination = $this->get('Pagination');
 		$this->state = $this->get('State');
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
@@ -47,46 +52,47 @@ class RwcardsViewSentcards extends JViewLegacy{
 
 		// Display the template
 		parent::display($tpl);
-
-		// Set the document
-		$this->setDocument();
-
 	}
 
 	/**
+	 *
+	 */
+	public function getDeleteSentCards()
+	{
+		print_r("getDeleteSentCardsFin");
+	}
+	/**
 	 * Setting the toolbar
 	 */
-	protected function addToolBar()	{
-		require_once JPATH_COMPONENT.DS.'helpers'.DS.'rwcardhelper.php';
+	protected function addToolBar()
+	{
+		require_once JPATH_COMPONENT . DS . 'helpers' . DS . 'rwcardhelper.php';
 
 		$user = JFactory::getUser();
 		$this->canDo = RwcardHelper::getActions($this->state->get('filter.id'));
 
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
-		if ($this->state->get('filter.state') == -2 && $canDo->get('core.delete'))
-		{
+		if ($this->state->get('filter.state') == -2 && $canDo->get('core.delete')) {
 			JToolbarHelper::deleteList('', 'sentcards.delete', 'JTOOLBAR_EMPTY_TRASH');
+		} elseif ($this->canDo->get('core.edit.state')) {
+			// JToolbarHelper::trash('sentcards.trash');
 		}
-		elseif ($this->canDo->get('core.edit.state'))
-		{
-			JToolbarHelper::trash('sentcards.trash');
+		if ($this->canDo->get('core.edit')) {
+			// JToolBarHelper::deleteList('', 'sentcards.delete');
+			JToolBarHelper::custom('getDeleteSentCards', 'delete', 'test', 'JTOOLBAR_DELETE', 'werowerwer');
 		}
-			if ($this->canDo->get('core.edit')){
-				//JToolBarHelper::deleteList('', 'sentcards.delete');
+	}
 
-			}
-		}
-
-        /**
-         * Method to set up the document properties
-         *
-         * @return void
-         */
-        protected function setDocument()
-        {
-                $document = JFactory::getDocument();
-                $document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
-        }
+	/**
+	 * Method to set up the document properties
+	 *
+	 * @return void
+	 */
+	protected function setDocument()
+	{
+		$document = JFactory::getDocument();
+		$document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
+	}
 
 	/**
 	 * Returns an array of fields the table can be sorted by
@@ -100,9 +106,8 @@ class RwcardsViewSentcards extends JViewLegacy{
 		return array(
 			'ordering' => JText::_('JGRID_HEADING_ORDERING'),
 			'nameTo' => JText::_('COM_RWCARDS_SENTCARD_HEADING_RECEIVER'),
-			'nameFrom' => JText::_('COM_RWCARDS_SENTCARD_HEADING_SENDER'),		
+			'nameFrom' => JText::_('COM_RWCARDS_SENTCARD_HEADING_SENDER'),
 			'id' => JText::_('JGRID_HEADING_ID')
 		);
-	}		
+	}
 }
-?>
