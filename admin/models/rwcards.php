@@ -135,6 +135,7 @@ class RwcardsModelRwcards extends JModelList
     public function getCategories()
     {
         // Filtered Category?
+        $category_id = (isset($category_id) ? $category_id : 0);
         $chosenCategoryId = JRequest::getVar('filter_category_id', 0, 'request', 'int');
         if ($chosenCategoryId == 0) $chosenCategoryId = 0;
         $db = JFactory::getDBO();

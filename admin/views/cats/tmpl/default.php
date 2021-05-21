@@ -181,7 +181,7 @@ $sortFields = $this->getSortFields();
 
 									JHtml::_('dropdown.divider');
 
-									if ($archived) :
+									if (isset($archived)) :
 										JHtml::_('dropdown.unarchive', 'cb' . $i, 'cats.');
 									else :
 										JHtml::_('dropdown.archive', 'cb' . $i, 'cats.');
@@ -191,7 +191,7 @@ $sortFields = $this->getSortFields();
 										JHtml::_('dropdown.checkin', 'cb' . $i, 'cats.');
 									endif;
 
-									if ($trashed) :
+									if (isset($trashed)) :
 										JHtml::_('dropdown.untrash', 'cb' . $i, 'cats.');
 									else :
 										JHtml::_('dropdown.trash', 'cb' . $i, 'cats.');
