@@ -48,6 +48,9 @@ class RwcardsViewRwcards extends JViewLegacy
         // Set the toolbar
         $this->addToolBar();
 
+        // Set the submenu
+        RwcardsHelper::addSubmenu('cards');
+
         // Display the template
         parent::display($tpl);
     }

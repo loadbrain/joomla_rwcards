@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined('_JEXEC') or die('Restricted access');
 
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -17,38 +17,39 @@ jimport('joomla.application.component.view');
 /**
  * RwcardsViewAbout View
  */
-class RwcardsViewAbout extends JViewLegacy{
+class RwcardsViewAbout extends JViewLegacy
+{
 	/**
 	 * Rwcards view display method
 	 * @return void
 	 */
-	function display($tpl = null){
+	function display($tpl = null)
+	{
 		// Get data from the model
 
 		// Check for errors.
-		if (count($errors = $this->get('Errors')))
-		{
+		if (count($errors = $this->get('Errors'))) {
 			JError::raiseError(500, implode('<br />', $errors));
 			return false;
 		}
 		// Set the toolbar
 		$this->addToolBar();
-		
+
 		//get gdInfo
 		$gd = $this->get('GdInfo');
 		$this->gd = $gd;
 
 		//Get Version
-		$this->version =  $this->get('RwcardsVersion');		
-		
-		
+		$this->version =  $this->get('RwcardsVersion');
+
+		// Set the submenu
+		RwcardsHelper::addSubmenu('about');
 
 		// Display the template
 		parent::display($tpl);
 
 		// Set the document
 		$this->setDocument();
-
 	}
 
 	/**
@@ -57,19 +58,17 @@ class RwcardsViewAbout extends JViewLegacy{
 	protected function addToolBar()
 	{
 		JToolBarHelper::title(JText::_('COM_RWCARDS_MANAGER_RWCARDS'));
-		JToolBarHelper::cancel('rwcard.cancel', 'JTOOLBAR_CANCEL');
+		JToolBarHelper::back('JTOOLBAR_BACK');
 	}
-	
-        /**
-         * Method to set up the document properties
-         *
-         * @return void
-         */
-        protected function setDocument() 
-        {
-                $document = JFactory::getDocument();
-                $document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
-        }	
 
+	/**
+	 * Method to set up the document properties
+	 *
+	 * @return void
+	 */
+	protected function setDocument()
+	{
+		$document = JFactory::getDocument();
+		$document->setTitle(JText::_('COM_RWCARDS_ADMINISTRATION'));
+	}
 }
-?>

@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -23,7 +23,7 @@ class RwcardsViewUpload extends JViewLegacy{
 	 * @return void
 	 */
 	function display($tpl = null){
-		
+
 
 		// Get data from the model
 		$this->get('ImageFolder');
@@ -47,7 +47,8 @@ class RwcardsViewUpload extends JViewLegacy{
 		// Set the toolbar
 		$this->addToolBar();
 
-
+		// Set the submenu
+		RwcardsHelper::addSubmenu('upload');
 		// Display the template
 		parent::display($tpl);
 
@@ -79,4 +80,3 @@ class RwcardsViewUpload extends JViewLegacy{
         }
 
 }
-?>

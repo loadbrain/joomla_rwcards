@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import Joomla view library
 jimport('joomla.application.component.view');
@@ -50,6 +50,9 @@ class RwcardsViewCat extends JViewLegacy{
 
 		// Set the toolbar
 		$this->addToolBar();
+
+		// Set the submenu
+		RwcardsHelper::addSubmenu('categories');
 
 		// Display the template
 		parent::display($tpl);
@@ -101,4 +104,3 @@ class RwcardsViewCat extends JViewLegacy{
 	}
 
 }
-?>

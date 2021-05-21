@@ -49,7 +49,8 @@ class RwcardsViewSentcards extends JViewLegacy
 		// Set the toolbar
 		$this->addToolBar();
 		$this->get('DeleteOldCards');
-
+		// Set the submenu
+		RwcardsHelper::addSubmenu('sentcards');
 		// Display the template
 		parent::display($tpl);
 	}
