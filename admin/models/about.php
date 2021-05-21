@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined('_JEXEC') or die('Restricted access');
 
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
@@ -17,13 +17,15 @@ jimport('joomla.filesystem.folder');
 /**
  * RwcardsModelAbout Model
  */
-class RwcardsModelAbout extends JModelList{
+class RwcardsModelAbout extends JModelList
+{
 	/**
 	 * Method to build an SQL query to load the list data.
 	 *
 	 * @return      string  An SQL query
-	 */			        	
-	protected function getListQuery(){
+	 */
+	protected function getListQuery()
+	{
 		// Create a new query object.
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
@@ -33,7 +35,7 @@ class RwcardsModelAbout extends JModelList{
 		$query->from('#__rwcards_category');
 		return $query;
 	}
-	
+
 	/**
 	 * Returns a reference to the a Table object, always creating it.
 	 *
@@ -46,26 +48,28 @@ class RwcardsModelAbout extends JModelList{
 	public function getTable($type = 'Cat', $prefix = 'RwcardsTable', $config = array())
 	{
 		return JTable::getInstance($type, $prefix, $config);
-	}	
+	}
 
 	/**
 	 * Get GD Info
 	 */
-	public function getGdInfo(){
+	public function getGdInfo()
+	{
 		$gd = gd_info();
-		return $gd;	
+		return $gd;
 	}
-	
+
 	/**
 	 * Method to get RWCard Version
 	 * @return string Version of RWCards
 	 */
-	function getRwcardsVersion(){
-		$folder = JPATH_ADMINISTRATOR .DS. 'components'.DS.'com_rwcards';
+	function getRwcardsVersion()
+	{
+		$folder = JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_rwcards';
 		if (JFolder::exists($folder)) {
 			$xmlFilesInDir = JFolder::files($folder, '.xml$');
 		} else {
-			$folder = JPATH_SITE .DS. 'components'.DS.'com_rwcards';
+			$folder = JPATH_SITE . DS . 'components' . DS . 'com_rwcards';
 			if (JFolder::exists($folder)) {
 				$xmlFilesInDir = JFolder::files($folder, '.xml$');
 			} else {
@@ -73,25 +77,21 @@ class RwcardsModelAbout extends JModelList{
 			}
 		}
 
-		$xml_items = '';
-		if (count($xmlFilesInDir))
-		{
-			foreach ($xmlFilesInDir as $xmlfile)
-			{
-				if ($data = JApplicationHelper::parseXMLInstallFile($folder.DS.$xmlfile)) {
-					foreach($data as $key => $value) {
+		$xml_items = array();
+		if (count($xmlFilesInDir)) {
+			foreach ($xmlFilesInDir as $xmlfile) {
+				if ($data = JApplicationHelper::parseXMLInstallFile($folder . DS . $xmlfile)) {
+					foreach ($data as $key => $value) {
 						$xml_items[$key] = $value;
 					}
 				}
 			}
 		}
-		
-		if (isset($xml_items['version']) && $xml_items['version'] != '' ) {
+
+		if (isset($xml_items['version']) && $xml_items['version'] != '') {
 			return $xml_items['version'];
 		} else {
 			return '';
 		}
-	}	
-	
+	}
 }
-?>
