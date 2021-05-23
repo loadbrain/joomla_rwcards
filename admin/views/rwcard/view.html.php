@@ -99,7 +99,7 @@ class RwcardsViewRwcard extends JViewLegacy
     {
         $isNew = ($this->item->id < 1);
         $document = JFactory::getDocument();
-        $document->setTitle($isNew ? JText::_('COM_RWCARD_RWCARD_CREATING') : JText::_('COM_RWCARD_RWCARD_EDITING'));
+        $document->setTitle($isNew ? JText::_('COM_RWCARD_MANAGER_RWCARD_NEW') : JText::_('COM_RWCARD_RWCARD_EDITING'));
         $document->addScript(JURI::root() . $this->script);
         $document->addScript(JURI::root() . '/administrator/components/com_rwcards/views/rwcard/submitbutton.js');
         JText::script('COM_RWCARDS_RWCARDS_ERROR_UNACCEPTABLE');
