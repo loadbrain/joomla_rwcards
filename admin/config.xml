@@ -63,13 +63,14 @@
 
 
 		<field name="sfp_note" type="note" class="alert" label="SFP_LABEL" description="SFP_LABEL_DESC" />
-
 		<field name="sfp_name" type="text" default="" label="COM_RWCARDS_CONFIG_SFP_NAME" description="COM_RWCARDS_CONFIG_SFP_NAME_DESC" size="14" />
-
 		<field name="sfp_email" type="text" default="" label="COM_RWCARDS_CONFIG_SFP_EMAIL" description="COM_RWCARDS_CONFIG_SFP_EMAIL_DESC" size="14" />
 
-
-		<!--<field name='msg_copyright' type="textarea" rows="3" cols="50" default="RWCards - Copyright Ralf Weber / LoadBrain - http://www.weberr.de/" label="MSG_COPYRIGHT_CONFIG_TEXT" style="readonly" description="MSG_COPYRIGHT_DESC" />-->
+		<field name="copyright_note" type="note" class="alert" label="COPYRIGHT_LABEL" description="COPYRIGHT_LABEL_DESC" />
+		<field name="copyright_show" type="radio" default="1" label="COM_RWCARDS_CONFIG_SHOW_COPYRIGHT">
+			<option value="0">no</option>
+			<option value="1">yes</option>
+		</field>
 
 	</fieldset>
 

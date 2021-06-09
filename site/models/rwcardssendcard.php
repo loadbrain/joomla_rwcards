@@ -9,7 +9,7 @@
 # Technical Support: Forum - http://www.weberr.de/forum.html
 -------------------------------------------------------------------------*/
 // no direct access
-defined( '_JEXEC' ) or die( 'Restricted access' ); 
+defined( '_JEXEC' ) or die( 'Restricted access' );
 
 // import the Joomla modellist library
 jimport('joomla.application.component.modellist');
@@ -43,6 +43,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 		$sfp_name = $params->get('sfp_name', false );
 		$sfp_email = $params->get('sfp_email', false );
 		$attachment = $params->get( "attachment", false );
+		$shwoCopyright = $params->get('copyright_show', true);
 
 		$Itemid = JRequest::getCmd('Itemid');
 
@@ -55,14 +56,14 @@ class RwcardsModelRwcardssendcard extends JModelList{
 			{
 				$query = "INSERT INTO #__rwcardsdata SET picture= '" . $sess['picture']
 				. "', nameTo = '" . $sess['rwCardsFormNameTo'][$i]
-				. "', nameFrom = '" . $sess['rwCardsFormNameFrom'] 
+				. "', nameFrom = '" . $sess['rwCardsFormNameFrom']
 				. "', emailTo = '" . $sess['rwCardsFormEmailTo'][$i]
-				. "', emailFrom = '" . $sess['rwCardsFormEmailFrom'] 
-				. "', message = '" . addslashes($sess['rwCardsFormMessage']) 
+				. "', emailFrom = '" . $sess['rwCardsFormEmailFrom']
+				. "', message = '" . addslashes($sess['rwCardsFormMessage'])
 				. "', sessionId = '" . $sess['sessionCode']
 				. "' , writtenOn = '" . date("Y-m-d")
 				. "' , cardSent = '0'";
-				
+
 				$db->setQuery( $query );
 				if (!$result = $db->query())
 				{
@@ -97,10 +98,12 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. str_replace( '&amp;', '&', JRoute::_( 'index.php?option=com_rwcards&view=rwcardssendcard&Itemid=' . $Itemid
 				. "&sessionId=" . $sess['sessionCode'] . "&id=" . $lastId[$i] . "&task=viewCard&read=1&sendmail=1" ) );
 				$linkToViewOnly = JURI::getInstance()->toString(array("scheme","host"))
-				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&sessionId=" . $sess['sessionCode'] . 
+				. str_replace( '&amp;', '&', JRoute::_( "index.php?view=rwcardssendcard&sessionId=" . $sess['sessionCode'] .
                 "&id=" . $lastId[$i] . "&task=viewCard&sendmail=0" ) );
 
 				$subject = JText::_('COM_RWCARDS_SUBJECT') . " " . $FromName;
+
+
 
 				// send link to card
 				if ($attachment)
@@ -110,10 +113,12 @@ class RwcardsModelRwcardssendcard extends JModelList{
 					. $FromName . " " . JText::_('COM_RWCARDS_MSG_ATTACHEMENT_1') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_2') . "\n"
 					. JText::_('COM_RWCARDS_MSG_ATTACHEMENT_3') . "\n\n"
-					//. nl2br( $sess['rwCardsFormMessage'] )
-					. nl2br( $sess['rwCardsFormMessage'] )
-					. "\n\n" . JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n\n"
+					. nl2br($sess['rwCardsFormMessage']);
+					// show copyright?
+					if($shwoCopyright){
+						$message .= "\n\n" . JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n\n"
 					.  $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT'));
+					}
 					$mail->addAttachment("./images/rwcards/" . $sess['picture']);
 				}
 				else
@@ -123,12 +128,15 @@ class RwcardsModelRwcardssendcard extends JModelList{
 					. $FromName . " "
 					. JText::_('COM_RWCARDS_MSG_PART_1') . "\n\n"
 					. JText::_('COM_RWCARDS_MSG_PART_2') . "\n\n"
-					. $linkToRWCards . "\n\n"
-					. JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n"
-					. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
+					. $linkToRWCards . "\n\n";
+					// show copyright?
+					if ($shwoCopyright) {
+						$message .= "\n\n" . JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n\n"
+						.  $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT'));
+					}
 				}
 
-				
+
 				$mail->addRecipient( $sess['rwCardsFormEmailTo'][$i] );
 
 				//SFP Check
@@ -138,21 +146,21 @@ class RwcardsModelRwcardssendcard extends JModelList{
 						// @see: http://joomla.stackexchange.com/questions/16051/fix-the-invalid-address-error-after-upgrading-to-joomla-3-5-1
 						try {
 							if(version_compare(JVERSION, '3.0', 'ge')) {
-							  $mail->addReplyTo( $MailFrom, $FromName );	
+							  $mail->addReplyTo( $MailFrom, $FromName );
 							  //$mailer->addReplyTo($replyTo, $replyToName);
 							} else {
-							  $mail->addReplyTo( array( $MailFrom, $FromName ) );	
-							}		
+							  $mail->addReplyTo( array( $MailFrom, $FromName ) );
+							}
 						}
 						catch (Exception $e) {
 							// do exception handling and logging here
-							print_r($e); 
+							print_r($e);
 						}
 					}
 				} else{
 					$mail->setSender( array( $MailFrom, $FromName ) );
-				}				
-				
+				}
+
 				$mail->setSubject( $subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
@@ -165,7 +173,7 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				/**
 				 *  email only to one sender no concatenating of all if several, 01.09.2008 RW
 				 */
-				$mail = null; 
+				$mail = null;
 			}
 		}
 		else
@@ -211,10 +219,12 @@ class RwcardsModelRwcardssendcard extends JModelList{
 				. JText::_('COM_RWCARDS_CARD_READ_MSG_1') . " "
 				. date("d.m.Y") . " "
 				. JText::_('COM_RWCARDS_CARD_READ_MSG_2') . "\n\n"
-				. JText::_('COM_RWCARDS_CARD_READ_MSG_3') . "\n\n"
-				. JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n"
-
+				. JText::_('COM_RWCARDS_CARD_READ_MSG_3') . "\n\n";
+				// show copyright?
+				if ($shwoCopyright) {
+					$message .= JText::_('COM_RWCARDS_MSG_SEPARATOR') . "\n"
 				. $params->get('msg_copyright', JText::_('COM_RWCARDS_MSG_COPYRIGHT')) . "\n\n";
+				}
 
 				$mail->addRecipient( $this->_data[0]->emailFrom );
 				//SFP Check
@@ -225,19 +235,19 @@ class RwcardsModelRwcardssendcard extends JModelList{
 						// @see: http://joomla.stackexchange.com/questions/16051/fix-the-invalid-address-error-after-upgrading-to-joomla-3-5-1
 						try{
 							if(version_compare(JVERSION, '3.0', 'ge')) {
-							  $mail->addReplyTo( $this->_data[0]->emailTo, $this->_data[0]->nameTo );	
+							  $mail->addReplyTo( $this->_data[0]->emailTo, $this->_data[0]->nameTo );
 							  //$mailer->addReplyTo($replyTo, $replyToName);
 							} else {
-							  $mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );	
+							  $mail->addReplyTo( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
 							}
 						} catch (Exception $e) {
 							// do exception handling and logging here
-							print_r($e); 
+							print_r($e);
 						}
 					}
 				} else{
 					$mail->setSender( array( $this->_data[0]->emailTo, $this->_data[0]->nameTo ) );
-				}			
+				}
 				$mail->setSubject( $this->_data[0]->nameFrom.': '.$subject );
 				$mail->setBody( $message );
 				$sent = $mail->Send();
@@ -259,4 +269,3 @@ class RwcardsModelRwcardssendcard extends JModelList{
 		return $this->_data;
 	}
 }
-?>
