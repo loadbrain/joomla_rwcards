@@ -17,22 +17,19 @@ $params = JComponentHelper::getParams('com_rwcards');
 $thumb_box_width = $params->get('thumb_box_width', '260'); //default: 260;
 $thumb_box_height = $params->get('thumb_box_height', '220'); //default: 220
 
-// start build additional Stylesheet by A. Dalebout
-$style = '';
+/**start build additional Stylesheet
+ * @see: /components/com_rwcards/css/rwcards.rwcards.css
+ */
 if (count($this->rwcards) > 0) {
 	for ($i = 0; $i < count($this->rwcards); $i++) {
 		$style .= "
 @media only screen and (min-width:450px){
-#myGallery_rwcards_" . $i . " {width: " . $thumb_box_width . "px; height: " . $thumb_box_height . "px;}
-#myGallery_rwcards_" . $i . " img.thumbnail{display: none;}
-#description_" . $i . "{display:grid;     grid-template-rows: 20% auto 10%;}
-#rwcardsTable" . $i . "{display: grid; grid-template-columns: " . $thumb_box_width . "px auto; grid-gap:10px; padding: 0px 0px 25px 0px;}
+	#myGallery_rwcards_" . $i . " {width: " . $thumb_box_width . "px; height: " . $thumb_box_height . "px;}
+	#rwcardsTable" . $i . "{grid-template-columns: " . $thumb_box_width . "px auto; }
 }
 @media only screen and (min-width:90px) and (max-width:449px){
-#myGallery_rwcards_" . $i . " {display:none; width: " . $thumb_box_width . "px; height: " . $thumb_box_height . "px;}
-#myGallery_rwcards_" . $i . " img.thumbnail{display: none;}
-#description_" . $i . "{display:grid;     grid-template-rows: 2em 5em 2em;}
-#rwcardsTable" . $i . "{display: grid; grid-template-rows: " . $thumb_box_height . "px auto; grid-gap:10px; padding: 0px 0px 25px 0px;}
+	#myGallery_rwcards_" . $i . " { width: " . $thumb_box_width . "px; height: " . $thumb_box_height . "px;}
+	#rwcardsTable" . $i . "{ grid-template-rows: " . $thumb_box_height . "px auto; }
 }
 ";
 	}
@@ -73,26 +70,35 @@ if (count($this->rwcards[0]) > 0) {
 						<div class="imageElement">
 							<h3><?php echo $val->thumb_title; ?></h3>
 							<p><?php echo $val->thumb_desc; ?></p>
-							<!--			<a href="<?php echo JRoute::_('index.php?view=rwcard&category_id=' . $val->category_id
-															. '&amp;reWritetoSender=' . @$this->reWritetoSender
-															. '&amp;sessionId=' . @$this->sessionId);
-														?>" title="<?php echo htmlentities($val->category_kategorien_name, ENT_QUOTES, 'UTF-8'); ?>" class="open"></a>-->
 							<a href="<?php echo JRoute::_('index.php?view=rwcard&amp;category_id=' . $val->category_id
 											. '&amp;reWritetoSender=' . @$this->reWritetoSender
 											. '&amp;sessionId=' . @$this->sessionId);
 										?>" title="<?php echo htmlentities($val->category_kategorien_name, ENT_QUOTES, 'UTF-8'); ?>" class="open"></a>
 							<img src="<?php echo JURI::base(); ?>images/rwcards/<?php echo strtolower(substr($val->picture, 0, -4))
-																					. $this->suffix . strtolower(substr($val->picture, strrpos($val->picture, ".")));
-																				?>" class="full" alt="<?php echo nl2br(htmlentities($val->category_kategorien_name, ENT_QUOTES, 'UTF-8')); ?>" />
+																					. $this->suffix . strtolower(substr($val->picture, strrpos($val->picture, "."))); ?>" class="full" alt="<?php echo nl2br(htmlentities($val->category_kategorien_name, ENT_QUOTES, 'UTF-8')); ?>" />
 						</div>
 
+						<script type="text/javascript">
+							(function($) {
+								function linkToCategory_<?php echo $i; ?>() {
+									$$('#myGallery_rwcards_<?php echo $i; ?>').addEvent('click', function() {
+										location.href = "<?php echo JRoute::_('index.php?view=rwcard&amp;category_id=' . $val->category_id
+																. '&amp;reWritetoSender=' . @$this->reWritetoSender
+																. '&amp;sessionId=' . @$this->sessionId);
+															?>";
+									});
+								};
+
+								window.addEvent('domready', linkToCategory_<?php echo $i; ?>);
+							})(document.id);
+						</script>
 					<?php
 					}
 					?>
 				</div>
 			</div>
 			<div id="description_<?php echo $i; ?>">
-				<span class="rwcards_category_heading" <a href="<?php echo JRoute::_('index.php?view=rwcard&category_id=' . $this->categoryData[$i]->id
+				<span class="rwcards_category_heading"><a href="<?php echo JRoute::_('index.php?view=rwcard&category_id=' . $this->categoryData[$i]->id
 																	. '&reWritetoSender=' . @$this->reWritetoSender
 																	. '&sessionId=' . @$this->sessionId);
 																?>" class="open"><?php echo htmlentities($this->categoryData[$i]->category_kategorien_name, ENT_QUOTES, 'UTF-8'); ?></a>

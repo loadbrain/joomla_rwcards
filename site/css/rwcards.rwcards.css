@@ -1,10 +1,73 @@
-.rwcards_category_heading {
-  font-weight: bold;
-  text-decoration: underline;
-}
+@media only screen and (min-width: 450px) {
+  [id^='description_'] {
+    display: grid;
+    grid-template-rows: 20% auto 10%;
+  }
 
-.rwcards_category_description {
-}
+  /**
+  * can be used to add extra css to gallery
+  * @see: components/com_rwcards/views/rwcards/tmpl/default.php
+  */
+  [id^='myGallery_rwcards_'] {
+    cursor: pointer;
+  }
 
-.rwcards_category_see_all_cards {
+  /**
+  * can be used to add extra css to gallery
+  * @see: components/com_rwcards/views/rwcards/tmpl/default.php
+  */
+  [id^='rwcardsTable'] {
+    display: grid;
+    grid-gap: 10px;
+    padding: 0px 0px 25px 0px;
+  }
+
+  .rwcards_category_heading {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .rwcards_category_description {
+  }
+
+  .rwcards_category_see_all_cards {
+  }
+}
+@media only screen and (min-width: 90px) and (max-width: 449px) {
+  /**
+  * can be used to add extra css to gallery
+  * @see: components/com_rwcards/views/rwcards/tmpl/default.php
+  */
+  [id^='description_'] {
+    display: grid;
+    grid-template-rows: 2em 5em 2em;
+  }
+
+  /**
+  * can be used to add extra css to gallery
+  * @see: components/com_rwcards/views/rwcards/tmpl/default.php
+  */
+  [id^='myGallery_rwcards_'] {
+        cursor: pointer;
+  }
+
+  /**
+  * can be used to add extra css to gallery
+  * @see: components/com_rwcards/views/rwcards/tmpl/default.php
+  */
+  [id^='rwcardsTable'] {
+    display: grid;
+    grid-gap: 10px;
+    padding: 0px 0px 25px 0px;
+  }
+  .rwcards_category_heading {
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+  .rwcards_category_description {
+  }
+
+  .rwcards_category_see_all_cards {
+  }
 }
