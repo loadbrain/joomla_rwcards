@@ -1,8 +1,8 @@
-RWCards for Joomla
+RWCards for Joomla 3.X - STILL AVAILABLE BUT NO LONGER MAINTAIEND!
 ==============
 
 
-ECards Component for Joomla
+ECards Component for Joomla 3.X
 
 License
 =======
