@@ -232,8 +232,8 @@ class RwcardsModelRwcards extends JModelList
     {
         $params = JComponentHelper::getParams('com_rwcards');
         $suffix = '@' . $params->get('thumbnail_suffix', 'rwcards');
-        $breite = $params->get('thumbnail_width', '160'); //default: 160;
-        $hoehe =  $params->get('thumbnail_height', '120'); //default: 120;
+        $breite = 282;
+        $hoehe = 200;
         $sizemin = [$breite, $hoehe];
 
         $images = $this->getImages();
